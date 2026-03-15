@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tests - Academia Tropa Permanente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-950 text-white">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed left-0 top-0 h-full w-64 bg-slate-900 border-r border-slate-800 z-40 flex flex-col transition-all duration-300 overflow-hidden -translate-x-full md:translate-x-0">
+        <!-- Logo -->
+        <div class="p-4 border-b border-slate-800 flex justify-center">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center cursor-pointer hover:scale-105 transition-transform" onclick="toggleSidebarCollapse()">
+                <svg id="collapseIcon" class="w-6 h-6 text-white transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </div>
+        </div>
+
+        <!-- User Avatar + Donate -->
+        <div class="p-4 border-b border-slate-800 flex flex-col items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center font-bold text-white" id="userAvatar">U</div>
+            <a href="https://ko-fi.com/zabadev" target="_blank" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-400 hover:to-pink-400 transition-all text-white text-xs font-semibold">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Donar</span>
+            </a>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1 p-2 overflow-y-auto">
+            <ul class="space-y-1">
+                <li>
+                    <a href="dashboard.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Inicio">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Inicio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="temas.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Temas">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Temas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="tests.html" class="sidebar-link active flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Tests">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Tests</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="lecturas.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Resúmenes">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Resúmenes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="videos.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Vídeos">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Vídeos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="podcasts.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Podcasts">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Podcasts</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Logout -->
+        <div class="p-2 border-t border-slate-800">
+            <button onclick="logout()" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-red-400 hover:bg-red-500/10 transition-all w-full" title="Cerrar Sesión">
+                <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Cerrar Sesión</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <header class="md:hidden fixed top-0 left-0 right-0 h-16 bg-slate-900 border-b border-slate-800 z-30 flex items-center justify-between px-4">
+        <button onclick="toggleSidebar()" class="text-white p-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+        <span class="font-orbitron font-bold text-white">Tropa<span class="text-emerald-400">Perma</span></span>
+        <div class="w-10"></div>
+    </header>
+
+    <main class="md:ml-64 min-h-screen pt-16 md:pt-0 transition-all duration-300 ml-0">
+        <div class="max-w-7xl mx-auto p-4 md:p-8">
+            <div class="mb-8">
+                <h1 class="font-orbitron font-bold text-2xl md:text-3xl text-white mb-2">Tests de Preparación</h1>
+                <p class="text-slate-400">Pon a prueba tus conocimientos con exámenes tipo test - +500 preguntas</p>
+            </div>
+
+            <!-- Test Categories - Bloque 1: Organización -->
+            <div class="mb-8">
+                <h3 class="font-orbitron font-bold text-lg text-cyan-400 mb-4">Bloque 1: ORGANIZACIÓN</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- B1-T1: Constitución -->
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-cyan-500/50 transition-all cursor-pointer" onclick="startTest('b1_t1_cortes')">
+                        <h4 class="font-semibold text-white text-sm">T1: Cortes Generales</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-cyan-500/50 transition-all cursor-pointer" onclick="startTest('b1_t1_gobierno')">
+                        <h4 class="font-semibold text-white text-sm">T1: El Gobierno</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-cyan-500/50 transition-all cursor-pointer" onclick="startTest('b1_t1_territorial')">
+                        <h4 class="font-semibold text-white text-sm">T1: Org. Territorial</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-cyan-500/50 transition-all cursor-pointer" onclick="startTest('b1_t1_poderjudicial')">
+                        <h4 class="font-semibold text-white text-sm">T1: Poder Judicial</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <!-- B1-T2 a T6 -->
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-cyan-500/50 transition-all cursor-pointer" onclick="startTest('b1_t2_defensa')">
+                        <h4 class="font-semibold text-white text-sm">T2: LO 5/2005 Defensa</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-cyan-500/50 transition-all cursor-pointer" onclick="startTest('b1_t3_ley40')">
+                        <h4 class="font-semibold text-white text-sm">T3: Ley 40/2015</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-cyan-500/50 transition-all cursor-pointer" onclick="startTest('b1_t4_rd205')">
+                        <h4 class="font-semibold text-white text-sm">T4: RD 205/2024</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-cyan-500/50 transition-all cursor-pointer" onclick="startTest('b1_t5_rd521')">
+                        <h4 class="font-semibold text-white text-sm">T5: RD 521/2020</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-cyan-500/50 transition-all cursor-pointer" onclick="startTest('b1_t6_instrucciones')">
+                        <h4 class="font-semibold text-white text-sm">T6: Instrucciones</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <!-- Bloque 1 completo -->
+                    <div class="bg-slate-900/50 border border-cyan-500/50 rounded-xl p-4 hover:border-cyan-400/50 transition-all cursor-pointer col-span-full" onclick="startTest('bloque1')">
+                        <h4 class="font-semibold text-cyan-400 text-base">✓ Todo el Bloque 1</h4><p class="text-slate-400 text-xs">225 preguntas</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test Categories - Bloque 2: Jurídico-Social -->
+            <div class="mb-8">
+                <h3 class="font-orbitron font-bold text-lg text-emerald-400 mb-4">Bloque 2: JURÍDICO-SOCIAL</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-emerald-500/50 transition-all cursor-pointer" onclick="startTest('b2_t1_ley39')">
+                        <h4 class="font-semibold text-white text-sm">T1: Ley 39/2007 y 8/2006</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-emerald-500/50 transition-all cursor-pointer" onclick="startTest('b2_t2_ordenanzas')">
+                        <h4 class="font-semibold text-white text-sm">T2: Reales Ordenanzas</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-emerald-500/50 transition-all cursor-pointer" onclick="startTest('b2_t3_ley9')">
+                        <h4 class="font-semibold text-white text-sm">T3: LO 9/2011 Derechos</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-emerald-500/50 transition-all cursor-pointer" onclick="startTest('b2_t4_ley8')">
+                        <h4 class="font-semibold text-white text-sm">T4: LO 8/2014 Disciplinario</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-emerald-500/50 transition-all cursor-pointer" onclick="startTest('b2_t5_quejas')">
+                        <h4 class="font-semibold text-white text-sm">T5: RD 176/2014 Quejas</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-emerald-500/50 transition-all cursor-pointer" onclick="startTest('b2_t6_igualdad')">
+                        <h4 class="font-semibold text-white text-sm">T6: LO 3/2007 Igualdad</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-emerald-500/50 transition-all cursor-pointer" onclick="startTest('b2_t7_observatorio')">
+                        <h4 class="font-semibold text-white text-sm">T7: Observatorio y Acoso</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-emerald-500/50 transition-all cursor-pointer" onclick="startTest('b2_t8_ley39')">
+                        <h4 class="font-semibold text-white text-sm">T8: Ley 39/2015 PAC</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-emerald-500/50 rounded-xl p-4 hover:border-emerald-400/50 transition-all cursor-pointer col-span-full" onclick="startTest('bloque2')">
+                        <h4 class="font-semibold text-emerald-400 text-base">✓ Todo el Bloque 2</h4><p class="text-slate-400 text-xs">200 preguntas</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test Categories - Bloque 3: Seguridad Nacional -->
+            <div class="mb-8">
+                <h3 class="font-orbitron font-bold text-lg text-blue-400 mb-4">Bloque 3: SEGURIDAD NACIONAL</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-blue-500/50 transition-all cursor-pointer" onclick="startTest('b3_t1_seguridad')">
+                        <h4 class="font-semibold text-white text-sm">T1: Ley 36/2015 y Estrategia</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-blue-500/50 transition-all cursor-pointer" onclick="startTest('b3_t2_pdc01')">
+                        <h4 class="font-semibold text-white text-sm">T2: PDC-01 Doctrina</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-blue-500/50 transition-all cursor-pointer" onclick="startTest('b3_t3_onu')">
+                        <h4 class="font-semibold text-white text-sm">T3: ONU</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-blue-500/50 transition-all cursor-pointer" onclick="startTest('b3_t4_otan')">
+                        <h4 class="font-semibold text-white text-sm">T4: OTAN</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-blue-500/50 transition-all cursor-pointer" onclick="startTest('b3_t5_osce')">
+                        <h4 class="font-semibold text-white text-sm">T5: OSCE</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-blue-500/50 transition-all cursor-pointer" onclick="startTest('b3_t6_ue')">
+                        <h4 class="font-semibold text-white text-sm">T6: Unión Europea</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-blue-500/50 transition-all cursor-pointer" onclick="startTest('b3_t7_misiones')">
+                        <h4 class="font-semibold text-white text-sm">T7: Misiones Internacionales</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-blue-500/50 rounded-xl p-4 hover:border-blue-400/50 transition-all cursor-pointer col-span-full" onclick="startTest('bloque3')">
+                        <h4 class="font-semibold text-blue-400 text-base">✓ Todo el Bloque 3</h4><p class="text-slate-400 text-xs">175 preguntas</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test Completo -->
+            <div class="mb-8">
+                <div class="bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 border border-emerald-500/30 rounded-xl p-6 hover:border-emerald-400/50 transition-all cursor-pointer" onclick="startTest('completo')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-xl bg-emerald-500/30 flex items-center justify-center">
+                                <svg class="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-lg">TEST COMPLETO</h3>
+                                <p class="text-slate-400 text-sm">Todas las categorías del temario</p>
+                            </div>
+                        </div>
+                        <span class="text-emerald-400 font-bold text-xl">600+ preg.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test Simulator - Modal -->
+            <div id="testModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.95); z-index: 9999; overflow-y: auto; padding: 10px;">
+                <div style="max-width: 800px; margin: 0 auto; background: #1e293b; border-radius: 16px; padding: 20px; border: 1px solid #334155;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+                        <div>
+                            <h2 style="font-size: 18px; color: #10b981; margin: 0;" id="testTitle">Test</h2>
+                            <p style="color: #94a3b8; margin: 5px 0 0 0; font-size: 14px;">Pregunta <span id="currentQuestion">1</span> de <span id="totalQuestions">10</span></p>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="color: #10b981; font-size: 20px; font-weight: bold;" id="timer">00:00</div>
+                            <div style="color: #64748b; font-size: 11px;">Tiempo</div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: #0f172a; border-radius: 8px; height: 6px; margin-bottom: 15px; overflow: hidden;">
+                        <div id="progressBar" style="height: 100%; background: linear-gradient(90deg, #10b981, #06b6d4); width: 0%;"></div>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <h3 style="font-size: 16px; color: white; margin-bottom: 12px; line-height: 1.5;" id="questionText">Pregunta</h3>
+                        <div id="optionsContainer"></div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                        <button onclick="cancelTest()" style="padding: 10px 20px; border: 1px solid #ef4444; border-radius: 8px; color: #ef4444; cursor: pointer; background: transparent; font-size: 14px;">✕ Cancelar</button>
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                            <button id="prevBtn" style="padding: 10px 20px; border: 1px solid #475569; border-radius: 8px; color: #94a3b8; cursor: pointer; background: transparent; font-size: 14px;" onclick="prevQuestion()">Anterior</button>
+                            <button id="nextBtn" style="padding: 10px 20px; background: linear-gradient(90deg, #10b981, #06b6d4); border: none; border-radius: 8px; color: white; cursor: pointer; font-weight: bold; font-size: 14px;" onclick="nextQuestion()">Siguiente</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div id="resultsContainer" class="hidden">
+                <div class="bg-slate-900/50 border border-slate-800/50 rounded-2xl p-6 md:p-8 text-center">
+                    <div class="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h2 class="font-orbitron font-bold text-2xl text-white mb-2">¡Test Completado!</h2>
+                    <p class="text-slate-400 mb-6">Aquí están tus resultados</p>
+                    
+                    <div class="grid grid-cols-3 gap-4 mb-8">
+                        <div class="bg-slate-800/50 rounded-xl p-4">
+                            <div class="font-orbitron font-bold text-2xl text-emerald-400" id="scoreCorrect">0</div>
+                            <div class="text-slate-400 text-sm">Correctas</div>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-xl p-4">
+                            <div class="font-orbitron font-bold text-2xl text-red-400" id="scoreWrong">0</div>
+                            <div class="text-slate-400 text-sm">Incorrectas</div>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-xl p-4">
+                            <div class="font-orbitron font-bold text-2xl text-cyan-400" id="scorePercent">0%</div>
+                            <div class="text-slate-400 text-sm">Puntuación</div>
+                        </div>
+                    </div>
+
+                    <button onclick="resetTest()" class="px-8 py-3 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-emerald-500/25 transition-all">
+                        Hacer Otro Test
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="md:ml-64 border-t border-slate-800/50 py-6 ml-0">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 text-center">
+            <div class="text-slate-500 text-sm">Creado por <span class="text-emerald-400 font-semibold">ZaBaDeV</span> © <span id="currentYear"></span> - Academia gratuita para servir a España</div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/tests.js"></script>
+    <script>
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (!currentUser) window.location.href = 'index.html';
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        document.getElementById('userName').textContent = currentUser.name;
+        document.getElementById('userAvatar').textContent = currentUser.name.charAt(0).toUpperCase();
+
+        // Get all questions from tests.js
+        let testQuestions = {};
+        
+        function getAllQuestions() {
+            let all = [];
+            for (let key in testsData) {
+                if (testsData[key].questions) {
+                    testsData[key].questions.forEach(q => all.push(q));
+                }
+            }
+            return all;
+        }
+
+        // Map topic keys to data - correlate with HTML onclick categories
+        const topicTitles = {
+            // Bloque 1
+            'b1_t1_cortes': 'B1-T1: Cortes Generales',
+            'b1_t1_gobierno': 'B1-T1: El Gobierno',
+            'b1_t1_territorial': 'B1-T1: Organización Territorial',
+            'b1_t1_poderjudicial': 'B1-T1: Poder Judicial',
+            'b1_t2_defensa': 'B1-T2: LO 5/2005 Defensa Nacional',
+            'b1_t3_ley40': 'B1-T3: Ley 40/2015 RJSP',
+            'b1_t4_rd205': 'B1-T4: RD 205/2024 Ministerio',
+            'b1_t5_rd521': 'B1-T5: RD 521/2020 Org. FAS',
+            'b1_t6_instrucciones': 'B1-T6: Instrucciones Organizativas',
+            'bloque1': 'Bloque 1: ORGANIZACIÓN (Completo)',
+            
+            // Bloque 2
+            'b2_t1_ley39': 'B2-T1: Ley 39/2007 y 8/2006',
+            'b2_t2_ordenanzas': 'B2-T2: Reales Ordenanzas',
+            'b2_t3_ley9': 'B2-T3: LO 9/2011 Derechos',
+            'b2_t4_ley8': 'B2-T4: LO 8/2014 Disciplinario',
+            'b2_t5_quejas': 'B2-T5: RD 176/2014 Quejas',
+            'b2_t6_igualdad': 'B2-T6: LO 3/2007 Igualdad',
+            'b2_t7_observatorio': 'B2-T7: Observatorio y Protocolo',
+            'b2_t8_ley39': 'B2-T8: Ley 39/2015 PAC',
+            'bloque2': 'Bloque 2: JURÍDICO-SOCIAL (Completo)',
+            
+            // Bloque 3
+            'b3_t1_seguridad': 'B3-T1: Ley 36/2015 y Estrategia',
+            'b3_t2_pdc01': 'B3-T2: PDC-01 Doctrina FAS',
+            'b3_t3_onu': 'B3-T3: ONU',
+            'b3_t4_otan': 'B3-T4: OTAN',
+            'b3_t5_osce': 'B3-T5: OSCE',
+            'b3_t6_ue': 'B3-T6: Unión Europea',
+            'b3_t7_misiones': 'B3-T7: Misiones Internacionales',
+            'bloque3': 'Bloque 3: SEGURIDAD NACIONAL (Completo)',
+            
+            // Test completo
+            'completo': 'TEST COMPLETO - Todo el Temario',
+            'random': 'TEST COMPLETO'
+        };
+
+        function startTest(category) {
+            let questions = [];
+            
+            // Buscar directamente en testsData primero
+            if (testsData[category] && testsData[category].questions) {
+                questions = testsData[category].questions;
+            } else {
+                // Si no existe, usar test completo
+                questions = getAllQuestions();
+            }
+            
+            if (questions.length === 0) {
+                alert('No hay preguntas para esta categoría. Usando test completo.');
+                questions = getAllQuestions();
+            }
+            
+            currentTest = questions;
+            currentQuestionIndex = 0;
+            userAnswers = new Array(currentTest.length).fill(null);
+            
+            document.getElementById('testTitle').textContent = topicTitles[category] || 'Test';
+            document.getElementById('totalQuestions').textContent = currentTest.length;
+            
+            document.getElementById('testModal').style.display = 'block';
+            document.getElementById('resultsContainer').classList.add('hidden');
+            
+            renderQuestion();
+            startTimer();
+        }
+
+        function renderQuestion() {
+            const q = currentTest[currentQuestionIndex];
+            if (!q) return;
+            
+            document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+            document.getElementById('progressBar').style.width = ((currentQuestionIndex + 1) / currentTest.length * 100) + '%';
+            document.getElementById('questionText').textContent = q.q;
+            
+            const container = document.getElementById('optionsContainer');
+            container.innerHTML = '';
+            
+            q.options.forEach((opt, i) => {
+                const div = document.createElement('div');
+                div.style.display = 'block';
+                div.style.marginBottom = '8px';
+                div.style.padding = '12px';
+                div.style.borderRadius = '8px';
+                div.style.cursor = 'pointer';
+                div.style.fontSize = '15px';
+                div.style.lineHeight = '1.4';
+                div.style.wordBreak = 'break-word';
+                
+                const isSelected = userAnswers[currentQuestionIndex] === i;
+                if (isSelected) {
+                    div.style.backgroundColor = '#10b981';
+                    div.style.color = 'white';
+                } else {
+                    div.style.backgroundColor = '#334155';
+                    div.style.color = 'white';
+                }
+                
+                div.innerHTML = '<strong>' + String.fromCharCode(65 + i) + '.</strong> ' + opt;
+                div.onclick = function() { 
+                    selectOption(i); 
+                };
+                container.appendChild(div);
+            });
+            
+            document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+            document.getElementById('nextBtn').textContent = currentQuestionIndex === currentTest.length - 1 ? 'Finalizar' : 'Siguiente';
+        }
+
+        function selectOption(index) {
+            userAnswers[currentQuestionIndex] = index;
+            renderQuestion();
+        }
+
+        function nextQuestion() {
+            if (userAnswers[currentQuestionIndex] === null) {
+                alert('Por favor selecciona una respuesta');
+                return;
+            }
+            
+            if (currentQuestionIndex === currentTest.length - 1) {
+                finishTest();
+            } else {
+                currentQuestionIndex++;
+                renderQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        }
+
+        function finishTest() {
+            clearInterval(timerInterval);
+            
+            let correct = 0;
+            currentTest.forEach((q, i) => {
+                if (userAnswers[i] === q.correct) correct++;
+            });
+            
+            const wrong = currentTest.length - correct;
+            const percent = Math.round((correct / currentTest.length) * 100);
+            
+            // Guardar resultado en el usuario
+            saveTestResult(document.getElementById('testTitle').textContent, currentTest.length, correct, wrong, percent);
+            
+            // Mostrar resultados en el modal
+            showResultsInModal(correct, wrong, percent);
+            
+            recordTestResult(currentTest.length, correct);
+            updateProgress('tests', Date.now());
+        }
+
+        function saveTestResult(testName, total, correct, wrong, percent) {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) return;
+            
+            let userData = JSON.parse(localStorage.getItem('user_' + currentUser.email)) || { tests: [], topics: [], readings: [], videos: [], podcasts: [] };
+            
+            userData.tests.push({
+                testName: testName,
+                total: total,
+                correct: correct,
+                wrong: wrong,
+                percent: percent,
+                date: new Date().toISOString()
+            });
+            
+            localStorage.setItem('user_' + currentUser.email, JSON.stringify(userData));
+        }
+
+        function showResultsInModal(correct, wrong, percent) {
+            const modal = document.getElementById('testModal');
+            let html = `
+                <div style="max-width: 800px; margin: 0 auto; background: #1e293b; border-radius: 16px; padding: 30px; border: 1px solid #334155;">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #10b981, #06b6d4); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 36px;">${percent >= 50 ? '✓' : '✗'}</span>
+                        </div>
+                        <h2 style="font-size: 28px; color: white; margin: 0 0 10px 0;">¡Test Completado!</h2>
+                        <p style="color: #94a3b8; margin: 0;">${document.getElementById('testTitle').textContent}</p>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 30px;">
+                        <div style="background: #0f172a; padding: 20px; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 32px; font-weight: bold; color: #10b981;">${correct}</div>
+                            <div style="color: #94a3b8; font-size: 14px;">Correctas</div>
+                        </div>
+                        <div style="background: #0f172a; padding: 20px; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 32px; font-weight: bold; color: #ef4444;">${wrong}</div>
+                            <div style="color: #94a3b8; font-size: 14px;">Incorrectas</div>
+                        </div>
+                        <div style="background: #0f172a; padding: 20px; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 32px; font-weight: bold; color: #06b6d4;">${percent}%</div>
+                            <div style="color: #94a3b8; font-size: 14px;">Puntuación</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h3 style="color: white; font-size: 18px; margin-bottom: 15px;">Repaso de respuestas:</h3>
+                        <div style="max-height: 400px; overflow-y: auto;">
+            `;
+            
+            currentTest.forEach((q, i) => {
+                const userAnswer = userAnswers[i];
+                const isCorrect = userAnswer === q.correct;
+                html += `
+                    <div style="background: ${isCorrect ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)'}; border: 1px solid ${isCorrect ? '#10b981' : '#ef4444'}; border-radius: 8px; padding: 15px; margin-bottom: 10px;">
+                        <div style="color: ${isCorrect ? '#10b981' : '#ef4444'}; font-weight: bold; margin-bottom: 8px;">
+                            ${i + 1}. ${isCorrect ? '✓ Correcta' : '✗ Incorrecta'}
+                        </div>
+                        <div style="color: white; font-size: 14px; margin-bottom: 8px;">${q.q}</div>
+                        <div style="color: #10b981; font-size: 13px;">✓ ${q.options[q.correct]}</div>
+                        ${!isCorrect ? `<div style="color: #ef4444; font-size: 13px;">✗ ${q.options[userAnswer]}</div>` : ''}
+                    </div>
+                `;
+            });
+            
+            html += `
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: center; gap: 15px;">
+                        <button onclick="resetTest()" style="padding: 14px 28px; border: 1px solid #475569; border-radius: 8px; color: white; cursor: pointer; background: transparent; font-size: 16px;">Volver al Menú</button>
+                        <button onclick="restartTest()" style="padding: 14px 28px; background: linear-gradient(90deg, #10b981, #06b6d4); border: none; border-radius: 8px; color: white; cursor: pointer; font-size: 16px; font-weight: bold;">Repetir Test</button>
+                    </div>
+                </div>
+            `;
+            
+            modal.innerHTML = html;
+        }
+
+        function restartTest() {
+            currentQuestionIndex = 0;
+            userAnswers = new Array(currentTest.length).fill(null);
+            
+            document.getElementById('testModal').style.display = 'block';
+            
+            renderQuestion();
+            startTimer();
+        }
+
+        function resetTest() {
+            location.reload();
+        }
+
+        function cancelTest() {
+            clearInterval(timerInterval);
+            document.getElementById('testModal').style.display = 'none';
+        }
+
+        function startTimer() {
+            let seconds = 0;
+            timerInterval = setInterval(() => {
+                seconds++;
+                const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+                const secs = (seconds % 60).toString().padStart(2, '0');
+                document.getElementById('timer').textContent = mins + ':' + secs;
+            }, 1000);
+        }
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('-translate-x-full');
+        }
+
+        function toggleSidebarCollapse() {
+            const sidebar = document.getElementById('sidebar');
+            const main = document.querySelector('main');
+            const footer = document.querySelector('footer');
+            const collapseIcon = document.getElementById('collapseIcon');
+            const texts = document.querySelectorAll('.sidebar-text');
+            
+            if (sidebar.classList.contains('w-64')) {
+                // Collapse
+                sidebar.classList.remove('w-64');
+                sidebar.classList.add('w-20');
+                main.classList.remove('md:ml-64');
+                main.classList.add('md:ml-20');
+                if (footer) {
+                    footer.classList.remove('md:ml-64');
+                    footer.classList.add('md:ml-20');
+                }
+                collapseIcon.classList.add('rotate-180');
+                texts.forEach(t => t.classList.add('opacity-0'));
+            } else {
+                // Expand
+                sidebar.classList.remove('w-20');
+                sidebar.classList.add('w-64');
+                main.classList.remove('md:ml-20');
+                main.classList.add('md:ml-64');
+                if (footer) {
+                    footer.classList.remove('md:ml-20');
+                    footer.classList.add('md:ml-64');
+                }
+                collapseIcon.classList.remove('rotate-180');
+                texts.forEach(t => t.classList.remove('opacity-0'));
+            }
+        }
+    </script>
+</body>
+</html>

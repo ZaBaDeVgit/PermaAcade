@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resúmenes - Academia Tropa Permanente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-950 text-white">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed left-0 top-0 h-full w-64 bg-slate-900 border-r border-slate-800 z-40 flex flex-col transition-all duration-300 overflow-hidden -translate-x-full md:translate-x-0">
+        <!-- Logo -->
+        <div class="p-4 border-b border-slate-800 flex justify-center">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center cursor-pointer hover:scale-105 transition-transform" onclick="toggleSidebarCollapse()">
+                <svg id="collapseIcon" class="w-6 h-6 text-white transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </div>
+        </div>
+
+        <!-- User Avatar + Donate -->
+        <div class="p-4 border-b border-slate-800 flex flex-col items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center font-bold text-white" id="userAvatar">U</div>
+            <a href="https://ko-fi.com/zabadev" target="_blank" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-400 hover:to-pink-400 transition-all text-white text-xs font-semibold">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Donar</span>
+            </a>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1 p-2 overflow-y-auto">
+            <ul class="space-y-1">
+                <li>
+                    <a href="dashboard.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Inicio">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Inicio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="temas.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Temas">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Temas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="tests.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Tests">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Tests</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="lecturas.html" class="sidebar-link active flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Resúmenes">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Resúmenes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="videos.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Vídeos">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Vídeos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="podcasts.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Podcasts">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Podcasts</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Logout -->
+        <div class="p-2 border-t border-slate-800">
+            <button onclick="logout()" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-red-400 hover:bg-red-500/10 transition-all w-full" title="Cerrar Sesión">
+                <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Cerrar Sesión</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <header class="md:hidden fixed top-0 left-0 right-0 h-16 bg-slate-900 border-b border-slate-800 z-30 flex items-center justify-between px-4">
+        <button onclick="toggleSidebar()" class="text-white p-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+        <span class="font-orbitron font-bold text-white">Tropa<span class="text-emerald-400">Perma</span></span>
+        <div class="w-10"></div>
+    </header>
+
+    <main class="md:ml-64 min-h-screen pt-16 md:pt-0 transition-all duration-300 ml-0">
+        <div class="max-w-7xl mx-auto p-4 md:p-8">
+            <div class="mb-8">
+                <h1 class="font-orbitron font-bold text-2xl md:text-3xl text-white mb-2">Resúmenes Visuales</h1>
+                <p class="text-slate-400">Mapas conceptuales y esquemas para estudiar</p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="flex gap-2 mb-6 overflow-x-auto pb-2">
+                <button onclick="showTab('mapas')" id="tab-mapas" class="tab-btn px-4 py-2 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 whitespace-nowrap">🗺️ Mapas</button>
+            </div>
+
+            <!-- Mapas Section -->
+            <div id="section-mapas">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="mapasGrid"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="md:ml-64 border-t border-slate-800/50 py-6 transition-all duration-300 ml-0">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 text-center">
+            <div class="text-slate-500 text-sm">Creado por <span class="text-emerald-400 font-semibold">ZaBaDeV</span> © <span id="currentYear"></span> - Academia gratuita para servir a España</div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (!currentUser) window.location.href = 'index.html';
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        document.getElementById('userAvatar').textContent = currentUser.name.charAt(0).toUpperCase();
+
+        const materiales = {
+            B1_T1: {
+                titulo: 'B1-T1: Constitución Española',
+                Mapas: [
+                    { archivo: 'Resumen_Mapas/B1_T1_Mapa_Bloque1_Tema1.png', titulo: 'Mapa: Temas Constitutionales', desc: 'Infografía del Bloque 1' },
+                    { archivo: 'Resumen_Mapas/B1_T1_Mapa_Arquitectura_Constitucional.pdf', titulo: 'Mapa: Arquitectura Constitucional', desc: 'Esquema visual de la Constitución' }
+                ]
+            }
+        };
+
+        function renderMapas() {
+            const grid = document.getElementById('mapasGrid');
+            let html = '';
+            
+            for (const [key, tema] of Object.entries(materiales)) {
+                if (tema.Mapas && tema.Mapas.length > 0) {
+                    html += `<div class="col-span-full mb-4 mt-4"><h3 class="font-orbitron font-bold text-lg text-purple-400">${tema.titulo}</h3></div>`;
+                    
+                    tema.Mapas.forEach((mapa, idx) => {
+                        const colors = ['purple', 'pink', 'rose', 'fuchsia'];
+                        const color = colors[idx % colors.length];
+                        
+                        html += `
+                            <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-5 hover:border-${color}-500/50 transition-all">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="w-10 h-10 rounded-lg bg-${color}-500/20 flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-${color}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                                    </div>
+                                    <span class="text-xs bg-slate-800 text-slate-400 px-2 py-1 rounded">MAPA</span>
+                                </div>
+                                <h4 class="font-semibold text-white mb-1">${mapa.titulo}</h4>
+                                <p class="text-slate-400 text-sm mb-3">${mapa.desc}</p>
+                                <a href="${mapa.archivo}" target="_blank" class="text-${color}-400 hover:text-${color}-300 text-sm font-medium inline-flex items-center gap-1">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                                    Ver
+                                </a>
+                            </div>
+                        `;
+                    });
+                }
+            }
+            
+            grid.innerHTML = html || '<p class="text-slate-400">No hay mapas disponibles</p>';
+        }
+
+        function showTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById('section-' + tab).classList.remove('hidden');
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-emerald-500/20', 'text-emerald-400', 'border-emerald-500/30');
+                btn.classList.add('bg-slate-800', 'text-slate-400', 'border-slate-700');
+            });
+            
+            const activeBtn = document.getElementById('tab-' + tab);
+            activeBtn.classList.remove('bg-slate-800', 'text-slate-400', 'border-slate-700');
+            activeBtn.classList.add('bg-emerald-500/20', 'text-emerald-400', 'border-emerald-500/30');
+        }
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('-translate-x-full');
+        }
+
+        function toggleSidebarCollapse() {
+            const sidebar = document.getElementById('sidebar');
+            const main = document.querySelector('main');
+            const footer = document.querySelector('footer');
+            const collapseIcon = document.getElementById('collapseIcon');
+            const texts = document.querySelectorAll('.sidebar-text');
+            
+            if (sidebar.classList.contains('w-64')) {
+                // Collapse
+                sidebar.classList.remove('w-64');
+                sidebar.classList.add('w-20');
+                main.classList.remove('md:ml-64');
+                main.classList.add('md:ml-20');
+                if (footer) {
+                    footer.classList.remove('md:ml-64');
+                    footer.classList.add('md:ml-20');
+                }
+                collapseIcon.classList.add('rotate-180');
+                texts.forEach(t => t.classList.add('opacity-0'));
+            } else {
+                // Expand
+                sidebar.classList.remove('w-20');
+                sidebar.classList.add('w-64');
+                main.classList.remove('md:ml-20');
+                main.classList.add('md:ml-64');
+                if (footer) {
+                    footer.classList.remove('md:ml-20');
+                    footer.classList.add('md:ml-64');
+                }
+                collapseIcon.classList.remove('rotate-180');
+                texts.forEach(t => t.classList.remove('opacity-0'));
+            }
+        }
+
+        renderMapas();
+    </script>
+</body>
+</html>

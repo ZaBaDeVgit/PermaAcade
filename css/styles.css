@@ -1,0 +1,869 @@
+/* Custom CSS for Tropa Permanente Academy */
+
+:root {
+    --emerald-glow: #10b981;
+    --cyan-glow: #06b6d4;
+}
+
+.font-orbitron {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.font-inter {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Animated Background */
+.bg-gradient1 {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 20%, rgba(6, 182, 212, 0.05) 0%, transparent 40%);
+    animation: gradient-rotate 30s linear infinite;
+}
+
+.bg-gradient2 {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 30% 80%, rgba(16, 185, 129, 0.03) 0%, transparent 40%);
+    animation: gradient-rotate 25s linear infinite reverse;
+}
+
+@keyframes gradient-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Particles */
+.particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(16, 185, 129, 0.5);
+    border-radius: 50%;
+    animation: float 15s infinite ease-in-out;
+}
+
+.particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; animation-duration: 20s; }
+.particle:nth-child(2) { left: 20%; top: 80%; animation-delay: 2s; animation-duration: 18s; }
+.particle:nth-child(3) { left: 30%; top: 40%; animation-delay: 4s; animation-duration: 22s; }
+.particle:nth-child(4) { left: 40%; top: 60%; animation-delay: 1s; animation-duration: 19s; }
+.particle:nth-child(5) { left: 50%; top: 30%; animation-delay: 3s; animation-duration: 21s; }
+.particle:nth-child(6) { left: 60%; top: 70%; animation-delay: 5s; animation-duration: 17s; }
+.particle:nth-child(7) { left: 70%; top: 50%; animation-delay: 2s; animation-duration: 23s; }
+.particle:nth-child(8) { left: 80%; top: 25%; animation-delay: 4s; animation-duration: 16s; }
+.particle:nth-child(9) { left: 90%; top: 85%; animation-delay: 1s; animation-duration: 24s; }
+.particle:nth-child(10) { left: 15%; top: 55%; animation-delay: 3s; animation-duration: 20s; }
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.5;
+    }
+    25% {
+        transform: translateY(-30px) translateX(10px);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-15px) translateX(-10px);
+        opacity: 0.6;
+    }
+    75% {
+        transform: translateY(-40px) translateX(5px);
+        opacity: 0.9;
+    }
+}
+
+/* Animations */
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scale-in {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.animate-scale-in {
+    animation: scale-in 0.3s ease-out forwards;
+}
+
+/* Glassmorphism */
+.glass {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+/* Tema Cards Hover */
+.tema-card {
+    transition: all 0.3s ease;
+}
+
+.tema-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+
+/* Progress Bar Animation */
+.progress-bar {
+    transition: width 1s ease-in-out;
+}
+
+/* Button Glow */
+.btn-glow {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-glow:hover::before {
+    left: 100%;
+}
+
+/* Card Hover Effects */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
+}
+
+/* Sidebar Active */
+.sidebar-link {
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.sidebar-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 0;
+    background: linear-gradient(to bottom, #10b981, #06b6d4);
+    border-radius: 0 2px 2px 0;
+    transition: height 0.2s ease;
+}
+
+.sidebar-link:hover::before,
+.sidebar-link.active::before {
+    height: 60%;
+}
+
+/* Test Option Styles */
+.test-option {
+    transition: all 0.2s ease;
+}
+
+.test-option:hover {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.test-option.selected {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: #10b981;
+}
+
+.test-option.correct {
+    background: rgba(34, 197, 94, 0.2);
+    border-color: #22c55e;
+}
+
+.test-option.incorrect {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+}
+
+/* Video Card */
+.video-card {
+    transition: all 0.3s ease;
+}
+
+.video-card:hover {
+    transform: scale(1.02);
+}
+
+/* Podcast Player */
+.podcast-player {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.1));
+}
+
+/* Loading Spinner */
+.spinner {
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: #10b981;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Notification */
+.notification {
+    animation: slide-in 0.3s ease-out;
+}
+
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - All Devices
+   ============================================ */
+
+/* Base Mobile First - < 640px */
+:root {
+    --sidebar-width: 280px;
+    --header-height: 64px;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+}
+
+/* Small tablets - 640px */
+@media (min-width: 640px) {
+    :root {
+        --spacing-sm: 1rem;
+        --spacing-md: 1.5rem;
+    }
+}
+
+/* Tablets - 768px */
+@media (min-width: 768px) {
+    :root {
+        --sidebar-width: 256px;
+    }
+}
+
+/* Large tablets / Small laptops - 1024px */
+@media (min-width: 1024px) {
+    :root {
+        --sidebar-width: 280px;
+    }
+}
+
+/* Desktops - 1280px */
+@media (min-width: 1280px) {
+    :root {
+        --spacing-lg: 2.5rem;
+        --spacing-xl: 4rem;
+    }
+}
+
+/* Large screens / TV - 1536px */
+@media (min-width: 1536px) {
+    :root {
+        --spacing-lg: 3rem;
+        --spacing-xl: 5rem;
+    }
+    
+    .max-w-7xl {
+        max-width: 1800px;
+    }
+}
+
+/* ============================================
+   MOBILE STYLES - < 640px
+   ============================================ */
+@media (max-width: 639px) {
+    /* Header */
+    .mobile-header {
+        display: flex !important;
+    }
+    
+    /* Hide desktop sidebar on mobile */
+    #sidebar {
+        transform: translateX(-100%);
+        width: 280px !important;
+    }
+    
+    #sidebar.open {
+        transform: translateX(0);
+    }
+    
+    /* Main content */
+    main {
+        margin-left: 0 !important;
+        padding-top: 64px !important;
+    }
+    
+    footer {
+        margin-left: 0 !important;
+    }
+    
+    /* Typography */
+    h1 {
+        font-size: 1.5rem !important;
+    }
+    
+    h2 {
+        font-size: 1.25rem !important;
+    }
+    
+    h3 {
+        font-size: 1rem !important;
+    }
+    
+    p {
+        font-size: 0.875rem;
+    }
+    
+    /* Cards */
+    .rounded-2xl {
+        border-radius: 1rem;
+    }
+    
+    .p-6 {
+        padding: 1rem;
+    }
+    
+    .p-5 {
+        padding: 0.875rem;
+    }
+    
+    /* Grids - single column on mobile */
+    .grid {
+        gap: 0.75rem;
+    }
+    
+    .grid-cols-1 {
+        grid-template-columns: 1fr;
+    }
+    
+    .grid-cols-2 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+    /* Stats grid */
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+    
+    .stats-grid > div {
+        padding: 0.875rem;
+    }
+    
+    .stats-grid .font-orbitron {
+        font-size: 1.5rem;
+    }
+    
+    /* Progress cards */
+    .progress-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Quick actions */
+    .actions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Sidebar navigation */
+    .sidebar-nav a {
+        padding: 0.875rem 1rem;
+        font-size: 0.9375rem;
+    }
+    
+    /* Touch-friendly buttons */
+    button, 
+    .btn,
+    a.btn {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 0.625rem 1rem;
+    }
+    
+    /* Form inputs */
+    input, 
+    select, 
+    textarea {
+        font-size: 16px;
+        padding: 0.75rem;
+    }
+    
+    /* Video/Podcast cards */
+    .media-card {
+        padding: 0.75rem;
+    }
+    
+    .media-card h4 {
+        font-size: 0.875rem;
+    }
+    
+    .media-card p {
+        font-size: 0.75rem;
+    }
+    
+    /* Test options */
+    .test-option {
+        padding: 0.875rem;
+        font-size: 0.875rem;
+    }
+    
+    /* Modal */
+    .modal-content {
+        margin: 0.5rem;
+        padding: 1rem;
+        max-height: 90vh;
+    }
+    
+    /* Spacing */
+    .p-4 {
+        padding: 0.875rem;
+    }
+    
+    .p-8 {
+        padding: 1rem;
+    }
+    
+    .mb-8 {
+        margin-bottom: 1.5rem;
+    }
+    
+    .gap-4 {
+        gap: 0.75rem;
+    }
+    
+    .gap-6 {
+        gap: 1rem;
+    }
+    
+    /* Hide elements on mobile */
+    .hide-mobile {
+        display: none;
+    }
+    
+    /* Full width on mobile */
+    .w-full-mobile {
+        width: 100%;
+    }
+}
+
+/* ============================================
+   TABLET STYLES - 640px to 1023px
+   ============================================ */
+@media (min-width: 640px) and (max-width: 1023px) {
+    /* Sidebar */
+    #sidebar {
+        width: 240px !important;
+    }
+    
+    main {
+        margin-left: 0 !important;
+    }
+    
+    @media (min-width: 768px) {
+        #sidebar {
+            width: 240px !important;
+        }
+        
+        main {
+            margin-left: 240px !important;
+        }
+        
+        footer {
+            margin-left: 240px !important;
+        }
+    }
+    
+    /* Typography */
+    h1 {
+        font-size: 1.875rem;
+    }
+    
+    /* Grids - 2 columns on tablet */
+    .grid-cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .grid-cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Stats */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Progress */
+    .progress-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Cards */
+    .p-6 {
+        padding: 1.25rem;
+    }
+    
+    /* Spacing */
+    .p-8 {
+        padding: 1.5rem;
+    }
+    
+    .gap-6 {
+        gap: 1.25rem;
+    }
+    
+    /* Video/Podcast grid */
+    .media-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================================
+   DESKTOP STYLES - 1024px to 1279px
+   ============================================ */
+@media (min-width: 1024px) and (max-width: 1279px) {
+    /* Sidebar */
+    #sidebar {
+        width: 256px !important;
+    }
+    
+    main, footer {
+        margin-left: 256px !important;
+    }
+    
+    /* Grids */
+    .grid-cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .grid-cols-4 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* Progress */
+    .progress-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Media */
+    .media-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ============================================
+   LARGE DESKTOP / TV STYLES - 1280px+
+   ============================================ */
+@media (min-width: 1280px) {
+    /* Larger typography */
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    /* 4 column grids */
+    .grid-cols-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    /* Stats */
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    /* Progress - 3 columns */
+    .progress-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* Media grids */
+    .media-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    /* Larger cards */
+    .rounded-2xl {
+        border-radius: 1.5rem;
+    }
+    
+    .p-6 {
+        padding: 2rem;
+    }
+    
+    .p-8 {
+        padding: 2.5rem;
+    }
+    
+    /* Font sizes */
+    .text-xl {
+        font-size: 1.25rem;
+    }
+    
+    .text-2xl {
+        font-size: 1.5rem;
+    }
+    
+    .text-3xl {
+        font-size: 1.875rem;
+    }
+    
+    .text-4xl {
+        font-size: 2.25rem;
+    }
+}
+
+/* ============================================
+   EXTRA LARGE TV STYLES - 1536px+
+   ============================================ */
+@media (min-width: 1536px) {
+    /* Even larger typography for TV */
+    h1 {
+        font-size: 3rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    /* Maximum columns */
+    .grid-cols-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    /* Stats - 4 equal */
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    /* Progress - 3 or 4 columns */
+    .progress-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    /* Media - 4-5 columns */
+    .media-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    
+    /* Much larger cards for TV viewing */
+    .rounded-2xl {
+        border-radius: 2rem;
+    }
+    
+    .p-6 {
+        padding: 2.5rem;
+    }
+    
+    .p-8 {
+        padding: 3rem;
+    }
+    
+    /* Larger fonts */
+    .text-xl {
+        font-size: 1.5rem;
+    }
+    
+    .text-2xl {
+        font-size: 1.75rem;
+    }
+    
+    .text-3xl {
+        font-size: 2.25rem;
+    }
+    
+    .text-4xl {
+        font-size: 3rem;
+    }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Container sizes */
+.container-sm {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.container-md {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.container-lg {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Aspect ratio for media */
+.aspect-video {
+    aspect-ratio: 16 / 9;
+}
+
+.aspect-square {
+    aspect-ratio: 1 / 1;
+}
+
+/* Safe area for notched phones */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+    .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+    
+    .pt-safe {
+        padding-top: env(safe-area-inset-top);
+    }
+    
+    /* Mobile header safe area */
+    .mobile-header {
+        padding-top: env(safe-area-inset-top);
+    }
+    
+    /* Fixed player safe area */
+    #fixedPlayer {
+        padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+    }
+}
+
+/* Landscape orientation mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .landscape-hide {
+        display: none;
+    }
+    
+    .landscape-compact {
+        padding: 0.5rem;
+    }
+    
+    main {
+        padding-top: 50px !important;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .border-slate-800 {
+        border-color: #475569;
+    }
+    
+    .text-slate-400 {
+        color: #cbd5e1;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Fixed Player Bar - Mobile */
+#fixedPlayer {
+    left: 0 !important;
+    right: 0;
+}
+
+@media (min-width: 768px) {
+    #fixedPlayer {
+        left: 256px !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    #fixedPlayer {
+        left: 280px !important;
+    }
+}
