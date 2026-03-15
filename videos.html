@@ -113,8 +113,11 @@
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (!currentUser) window.location.href = 'index.html';
 
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-        document.getElementById('userAvatar').textContent = currentUser.name.charAt(0).toUpperCase();
+        const currentYearEl = document.getElementById('currentYear');
+        if (currentYearEl) currentYearEl.textContent = new Date().getFullYear();
+        
+        const userAvatarEl = document.getElementById('userAvatar');
+        if (userAvatarEl) userAvatarEl.textContent = currentUser.name.charAt(0).toUpperCase();
 
         const videosData = {
             B1_T1: [

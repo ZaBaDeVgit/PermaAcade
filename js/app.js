@@ -1,10 +1,13 @@
 // Tropa Permanente Academy - Main JavaScript
 
-// Set current year in footer
-document.getElementById('currentYear').textContent = new Date().getFullYear();
-
 // Generate particles
 document.addEventListener('DOMContentLoaded', () => {
+    // Set current year in footer
+    const currentYearEl = document.getElementById('currentYear');
+    if (currentYearEl) {
+        currentYearEl.textContent = new Date().getFullYear();
+    }
+    
     const particlesContainer = document.getElementById('particles');
     if (particlesContainer) {
         for (let i = 0; i < 15; i++) {
@@ -57,9 +60,12 @@ function handleLogin(event) {
     if (user) {
         localStorage.setItem('currentUser', JSON.stringify(user));
         closeModals();
-        window.location.href = 'dashboard.html';
+        showToast('¡Bienvenido de nuevo, ' + user.name + '!', 'success');
+        setTimeout(() => {
+            window.location.href = 'dashboard.html';
+        }, 500);
     } else {
-        alert('Email o contraseña incorrectos');
+        showToast('Email o contraseña incorrectos', 'error');
     }
 }
 
@@ -72,7 +78,7 @@ function handleRegister(event) {
     const users = JSON.parse(localStorage.getItem('users') || '[]');
     
     if (users.find(u => u.email === email)) {
-        alert('Este email ya está registrado');
+        showToast('Este email ya está registrado', 'error');
         return;
     }
     
@@ -172,19 +178,63 @@ function getProgressPercentage(category, totalItems) {
     return Math.round((currentUser.progress[category].length / totalItems) * 100);
 }
 
-// UI Helper Functions
-function showNotification(message, type = 'success') {
-    const notification = document.createElement('div');
-    notification.className = `notification fixed top-20 right-4 z-50 px-6 py-3 rounded-lg shadow-lg ${
-        type === 'success' ? 'bg-emerald-500' : 'bg-red-500'
-    } text-white font-medium`;
-    notification.textContent = message;
-    document.body.appendChild(notification);
+// UI Helper Functions - Modern Toast Notifications
+function showToast(message, type = 'success', duration = 3000) {
+    // Remove existing toasts
+    document.querySelectorAll('.toast-notification').forEach(t => t.remove());
     
+    const toast = document.createElement('div');
+    toast.className = `toast-notification fixed top-4 right-4 z-[9999] px-6 py-4 rounded-xl shadow-2xl transform transition-all duration-300 translate-x-full`;
+    
+    const colors = {
+        success: 'bg-gradient-to-r from-emerald-500 to-emerald-600 border border-emerald-400',
+        error: 'bg-gradient-to-r from-red-500 to-red-600 border border-red-400',
+        warning: 'bg-gradient-to-r from-amber-500 to-orange-500 border border-amber-400',
+        info: 'bg-gradient-to-r from-blue-500 to-cyan-500 border border-blue-400'
+    };
+    
+    const icons = {
+        success: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>',
+        error: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>',
+        warning: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>',
+        info: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>'
+    };
+    
+    toast.className += ` ${colors[type]} text-white`;
+    toast.innerHTML = `
+        <div class="flex items-center gap-3">
+            <div class="flex-shrink-0">${icons[type]}</div>
+            <div class="font-medium">${message}</div>
+            <button onclick="this.parentElement.parentElement.remove()" class="ml-4 hover:bg-white/20 rounded-lg p-1 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+    `;
+    
+    document.body.appendChild(toast);
+    
+    // Animate in
+    requestAnimationFrame(() => {
+        toast.classList.remove('translate-x-full');
+    });
+    
+    // Auto remove
     setTimeout(() => {
-        notification.remove();
-    }, 3000);
+        toast.classList.add('translate-x-full');
+        setTimeout(() => toast.remove(), 300);
+    }, duration);
 }
+
+// Legacy alias for compatibility
+function showNotification(message, type = 'success') {
+    showToast(message, type === 'error' ? 'error' : type);
+}
+
+// Make functions available globally
+window.showToast = showToast;
+window.showNotification = showNotification;
 
 // Format date
 function formatDate(dateString) {

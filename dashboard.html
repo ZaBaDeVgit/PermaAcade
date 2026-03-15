@@ -322,7 +322,8 @@
         }
 
         // Set current year
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        const currentYearEl = document.getElementById('currentYear');
+        if (currentYearEl) currentYearEl.textContent = new Date().getFullYear();
 
         // Update UI with user data
         document.getElementById('welcomeName').textContent = currentUser.name;

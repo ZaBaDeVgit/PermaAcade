@@ -129,8 +129,11 @@
             currentUser.progress.temas = [];
         }
 
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-        document.getElementById('userAvatar').textContent = currentUser.name.charAt(0).toUpperCase();
+        const currentYearEl = document.getElementById('currentYear');
+        if (currentYearEl) currentYearEl.textContent = new Date().getFullYear();
+        
+        const userAvatarEl = document.getElementById('userAvatar');
+        if (userAvatarEl) userAvatarEl.textContent = currentUser.name.charAt(0).toUpperCase();
 
         const temas = [
             { id: 1, title: 'Constitución Española 1978', desc: 'Texto completo - Títulos I al X', color: 'cyan', pdf: 'pdfs/01_constitucion.pdf' },

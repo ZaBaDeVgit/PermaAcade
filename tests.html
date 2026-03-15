@@ -298,9 +298,11 @@
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (!currentUser) window.location.href = 'index.html';
 
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-        document.getElementById('userName').textContent = currentUser.name;
-        document.getElementById('userAvatar').textContent = currentUser.name.charAt(0).toUpperCase();
+        const currentYearEl = document.getElementById('currentYear');
+        if (currentYearEl) currentYearEl.textContent = new Date().getFullYear();
+        
+        const userAvatarEl = document.getElementById('userAvatar');
+        if (userAvatarEl) userAvatarEl.textContent = currentUser.name.charAt(0).toUpperCase();
 
         // Get all questions from tests.js
         let testQuestions = {};
@@ -367,7 +369,7 @@
             }
             
             if (questions.length === 0) {
-                alert('No hay preguntas para esta categoría. Usando test completo.');
+                showToast('No hay preguntas para esta categoría. Usando test completo.', 'warning');
                 questions = getAllQuestions();
             }
             
@@ -434,7 +436,7 @@
 
         function nextQuestion() {
             if (userAnswers[currentQuestionIndex] === null) {
-                alert('Por favor selecciona una respuesta');
+                showToast('Por favor selecciona una respuesta', 'warning');
                 return;
             }
             
