@@ -70,6 +70,12 @@
                         <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Podcasts</span>
                     </a>
                 </li>
+                <li>
+                    <a href="presentaciones.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Presentaciones">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Presentaciones</span>
+                    </a>
+                </li>
             </ul>
         </nav>
 
@@ -250,6 +256,24 @@
                             <div class="h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded-full progress-bar" style="width: 0%" id="lecturasProgressBar"></div>
                         </div>
                     </a>
+
+                    <!-- Presentaciones Progress -->
+                    <a href="presentaciones.html" class="block bg-slate-900/50 border border-slate-800/50 rounded-xl p-5 hover:border-rose-500/50 transition-all">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-rose-500/20 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
+                                    </svg>
+                                </div>
+                                <span class="font-semibold text-white">Presentaciones</span>
+                            </div>
+                            <span class="text-rose-400 font-bold" id="presentacionesProgress">0%</span>
+                        </div>
+                        <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-rose-500 to-pink-500 rounded-full progress-bar" style="width: 0%" id="presentacionesProgressBar"></div>
+                        </div>
+                    </a>
                 </div>
             </div>
 
@@ -346,12 +370,14 @@
         const videosArray = Array.isArray(currentUser.progress.videos) ? currentUser.progress.videos : [];
         const podcastsArray = Array.isArray(currentUser.progress.podcasts) ? currentUser.progress.podcasts : [];
         const resumenesArray = Array.isArray(currentUser.progress.lecturas) ? currentUser.progress.lecturas : [];
+        const presentacionesArray = Array.isArray(currentUser.progress.presentaciones) ? currentUser.progress.presentaciones : [];
 
         const temasProgress = (temasArray.length) / 20 * 100;
         const testsProgress = (testsArray.length) / 100 * 100;
         const videosProgress = (videosArray.length) / 30 * 100;
         const podcastsProgress = (podcastsArray.length) / 20 * 100;
         const resumenesProgress = (resumenesArray.length) / 2 * 100;
+        const presentacionesProgress = (presentacionesArray.length) / 1 * 100;
 
         document.getElementById('temasProgress').textContent = Math.round(temasProgress) + '%';
         document.getElementById('temasProgressBar').style.width = temasProgress + '%';
@@ -367,6 +393,9 @@
         
         document.getElementById('lecturasProgress').textContent = Math.round(resumenesProgress) + '%';
         document.getElementById('lecturasProgressBar').style.width = resumenesProgress + '%';
+        
+        document.getElementById('presentacionesProgress').textContent = Math.round(presentacionesProgress) + '%';
+        document.getElementById('presentacionesProgressBar').style.width = presentacionesProgress + '%';
 
         // Toggle sidebar collapse (desktop)
         function toggleSidebarCollapse() {

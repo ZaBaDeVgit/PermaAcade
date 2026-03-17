@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vídeos - Academia Tropa Permanente</title>
+    <title>Presentaciones - Academia Tropa Permanente</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,7 +59,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="videos.html" class="sidebar-link active flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Vídeos">
+                    <a href="videos.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Vídeos">
                         <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                         <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Vídeos</span>
                     </a>
@@ -71,7 +71,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="presentaciones.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Presentaciones">
+                    <a href="presentaciones.html" class="sidebar-link active flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Presentaciones">
                         <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
                         <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Presentaciones</span>
                     </a>
@@ -100,13 +100,31 @@
     <main class="md:ml-64 min-h-screen pt-16 md:pt-0 transition-all duration-300 ml-0">
         <div class="max-w-7xl mx-auto p-4 md:p-8">
             <div class="mb-8">
-                <h1 class="font-orbitron font-bold text-2xl md:text-3xl text-white mb-2">Vídeos Educativos</h1>
-                <p class="text-slate-400">Clases en vídeo organizadas por tema</p>
+                <h1 class="font-orbitron font-bold text-2xl md:text-3xl text-white mb-2">Presentaciones</h1>
+                <p class="text-slate-400">Presentaciones en PowerPoint - Ver online o descargar</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 media-grid" id="videosGrid"></div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 media-grid" id="presentacionesGrid"></div>
         </div>
     </main>
+
+    <!-- Modal para ver presentaciones -->
+    <div id="presentacionModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-slate-950/90 backdrop-blur-sm" onclick="closePresentacionModal()"></div>
+        <div class="relative z-10 flex flex-col h-full max-w-6xl mx-auto p-4">
+            <div class="flex items-center justify-between mb-4 bg-slate-900 rounded-t-xl p-4">
+                <h3 class="font-semibold text-white text-lg" id="modalPresentacionTitle">Presentación</h3>
+                <button onclick="closePresentacionModal()" class="text-slate-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="flex-1 bg-slate-900 rounded-b-xl overflow-hidden">
+                <iframe id="presentacionFrame" class="w-full h-full min-h-[70vh]" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
 
     <footer class="md:ml-64 border-t border-slate-800/50 py-6 transition-all duration-300 ml-0">
         <div class="max-w-7xl mx-auto px-4 md:px-8 text-center">
@@ -125,43 +143,79 @@
         const userAvatarEl = document.getElementById('userAvatar');
         if (userAvatarEl) userAvatarEl.textContent = currentUser.name.charAt(0).toUpperCase();
 
-        const videosData = {
-            B1_T1: [
-                { archivo: 'videos/B1_T1_001_Constitucion_1978.mp4', titulo: 'La Constitución de 1978', desc: 'Explicación de los puntos clave de la Constitución Española' },
-                { archivo: 'videos/B1_T1_002_Organizacion_Estado.mp4', titulo: 'Organización del Estado Español', desc: 'Estructura política y territorial del Estado' }
+        const presentacionesData = {
+           slider: [
+                { archivo: 'slider/Constitución Española de 1978.pptx', titulo: 'Constitución Española de 1978', desc: 'Presentación sobre los aspectos fundamentales de la Constitución Española' }
             ]
         };
 
-        function renderVideos() {
-            const grid = document.getElementById('videosGrid');
+        function getViewerUrl(filePath) {
+            const encodedPath = encodeURIComponent(window.location.origin + '/' + filePath);
+            return `https://view.officeapps.live.com/op/embed.aspx?src=${encodedPath}`;
+        }
+
+        function verPresentacion(titulo, archivo) {
+            document.getElementById('modalPresentacionTitle').textContent = titulo;
+            document.getElementById('presentacionFrame').src = getViewerUrl(archivo);
+            document.getElementById('presentacionModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePresentacionModal() {
+            document.getElementById('presentacionModal').classList.add('hidden');
+            document.getElementById('presentacionFrame').src = '';
+            document.body.style.overflow = 'auto';
+        }
+
+        function renderPresentaciones() {
+            const grid = document.getElementById('presentacionesGrid');
             let html = '';
             
-            for (const [tema, videos] of Object.entries(videosData)) {
-                const tituloTema = tema === 'B1_T1' ? 'B1-T1: Constitución Española' : tema;
-                html += `<div class="col-span-full mb-4 mt-4"><h3 class="font-orbitron font-bold text-lg text-cyan-400">${tituloTema}</h3></div>`;
+            for (const [categoria, presentaciones] of Object.entries(presentacionesData)) {
+                const tituloCategoria = categoria === 'slider' ? 'Presentaciones' : categoria;
+                html += `<div class="col-span-full mb-4 mt-4"><h3 class="font-orbitron font-bold text-lg text-cyan-400">${tituloCategoria}</h3></div>`;
                 
-                videos.forEach((video, idx) => {
-                    const colors = ['rose', 'red', 'orange', 'amber'];
+                const colors = ['rose', 'red', 'orange', 'amber', 'emerald', 'cyan', 'blue', 'purple'];
+                
+                presentaciones.forEach((pres, idx) => {
                     const color = colors[idx % colors.length];
                     
                     html += `
                         <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl overflow-hidden hover:border-${color}-500/50 transition-all">
-                            <div class="relative aspect-video bg-slate-800 flex items-center justify-center">
-                                <video controls class="w-full h-full">
-                                    <source src="${video.archivo}" type="video/mp4">
-                                    Tu navegador no soporta vídeo
-                                </video>
+                            <div class="relative aspect-video bg-slate-800 flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity" onclick="verPresentacion('${pres.titulo}', '${pres.archivo}')">
+                                <div class="text-center p-4">
+                                    <svg class="w-16 h-16 mx-auto text-${color}-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
+                                    </svg>
+                                    <p class="text-slate-400 text-sm">PowerPoint</p>
+                                    <p class="text-${color}-400 text-xs mt-1">Click para ver</p>
+                                </div>
                             </div>
                             <div class="p-4">
-                                <h3 class="font-semibold text-white mb-1">${video.titulo}</h3>
-                                <p class="text-slate-400 text-sm">${video.desc}</p>
+                                <h3 class="font-semibold text-white mb-1">${pres.titulo}</h3>
+                                <p class="text-slate-400 text-sm mb-3">${pres.desc}</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <button onclick="verPresentacion('${pres.titulo}', '${pres.archivo}')" class="inline-flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-${color}-500 to-${color}-600 hover:from-${color}-400 hover:to-${color}-500 rounded-lg text-white text-sm font-semibold transition-all">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                        </svg>
+                                        Ver
+                                    </button>
+                                    <a href="${pres.archivo}" download class="inline-flex items-center gap-2 px-3 py-2 border border-${color}-500 text-${color}-400 hover:bg-${color}-500/20 rounded-lg text-sm font-semibold transition-all">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                        </svg>
+                                        Descargar
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     `;
                 });
             }
             
-            grid.innerHTML = html || '<p class="text-slate-400">No hay vídeos disponibles</p>';
+            grid.innerHTML = html || '<p class="text-slate-400">No hay presentaciones disponibles</p>';
         }
 
         function toggleSidebar() {
@@ -176,7 +230,6 @@
             const texts = document.querySelectorAll('.sidebar-text');
             
             if (sidebar.classList.contains('w-64')) {
-                // Collapse
                 sidebar.classList.remove('w-64');
                 sidebar.classList.add('w-20');
                 main.classList.remove('md:ml-64');
@@ -188,7 +241,6 @@
                 collapseIcon.classList.add('rotate-180');
                 texts.forEach(t => t.classList.add('opacity-0'));
             } else {
-                // Expand
                 sidebar.classList.remove('w-20');
                 sidebar.classList.add('w-64');
                 main.classList.remove('md:ml-20');
@@ -202,7 +254,7 @@
             }
         }
 
-        renderVideos();
+        renderPresentaciones();
     </script>
 </body>
 </html>
