@@ -41,6 +41,9 @@ function updateUserUI(user) {
     document.querySelectorAll('.user-avatar').forEach(el => {
         el.textContent = user.name.charAt(0).toUpperCase();
     });
+    document.querySelectorAll('.user-member-since').forEach(el => {
+        el.textContent = new Date(user.createdAt).toLocaleDateString('es-ES', { month: 'short', year: 'numeric' });
+    });
 }
 
 // Modal Functions
