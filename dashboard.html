@@ -26,12 +26,12 @@
             </div>
         </div>
 
-        <!-- User Avatar + Donate -->
+        <!-- User Avatar + Info -->
         <div class="p-4 border-b border-slate-800 flex flex-col items-center gap-3">
             <div class="w-14 h-14 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center font-bold text-white text-xl user-avatar" id="userAvatar">U</div>
             <div class="text-center">
-                <div class="font-semibold text-white user-name" id="userName">Usuario</div>
-                <div class="text-xs text-slate-400">Miembro desde <span id="memberSince">-</span></div>
+                <div class="font-semibold text-white user-name">Usuario</div>
+                <div class="text-xs text-slate-400">Miembro desde <span class="user-member-since">-</span></div>
             </div>
             <a href="https://ko-fi.com/zabadev" target="_blank" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-400 hover:to-pink-400 transition-all text-white text-xs font-semibold">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
@@ -302,11 +302,11 @@
             const user = Auth.getCurrentUser();
             if (!user) return;
 
-            // Update user info
+            // Update user info (using classes for sidebar elements)
             document.querySelectorAll('.user-name').forEach(el => el.textContent = user.name);
             document.getElementById('welcomeName').textContent = user.name;
-            document.getElementById('userAvatar').textContent = user.name.charAt(0).toUpperCase();
-            document.getElementById('memberSince').textContent = new Date(user.createdAt).toLocaleDateString('es-ES', { month: 'short', year: 'numeric' });
+            document.querySelectorAll('.user-avatar').forEach(el => el.textContent = user.name.charAt(0).toUpperCase());
+            document.querySelectorAll('.user-member-since').forEach(el => el.textContent = new Date(user.createdAt).toLocaleDateString('es-ES', { month: 'short', year: 'numeric' }));
             document.getElementById('currentYear').textContent = new Date().getFullYear();
 
             // Update stats
