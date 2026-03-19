@@ -884,3 +884,209 @@
         transform: translateX(0);
     }
 }
+
+/* ============================================
+   COMPONENT ANIMATIONS
+   ============================================ */
+
+/* Modal animations */
+.modal-backdrop {
+    animation: fade-in 0.2s ease-out;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Progress bar animation */
+.progress-bar-animated {
+    animation: progress-grow 1s ease-out forwards;
+}
+
+@keyframes progress-grow {
+    from { width: 0; }
+}
+
+/* Spinner */
+.spinner {
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: #10b981;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Card hover lift */
+.card-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
+}
+
+/* Pulse animation for notifications */
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Glow effect */
+.glow-emerald {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+}
+
+.glow-cyan {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+}
+
+/* Shimmer loading effect */
+.shimmer {
+    background: linear-gradient(
+        90deg,
+        rgba(30, 41, 59, 0.4) 0%,
+        rgba(51, 65, 85, 0.6) 50%,
+        rgba(30, 41, 59, 0.4) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Number counter animation */
+.count-up {
+    animation: count-up 1s ease-out;
+}
+
+@keyframes count-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Staggered fade in for lists */
+.stagger-fade > * {
+    animation: stagger-in 0.4s ease-out forwards;
+    opacity: 0;
+}
+
+.stagger-fade > *:nth-child(1) { animation-delay: 0s; }
+.stagger-fade > *:nth-child(2) { animation-delay: 0.1s; }
+.stagger-fade > *:nth-child(3) { animation-delay: 0.2s; }
+.stagger-fade > *:nth-child(4) { animation-delay: 0.3s; }
+.stagger-fade > *:nth-child(5) { animation-delay: 0.4s; }
+.stagger-fade > *:nth-child(6) { animation-delay: 0.5s; }
+.stagger-fade > *:nth-child(7) { animation-delay: 0.6s; }
+.stagger-fade > *:nth-child(8) { animation-delay: 0.7s; }
+
+@keyframes stagger-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Achievement unlock animation */
+.achievement-unlock {
+    animation: achievement-pop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes achievement-pop {
+    0% { transform: scale(0); }
+    80% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Floating animation */
+.float {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Gradient text animation */
+.gradient-text-animated {
+    background: linear-gradient(
+        90deg,
+        #10b981,
+        #06b6d4,
+        #3b82f6,
+        #8b5cf6,
+        #10b981
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-flow 3s linear infinite;
+}
+
+@keyframes gradient-flow {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+/* Focus ring animation */
+.focus-ring:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.5);
+}
+
+/* Selection styling */
+::selection {
+    background: rgba(16, 185, 129, 0.3);
+    color: white;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Print styles */
+@media print {
+    .no-print,
+    nav,
+    aside,
+    footer,
+    .btn,
+    button {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    .bg-slate-900,
+    .bg-slate-800,
+    .bg-slate-950 {
+        background: white !important;
+    }
+
+    .text-white,
+    .text-slate-300,
+    .text-slate-400 {
+        color: black !important;
+    }
+}

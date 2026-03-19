@@ -1,0 +1,57 @@
+{
+  "name": "Academia Tropa Permanente",
+  "short_name": "TropaPerma",
+  "description": "Academia online gratuita para aprobar las pruebas de acceso a Tropa Permanente del Ejército de Tierra",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#10b981",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect fill='%230f172a' width='512' height='512' rx='64'/><circle fill='%2310b981' cx='256' cy='200' r='100'/><path fill='%2306b6d4' d='M156 350 L256 450 L356 350 L256 280 Z'/></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%230f172a' width='192' height='192' rx='32'/><circle fill='%2310b981' cx='96' cy='75' r='38'/><path fill='%2306b6d4' d='M59 132 L96 170 L133 132 L96 105 Z'/></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "utilities"],
+  "lang": "es",
+  "dir": "ltr",
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Hacer Test",
+      "short_name": "Test",
+      "description": "Practica con tests tipo examen",
+      "url": "/tests.html",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect fill='%2310b981' width='96' height='96' rx='16'/><path fill='white' d='M24 24 h48 v8 H24z M24 40 h48 v8 H24z M24 56 h32 v8 H24z'/></svg>",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Ver Temas",
+      "short_name": "Temas",
+      "description": "Estudia el temario completo",
+      "url": "/temas.html",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect fill='%2306b6d4' width='96' height='96' rx='16'/><path fill='white' d='M24 24 L72 24 L72 72 L24 72 Z M32 36 h32 v8 H32z M32 52 h20 v8 H32z'/></svg>",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
