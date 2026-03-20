@@ -3,7 +3,8 @@
     const STORAGE_KEYS = {
         users: "academy.users",
         currentUserId: "academy.currentUserId",
-        appVersion: "academy.appVersion"
+        appVersion: "academy.appVersion",
+        contentFingerprint: "academy.contentFingerprint"
     };
 
     function safeParse(value, fallback) {
@@ -903,6 +904,166 @@
         }
     }
 
+    async function clearAppCaches() {
+        if (!("caches" in window)) return;
+
+        const keys = await caches.keys();
+        await Promise.all(
+            keys
+                .filter((key) => key.startsWith("perma-academia-"))
+                .map((key) => caches.delete(key))
+        );
+    }
+
+    function setRefreshButtonState(label) {
+        const indicator = document.getElementById("contentRefreshIndicator");
+        if (!indicator) return;
+
+        if (!label) {
+            indicator.classList.add("hidden");
+            indicator.textContent = "";
+            return;
+        }
+
+        indicator.textContent = label;
+        indicator.classList.remove("hidden");
+    }
+
+    async function fetchContentFingerprint() {
+        const response = await fetch(`js/data/content.js?ts=${Date.now()}`, {
+            cache: "no-store"
+        });
+
+        if (!response.ok) {
+            throw new Error("No se pudo consultar la versión remota del contenido");
+        }
+
+        const etag = response.headers.get("etag");
+        const lastModified = response.headers.get("last-modified");
+        const text = await response.text();
+        const size = String(text.length);
+
+        return [etag || "", lastModified || "", size].join("|");
+    }
+
+    async function checkForContentUpdate(options = {}) {
+        const { silent = false } = options;
+
+        try {
+            const fingerprint = await fetchContentFingerprint();
+            const stored = localStorage.getItem(STORAGE_KEYS.contentFingerprint);
+
+            if (!stored) {
+                localStorage.setItem(STORAGE_KEYS.contentFingerprint, fingerprint);
+                setRefreshButtonState("");
+                return false;
+            }
+
+            if (stored !== fingerprint) {
+                setRefreshButtonState("Nueva version");
+                if (!silent) {
+                    showToast("Hay contenido nuevo disponible", "info", 2600);
+                }
+                return true;
+            }
+
+            setRefreshButtonState("");
+            return false;
+        } catch {
+            return false;
+        }
+    }
+
+    async function refreshApplicationContent() {
+        showToast("Actualizando contenido...", "info", 2200);
+
+        if ("serviceWorker" in navigator) {
+            try {
+                const registration = await navigator.serviceWorker.getRegistration();
+                await registration?.update();
+                if (registration?.waiting) {
+                    registration.waiting.postMessage({ type: "SKIP_WAITING" });
+                    return;
+                }
+            } catch {
+                // Ignore update failures and continue with cache cleanup + reload.
+            }
+        }
+
+        try {
+            await clearAppCaches();
+        } catch {
+            // Ignore cache cleanup failures and continue with reload.
+        }
+
+        try {
+            const fingerprint = await fetchContentFingerprint();
+            localStorage.setItem(STORAGE_KEYS.contentFingerprint, fingerprint);
+        } catch {
+            // Ignore fingerprint refresh failures and continue with reload.
+        }
+
+        const nextUrl = new URL(window.location.href);
+        nextUrl.searchParams.set("_refresh", String(Date.now()));
+        window.location.replace(nextUrl.toString());
+    }
+
+    function injectRefreshButton() {
+        if (document.getElementById("contentRefreshButton")) return;
+        if (!document.body) return;
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.id = "contentRefreshButton";
+        button.setAttribute("aria-label", "Actualizar contenido");
+        button.title = "Actualizar contenido";
+        button.textContent = "Actualizar";
+        button.style.position = "fixed";
+        button.style.right = "16px";
+        button.style.bottom = "16px";
+        button.style.zIndex = "70";
+        button.style.display = "inline-flex";
+        button.style.alignItems = "center";
+        button.style.justifyContent = "center";
+        button.style.gap = "8px";
+        button.style.padding = "10px 14px";
+        button.style.borderRadius = "9999px";
+        button.style.border = "1px solid rgba(34, 197, 94, 0.35)";
+        button.style.background = "rgba(2, 6, 23, 0.92)";
+        button.style.color = "#86efac";
+        button.style.fontSize = "13px";
+        button.style.fontWeight = "700";
+        button.style.boxShadow = "0 10px 30px rgba(2, 6, 23, 0.35)";
+        button.style.backdropFilter = "blur(10px)";
+        button.style.webkitBackdropFilter = "blur(10px)";
+        button.innerHTML = `
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v6h6"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20 20v-6h-6"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20 9a8 8 0 00-13.66-3L4 10"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 15a8 8 0 0013.66 3L20 14"></path>
+            </svg>
+            <span>Actualizar</span>
+            <span id="contentRefreshIndicator" class="hidden rounded-full bg-emerald-500/20 px-2 py-1 text-[11px] font-semibold text-emerald-200">Nueva version</span>
+        `;
+
+        button.addEventListener("mouseenter", () => {
+            button.style.transform = "translateY(-1px)";
+            button.style.borderColor = "rgba(74, 222, 128, 0.6)";
+        });
+        button.addEventListener("mouseleave", () => {
+            button.style.transform = "translateY(0)";
+            button.style.borderColor = "rgba(34, 197, 94, 0.35)";
+        });
+        button.addEventListener("click", () => {
+            button.disabled = true;
+            button.style.opacity = "0.8";
+            refreshApplicationContent();
+        });
+
+        document.body.appendChild(button);
+    }
+
     function registerServiceWorker() {
         if (!("serviceWorker" in navigator)) return;
         if (window.location.protocol !== "http:" && window.location.protocol !== "https:") return;
@@ -981,6 +1142,7 @@
         loadUsers,
         logout,
         rememberVisit,
+        refreshApplicationContent,
         saveTestDraft,
         saveWrongQuestions,
         searchLibrary,
@@ -1044,5 +1206,15 @@
         createParticles();
         syncAppVersion();
         registerServiceWorker();
+        injectRefreshButton();
+        checkForContentUpdate({ silent: true });
+        window.addEventListener("focus", () => {
+            checkForContentUpdate({ silent: true });
+        });
+        document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState === "visible") {
+                checkForContentUpdate({ silent: true });
+            }
+        });
     });
 })();
