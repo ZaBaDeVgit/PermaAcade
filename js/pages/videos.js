@@ -24,7 +24,7 @@
             grid.appendChild(heading);
 
             videos.forEach((video) => {
-                const styles = AcademyContent.colorStyles[video.color];
+                const styles = AcademyContent.colorStyles[video.color] || AcademyContent.colorStyles.cyan;
                 const isFavorite = App.isFavorite("videos", video.id);
                 const card = document.createElement("article");
                 card.className = `overflow-hidden rounded-xl border border-slate-800/50 bg-slate-900/50 transition-all ${styles.accentBorder}`;

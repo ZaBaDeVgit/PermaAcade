@@ -15,7 +15,7 @@
         list.innerHTML = "";
 
         AcademyContent.podcasts.forEach((podcast) => {
-            const styles = AcademyContent.colorStyles[podcast.color];
+            const styles = AcademyContent.colorStyles[podcast.color] || AcademyContent.colorStyles.cyan;
             const isActive = currentPodcastId === podcast.id;
             const isFavorite = App.isFavorite("podcasts", podcast.id);
             const card = document.createElement("button");
@@ -70,7 +70,8 @@
 
     function setPlayerInfo(podcast) {
         const cover = document.getElementById("fixedCover");
-        cover.className = `flex h-12 w-12 shrink-0 items-center justify-center rounded-lg ${AcademyContent.colorStyles[podcast.color].badge}`;
+        const styles = AcademyContent.colorStyles[podcast.color] || AcademyContent.colorStyles.cyan;
+        cover.className = `flex h-12 w-12 shrink-0 items-center justify-center rounded-lg ${styles.badge}`;
         cover.innerHTML = `
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
