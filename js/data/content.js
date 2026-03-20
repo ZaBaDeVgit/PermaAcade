@@ -98,7 +98,8 @@ window.AcademyContent = {
     videos: [
         { id: "video_b1_t1_001", group: "B1-T1", groupTitle: "B1-T1: Constitución Española", archivo: "videos/B1_T1_001_Constitucion_1978.mp4", titulo: "La Constitución de 1978", desc: "Explicación de los puntos clave de la Constitución Española", color: "rose" },
         { id: "video_b1_t1_002", group: "B1-T1", groupTitle: "B1-T1: Constitución Española", archivo: "videos/B1_T1_002_Organizacion_Estado.mp4", titulo: "Organización del Estado Español", desc: "Estructura política y territorial del Estado", color: "amber" },
-        { id: "video_b1_t2_001", group: "B1-T2", groupTitle: "B1-T2: Ley Orgánica 5/2005", archivo: "videos/B1_T2_FAS_y_su_papel_en_la_vida_civil.mp4", titulo: "Las FAS y su papel en la vida civil", desc: "Contexto y alcance de las Fuerzas Armadas dentro de la Defensa Nacional", color: "emerald" }
+        { id: "video_b1_t2_001", group: "B1-T2", groupTitle: "B1-T2: Ley Orgánica 5/2005", archivo: "videos/B1_T2_FAS_y_su_papel_en_la_vida_civil.mp4", titulo: "Las FAS y su papel en la vida civil", desc: "Contexto y alcance de las Fuerzas Armadas dentro de la Defensa Nacional", color: "emerald" },
+        { id: "video_b1_t2_002", group: "B1-T2", groupTitle: "B1-T2: Ley Orgánica 5/2005", archivo: "videos/B1_T2_Ley_de_Defensa_Nacional_5_2005.mp4", titulo: "Ley de Defensa Nacional 5/2005", desc: "Ley de Defensa Nacional 5/2005", color: "yellow" }
     ],
     podcasts: [
         { id: "podcast_b1_t1_003", title: "B1-T1: Las tripas de la Constitución", desc: "Resumen sonoro del bloque constitucional", duration: "15:30", color: "cyan", archivo: "audios/B1_T1_003_Tripas_Constitucion.m4a" },
