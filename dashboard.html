@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Academia Tropa Permanente</title>
-    <meta name="description" content="Dashboard de seguimiento de progreso - Academia Tropa Permanente">
-    <meta name="theme-color" content="#10b981">
-    <link rel="manifest" href="manifest.json">
+    <meta name="description" content="Dashboard de progreso y acceso rápido a la Academia Tropa Permanente.">
+    <meta name="theme-color" content="#020617">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="manifest" href="manifest.webmanifest">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 <body class="bg-slate-950 text-white">
     <!-- Sidebar -->
@@ -26,13 +26,9 @@
             </div>
         </div>
 
-        <!-- User Avatar + Info -->
+        <!-- User Avatar + Donate -->
         <div class="p-4 border-b border-slate-800 flex flex-col items-center gap-3">
-            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center font-bold text-white text-xl user-avatar" id="userAvatar">U</div>
-            <div class="text-center">
-                <div class="font-semibold text-white user-name">Usuario</div>
-                <div class="text-xs text-slate-400">Miembro desde <span class="user-member-since">-</span></div>
-            </div>
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center font-bold text-white" id="userAvatar">U</div>
             <a href="https://ko-fi.com/zabadev" target="_blank" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-400 hover:to-pink-400 transition-all text-white text-xs font-semibold">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                 <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Donar</span>
@@ -46,6 +42,12 @@
                     <a href="dashboard.html" class="sidebar-link active flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Inicio">
                         <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                         <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Inicio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="progreso.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Mi Espacio">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v18l7-5 7 5V3H5z"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Mi Espacio</span>
                     </a>
                 </li>
                 <li>
@@ -111,123 +113,201 @@
             <!-- Welcome -->
             <div class="mb-8">
                 <h1 class="font-orbitron font-bold text-2xl md:text-3xl text-white mb-2">
-                    Bienvenido, <span class="text-emerald-400 user-name" id="welcomeName">Usuario</span>
+                    Bienvenido, <span class="text-emerald-400" id="welcomeName">Usuario</span>
                 </h1>
                 <p class="text-slate-400">Sigue tu progreso y prepárate para aprobar</p>
             </div>
 
             <!-- Stats Grid -->
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
-                <div class="bg-gradient-to-br from-slate-900 to-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:border-emerald-500/50 transition-all">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 stats-grid">
+                <div class="bg-slate-900/50 border border-slate-800/50 rounded-2xl p-6">
                     <div class="flex items-center gap-3 mb-3">
-                        <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
-                            <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
                             </svg>
                         </div>
                         <span class="text-slate-400 text-sm">Tests</span>
                     </div>
-                    <div class="font-orbitron font-bold text-3xl md:text-4xl text-white" id="testsCompleted">0</div>
+                    <div class="font-orbitron font-bold text-2xl md:text-3xl text-white" id="testsCompleted">0</div>
                     <div class="text-slate-500 text-xs mt-1">completados</div>
                 </div>
 
-                <div class="bg-gradient-to-br from-slate-900 to-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:border-cyan-500/50 transition-all">
+                <div class="bg-slate-900/50 border border-slate-800/50 rounded-2xl p-6">
                     <div class="flex items-center gap-3 mb-3">
-                        <div class="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center">
-                            <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
                         <span class="text-slate-400 text-sm">Aciertos</span>
                     </div>
-                    <div class="font-orbitron font-bold text-3xl md:text-4xl text-white" id="correctAnswers">0</div>
+                    <div class="font-orbitron font-bold text-2xl md:text-3xl text-white" id="correctAnswers">0</div>
                     <div class="text-slate-500 text-xs mt-1">respuestas correctas</div>
                 </div>
 
-                <div class="bg-gradient-to-br from-slate-900 to-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:border-purple-500/50 transition-all">
+                <div class="bg-slate-900/50 border border-slate-800/50 rounded-2xl p-6">
                     <div class="flex items-center gap-3 mb-3">
-                        <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
-                            <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                             </svg>
                         </div>
                         <span class="text-slate-400 text-sm">Precisión</span>
                     </div>
-                    <div class="flex items-end gap-2">
-                        <div class="font-orbitron font-bold text-3xl md:text-4xl text-white" id="accuracy">0%</div>
-                        <div class="text-slate-500 text-xs mb-1" id="accuracyLabel">de acierto</div>
-                    </div>
+                    <div class="font-orbitron font-bold text-2xl md:text-3xl text-white" id="accuracy">0%</div>
+                    <div class="text-slate-500 text-xs mt-1">de acierto</div>
                 </div>
 
-                <div class="bg-gradient-to-br from-slate-900 to-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:border-amber-500/50 transition-all">
+                <div class="bg-slate-900/50 border border-slate-800/50 rounded-2xl p-6">
                     <div class="flex items-center gap-3 mb-3">
-                        <div class="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center">
-                            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path>
                             </svg>
                         </div>
                         <span class="text-slate-400 text-sm">Racha</span>
                     </div>
-                    <div class="flex items-end gap-2">
-                        <div class="font-orbitron font-bold text-3xl md:text-4xl text-white" id="streak">0</div>
-                        <div class="text-slate-500 text-xs mb-1">días consecutivos</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Charts Section -->
-            <div class="grid lg:grid-cols-3 gap-6 mb-8">
-                <!-- Activity Chart -->
-                <div class="lg:col-span-2 bg-gradient-to-br from-slate-900 to-slate-800/50 border border-slate-700/50 rounded-2xl p-6">
-                    <h3 class="font-semibold text-white mb-4 flex items-center gap-2">
-                        <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                        </svg>
-                        Actividad Semanal
-                    </h3>
-                    <div class="h-64">
-                        <canvas id="activityChart"></canvas>
-                    </div>
-                </div>
-
-                <!-- Block Progress -->
-                <div class="bg-gradient-to-br from-slate-900 to-slate-800/50 border border-slate-700/50 rounded-2xl p-6">
-                    <h3 class="font-semibold text-white mb-4 flex items-center gap-2">
-                        <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
-                        </svg>
-                        Progreso por Bloque
-                    </h3>
-                    <div class="h-64 flex items-center justify-center">
-                        <canvas id="blockChart"></canvas>
-                    </div>
+                    <div class="font-orbitron font-bold text-2xl md:text-3xl text-white" id="streak">0</div>
+                    <div class="text-slate-500 text-xs mt-1">días consecutivos</div>
                 </div>
             </div>
 
             <!-- Progress Section -->
             <div class="mb-8">
                 <h2 class="font-orbitron font-bold text-xl text-white mb-4">Tu Progreso</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="progressGrid">
-                    <!-- Progress cards will be rendered here -->
-                </div>
-            </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 progress-grid">
+                    <!-- Temas Progress -->
+                    <a href="temas.html" class="block bg-slate-900/50 border border-slate-800/50 rounded-xl p-5 hover:border-emerald-500/50 transition-all">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                    </svg>
+                                </div>
+                                <span class="font-semibold text-white">Temas</span>
+                            </div>
+                            <span class="text-emerald-400 font-bold" id="temasProgress">0%</span>
+                        </div>
+                        <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full progress-bar" style="width: 0%" id="temasProgressBar"></div>
+                        </div>
+                    </a>
 
-            <!-- Achievements -->
-            <div class="mb-8">
-                <h2 class="font-orbitron font-bold text-xl text-white mb-4">Logros</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4" id="achievementsGrid">
-                    <!-- Achievements will be rendered here -->
+                    <!-- Tests Progress -->
+                    <a href="tests.html" class="block bg-slate-900/50 border border-slate-800/50 rounded-xl p-5 hover:border-cyan-500/50 transition-all">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                                    </svg>
+                                </div>
+                                <span class="font-semibold text-white">Tests</span>
+                            </div>
+                            <span class="text-cyan-400 font-bold" id="testsProgress">0%</span>
+                        </div>
+                        <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full progress-bar" style="width: 0%" id="testsProgressBar"></div>
+                        </div>
+                    </a>
+
+                    <!-- Videos Progress -->
+                    <a href="videos.html" class="block bg-slate-900/50 border border-slate-800/50 rounded-xl p-5 hover:border-blue-500/50 transition-all">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <span class="font-semibold text-white">Vídeos</span>
+                            </div>
+                            <span class="text-blue-400 font-bold" id="videosProgress">0%</span>
+                        </div>
+                        <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full progress-bar" style="width: 0%" id="videosProgressBar"></div>
+                        </div>
+                    </a>
+
+                    <!-- Podcasts Progress -->
+                    <a href="podcasts.html" class="block bg-slate-900/50 border border-slate-800/50 rounded-xl p-5 hover:border-purple-500/50 transition-all">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+                                    </svg>
+                                </div>
+                                <span class="font-semibold text-white">Podcasts</span>
+                            </div>
+                            <span class="text-purple-400 font-bold" id="podcastsProgress">0%</span>
+                        </div>
+                        <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full progress-bar" style="width: 0%" id="podcastsProgressBar"></div>
+                        </div>
+                    </a>
+
+                    <!-- Resúmenes Progress -->
+                    <a href="lecturas.html" class="block bg-slate-900/50 border border-slate-800/50 rounded-xl p-5 hover:border-amber-500/50 transition-all">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                                    </svg>
+                                </div>
+                                <span class="font-semibold text-white">Resúmenes</span>
+                            </div>
+                            <span class="text-amber-400 font-bold" id="lecturasProgress">0%</span>
+                        </div>
+                        <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded-full progress-bar" style="width: 0%" id="lecturasProgressBar"></div>
+                        </div>
+                    </a>
+
+                    <a href="presentaciones.html" class="block bg-slate-900/50 border border-slate-800/50 rounded-xl p-5 hover:border-fuchsia-500/50 transition-all">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-fuchsia-500/20 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-fuchsia-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
+                                    </svg>
+                                </div>
+                                <span class="font-semibold text-white">Presentaciones</span>
+                            </div>
+                            <span class="text-fuchsia-400 font-bold" id="presentacionesProgress">0%</span>
+                        </div>
+                        <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-fuchsia-500 to-rose-500 rounded-full progress-bar" style="width: 0%" id="presentacionesProgressBar"></div>
+                        </div>
+                    </a>
                 </div>
             </div>
 
             <!-- Quick Actions -->
             <div>
                 <h2 class="font-orbitron font-bold text-xl text-white mb-4">Acceso Rápido</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <a href="tests.html" class="group bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 border border-emerald-500/30 rounded-xl p-6 hover:border-emerald-400/50 transition-all hover:scale-[1.02]">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 actions-grid">
+                    <a href="progreso.html" class="group bg-gradient-to-br from-amber-500/20 to-yellow-500/20 border border-amber-500/30 rounded-xl p-6 hover:border-amber-400/50 transition-all">
                         <div class="flex items-center gap-4">
-                            <div class="w-14 h-14 rounded-xl bg-emerald-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg class="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="w-12 h-12 rounded-xl bg-amber-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v18l7-5 7 5V3H5z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-white">Mi Espacio</h3>
+                                <p class="text-slate-400 text-sm">Favoritos, búsqueda y continuidad</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="tests.html" class="group bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 border border-emerald-500/30 rounded-xl p-6 hover:border-emerald-400/50 transition-all">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                             </div>
@@ -238,10 +318,10 @@
                         </div>
                     </a>
 
-                    <a href="temas.html" class="group bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 rounded-xl p-6 hover:border-cyan-400/50 transition-all hover:scale-[1.02]">
+                    <a href="temas.html" class="group bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 rounded-xl p-6 hover:border-cyan-400/50 transition-all">
                         <div class="flex items-center gap-4">
-                            <div class="w-14 h-14 rounded-xl bg-cyan-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="w-12 h-12 rounded-xl bg-cyan-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                                 </svg>
                             </div>
@@ -252,10 +332,10 @@
                         </div>
                     </a>
 
-                    <a href="videos.html" class="group bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-xl p-6 hover:border-blue-400/50 transition-all hover:scale-[1.02]">
+                    <a href="videos.html" class="group bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-xl p-6 hover:border-blue-400/50 transition-all">
                         <div class="flex items-center gap-4">
-                            <div class="w-14 h-14 rounded-xl bg-blue-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="w-12 h-12 rounded-xl bg-blue-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
@@ -263,6 +343,20 @@
                             <div>
                                 <h3 class="font-semibold text-white">Ver Vídeos</h3>
                                 <p class="text-slate-400 text-sm">Aprende con clases en vídeo</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="presentaciones.html" class="group bg-gradient-to-br from-fuchsia-500/20 to-rose-500/20 border border-fuchsia-500/30 rounded-xl p-6 hover:border-fuchsia-400/50 transition-all">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-fuchsia-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6 text-fuchsia-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-white">Ver Presentaciones</h3>
+                                <p class="text-slate-400 text-sm">Repaso visual en formato PPTX</p>
                             </div>
                         </div>
                     </a>
@@ -280,253 +374,10 @@
         </div>
     </footer>
 
-    <!-- Toast Container -->
-    <div id="toastContainer"></div>
-
-    <script src="js/components.js"></script>
-    <script src="js/auth.js"></script>
+    <script src="js/tests.js"></script>
+    <script src="js/data/content.js"></script>
+    <script src="js/config.js"></script>
     <script src="js/app.js"></script>
-    <script>
-        // Check auth
-        if (!Auth.isAuthenticated()) {
-            window.location.href = 'index.html';
-        }
-
-        // Initialize dashboard
-        document.addEventListener('DOMContentLoaded', () => {
-            initDashboard();
-            registerServiceWorker();
-        });
-
-        function initDashboard() {
-            const user = Auth.getCurrentUser();
-            if (!user) return;
-
-            // Update user info (using classes for sidebar elements)
-            document.querySelectorAll('.user-name').forEach(el => el.textContent = user.name);
-            document.getElementById('welcomeName').textContent = user.name;
-            document.querySelectorAll('.user-avatar').forEach(el => el.textContent = user.name.charAt(0).toUpperCase());
-            document.querySelectorAll('.user-member-since').forEach(el => el.textContent = new Date(user.createdAt).toLocaleDateString('es-ES', { month: 'short', year: 'numeric' }));
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-            // Update stats
-            document.getElementById('testsCompleted').textContent = user.stats.testsCompleted || 0;
-            document.getElementById('correctAnswers').textContent = user.stats.correctAnswers || 0;
-            
-            const accuracy = user.stats.totalQuestions > 0 
-                ? Math.round((user.stats.correctAnswers / user.stats.totalQuestions) * 100) 
-                : 0;
-            document.getElementById('accuracy').textContent = accuracy + '%';
-            
-            document.getElementById('streak').textContent = user.stats.streakDays || 0;
-
-            // Render progress cards
-            renderProgressCards();
-
-            // Render achievements
-            renderAchievements();
-
-            // Initialize charts
-            initCharts(user);
-        }
-
-        function renderProgressCards() {
-            const categories = [
-                { id: 'temas', name: 'Temas', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253', total: 20, color: 'emerald' },
-                { id: 'tests', name: 'Tests', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4', total: 100, color: 'cyan' },
-                { id: 'videos', name: 'Vídeos', icon: 'M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z', total: 30, color: 'blue' },
-                { id: 'podcasts', name: 'Podcasts', icon: 'M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z', total: 20, color: 'purple' },
-                { id: 'lecturas', name: 'Resúmenes', icon: 'M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7', total: 10, color: 'amber' },
-                { id: 'presentaciones', name: 'Presentaciones', icon: 'M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z', total: 5, color: 'rose' }
-            ];
-
-            const progressGrid = document.getElementById('progressGrid');
-            progressGrid.innerHTML = categories.map(cat => {
-                const user = Auth.getCurrentUser();
-                const progress = user.progress[cat.id] || [];
-                const percentage = Math.round((progress.length / cat.total) * 100);
-                
-                return `
-                    <a href="${cat.id}.html" class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-5 hover:border-${cat.color}-500/50 transition-all group">
-                        <div class="flex items-center justify-between mb-3">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-lg bg-${cat.color}-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                    <svg class="w-5 h-5 text-${cat.color}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${cat.icon}"></path>
-                                    </svg>
-                                </div>
-                                <span class="font-semibold text-white">${cat.name}</span>
-                            </div>
-                            <span class="text-${cat.color}-400 font-bold">${percentage}%</span>
-                        </div>
-                        <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
-                            <div class="h-full bg-gradient-to-r from-${cat.color}-500 to-${cat.color === 'cyan' ? 'blue' : cat.color === 'emerald' ? 'cyan' : cat.color}-400 rounded-full transition-all duration-1000" 
-                                 style="width: ${percentage}%"></div>
-                        </div>
-                        <div class="text-slate-500 text-xs mt-2">${progress.length} de ${cat.total} completados</div>
-                    </a>
-                `;
-            }).join('');
-        }
-
-        function renderAchievements() {
-            const allAchievements = [
-                { id: 'first_test', name: 'Primera Prueba', icon: '🎯', desc: 'Completa tu primer test' },
-                { id: 'streak_7', name: 'Racha 7 días', icon: '🔥', desc: '7 días seguidos de estudio' },
-                { id: 'streak_30', name: 'Racha 30 días', icon: '💎', desc: '30 días seguidos' },
-                { id: 'accuracy_80', name: '80% Precisión', icon: '🎯', desc: '80% de acierto en 50+ preguntas' },
-                { id: 'all_topics', name: 'Todos los temas', icon: '📚', desc: 'Completa todos los temas' },
-                { id: '100_tests', name: '100 Tests', icon: '🏆', desc: 'Completa 100 tests' }
-            ];
-
-            const user = Auth.getCurrentUser() || {};
-            const unlocked = user.achievements || [];
-
-            const achievementsGrid = document.getElementById('achievementsGrid');
-            achievementsGrid.innerHTML = allAchievements.map(ach => {
-                const isUnlocked = unlocked.includes(ach.id);
-                return `
-                    <div class="bg-slate-900/50 border ${isUnlocked ? 'border-emerald-500/50' : 'border-slate-800/50'} rounded-xl p-4 text-center ${isUnlocked ? '' : 'opacity-50'}">
-                        <div class="text-3xl mb-2">${ach.icon}</div>
-                        <div class="font-semibold text-sm text-white">${ach.name}</div>
-                        <div class="text-xs text-slate-500 mt-1">${isUnlocked ? '✓ Desbloqueado' : ach.desc}</div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function initCharts(user) {
-            // Activity Chart
-            const activityCtx = document.getElementById('activityChart');
-            if (activityCtx) {
-                const days = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
-                const weeklyData = user.stats.weeklyActivity || [0, 0, 0, 0, 0, 0, 0];
-                
-                new Chart(activityCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: days,
-                        datasets: [{
-                            label: 'Preguntas',
-                            data: weeklyData,
-                            backgroundColor: 'rgba(16, 185, 129, 0.5)',
-                            borderColor: 'rgba(16, 185, 129, 1)',
-                            borderWidth: 2,
-                            borderRadius: 8
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { display: false }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                grid: { color: 'rgba(51, 65, 85, 0.5)' },
-                                ticks: { color: '#94a3b8' }
-                            },
-                            x: {
-                                grid: { display: false },
-                                ticks: { color: '#94a3b8' }
-                            }
-                        }
-                    }
-                });
-            }
-
-            // Block Progress Chart
-            const blockCtx = document.getElementById('blockChart');
-            if (blockCtx) {
-                const categoryStats = user.stats.categoryStats || { bloque1: { attempted: 0, correct: 0 }, bloque2: { attempted: 0, correct: 0 }, bloque3: { attempted: 0, correct: 0 } };
-                
-                const data = [
-                    { label: 'Bloque 1', correct: categoryStats.bloque1?.correct || 0, attempted: categoryStats.bloque1?.attempted || 0 },
-                    { label: 'Bloque 2', correct: categoryStats.bloque2?.correct || 0, attempted: categoryStats.bloque2?.attempted || 0 },
-                    { label: 'Bloque 3', correct: categoryStats.bloque3?.correct || 0, attempted: categoryStats.bloque3?.attempted || 0 }
-                ];
-
-                new Chart(blockCtx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: data.map(d => d.label),
-                        datasets: [{
-                            data: data.map(d => d.attempted || 1),
-                            backgroundColor: ['#10b981', '#06b6d4', '#8b5cf6'],
-                            borderWidth: 0
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                position: 'bottom',
-                                labels: { color: '#94a3b8', padding: 15 }
-                            }
-                        },
-                        cutout: '60%'
-                    }
-                });
-            }
-        }
-
-        function registerServiceWorker() {
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/js/sw.js')
-                    .then(reg => console.log('Service Worker registered'))
-                    .catch(err => console.log('Service Worker registration failed:', err));
-            }
-        }
-
-        // Toggle sidebar collapse (desktop)
-        function toggleSidebarCollapse() {
-            const sidebar = document.getElementById('sidebar');
-            const main = document.querySelector('main');
-            const footer = document.querySelector('footer');
-            const collapseIcon = document.getElementById('collapseIcon');
-            const texts = document.querySelectorAll('.sidebar-text');
-            
-            if (sidebar.classList.contains('w-64')) {
-                sidebar.classList.remove('w-64');
-                sidebar.classList.add('w-20');
-                main.classList.remove('md:ml-64');
-                main.classList.add('md:ml-20');
-                if (footer) {
-                    footer.classList.remove('md:ml-64');
-                    footer.classList.add('md:ml-20');
-                }
-                collapseIcon.classList.add('rotate-180');
-                texts.forEach(t => t.classList.add('opacity-0'));
-            } else {
-                sidebar.classList.remove('w-20');
-                sidebar.classList.add('w-64');
-                main.classList.remove('md:ml-20');
-                main.classList.add('md:ml-64');
-                if (footer) {
-                    footer.classList.remove('md:ml-20');
-                    footer.classList.add('md:ml-64');
-                }
-                collapseIcon.classList.remove('rotate-180');
-                texts.forEach(t => t.classList.remove('opacity-0'));
-            }
-        }
-
-        // Mobile sidebar toggle
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('-translate-x-full');
-        }
-
-        // Close sidebar when clicking outside on mobile
-        document.addEventListener('click', (e) => {
-            const sidebar = document.getElementById('sidebar');
-            const toggle = e.target.closest('button');
-            if (!sidebar.contains(e.target) && !toggle && window.innerWidth < 768) {
-                sidebar.classList.add('-translate-x-full');
-            }
-        });
-    </script>
+    <script src="js/pages/dashboard.js"></script>
 </body>
 </html>

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temas - Academia Tropa Permanente</title>
+    <meta name="description" content="Temario oficial en PDF para estudiar la permanencia del Ejército de Tierra.">
+    <meta name="theme-color" content="#020617">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="manifest" href="manifest.webmanifest">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,13 +26,9 @@
             </div>
         </div>
 
-        <!-- User Avatar + Info -->
+        <!-- User Avatar + Donate -->
         <div class="p-4 border-b border-slate-800 flex flex-col items-center gap-3">
-            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center font-bold text-white text-xl user-avatar" id="userAvatar">U</div>
-            <div class="text-center">
-                <div class="font-semibold text-white user-name">Usuario</div>
-                <div class="text-xs text-slate-400">Miembro desde <span class="user-member-since">-</span></div>
-            </div>
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center font-bold text-white" id="userAvatar">U</div>
             <a href="https://ko-fi.com/zabadev" target="_blank" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-400 hover:to-pink-400 transition-all text-white text-xs font-semibold">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                 <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Donar</span>
@@ -42,6 +42,12 @@
                     <a href="dashboard.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Inicio">
                         <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                         <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Inicio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="progreso.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Mi Espacio">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v18l7-5 7 5V3H5z"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Mi Espacio</span>
                     </a>
                 </li>
                 <li>
@@ -129,114 +135,9 @@
         </div>
     </footer>
 
-    <script src="js/components.js"></script>
-    <script src="js/auth.js"></script>
+    <script src="js/data/content.js"></script>
+    <script src="js/config.js"></script>
     <script src="js/app.js"></script>
-    <script>
-        const currentUser = Auth.getCurrentUser();
-        
-        const currentYearEl = document.getElementById('currentYear');
-        if (currentYearEl) currentYearEl.textContent = new Date().getFullYear();
-
-        const temas = [
-            { id: 1, title: 'Constitución Española 1978', desc: 'Texto completo - Títulos I al X', color: 'cyan', pdf: 'pdfs/01_constitucion.pdf' },
-            { id: 2, title: 'Ley Orgánica 5/2005 - Defensa Nacional', desc: 'Ley de Defensa Nacional', color: 'emerald', pdf: 'pdfs/02_ley_defensa_nacional.pdf' },
-            { id: 3, title: 'Ley 8/2006 - Tropa y Marinería', desc: 'Ley de Tropa y Marinería', color: 'blue', pdf: 'pdfs/03_ley_tropa_marineria.pdf' },
-            { id: 4, title: 'RD 205/2024 - Ministerio de Defensa', desc: 'Estructura orgánica del Ministerio', color: 'purple', pdf: 'pdfs/04_real_decreto_205_2024_ministerio_defensa.pdf' },
-            { id: 5, title: 'Ley 39/2007 - Carrera Militar', desc: 'Ley de la carrera militar', color: 'amber', pdf: 'pdfs/06_ley_39_2007_carrera_militar.pdf' },
-            { id: 6, title: 'Reales Ordenanzas FAS', desc: 'RD 96/2009 - Reales Ordenanzas', color: 'rose', pdf: 'pdfs/07_reales_ordenanzas_fas.pdf' },
-            { id: 7, title: 'LO 9/2011 - Derechos y Deberes FAS', desc: 'Derechos y deberes de los militares', color: 'teal', pdf: 'pdfs/08_ley_organica_9_2011_derechos_deberes_fas.pdf' },
-            { id: 8, title: 'LO 8/2014 - Régimen Disciplinario', desc: 'Régimen Disciplinario de las FAS', color: 'indigo', pdf: 'pdfs/09_ley_organica_8_2014_regimen_disciplinario_fas.pdf' },
-            { id: 9, title: 'Ley 36/2015 - Seguridad Nacional', desc: 'Ley de Seguridad Nacional', color: 'pink', pdf: 'pdfs/10_ley_36_2015_seguridad_nacional.pdf' },
-            { id: 10, title: 'Ley 40/2015 - Régimen Jurídico SP', desc: 'Régimen Jurídico del Sector Público', color: 'cyan', pdf: 'pdfs/11_ley_40_2015_regimen_juridico.pdf' },
-            { id: 11, title: 'RD 521/2020 - Organización básica FAS', desc: 'Organización básica de las FAS', color: 'emerald', pdf: 'pdfs/12_real_decreto_521_2020_organizacion_basica_fas.pdf' },
-            { id: 12, title: 'LO 3/2007 - Igualdad', desc: 'Igualdad efectiva entre mujeres y hombres', color: 'blue', pdf: 'pdfs/13_ley_organica_3_2007_igualdad.pdf' },
-            { id: 13, title: 'RD 176/2014 - Iniciativas y Quejas', desc: 'Tramitación de iniciativas y quejas', color: 'purple', pdf: 'pdfs/14_real_decreto_176_2014_iniciativas_quejas.pdf' },
-            { id: 14, title: 'Ley 39/2015 - PAC', desc: 'Procedimiento Administrativo Común', color: 'amber', pdf: 'pdfs/15_ley_39_2015_procedimiento_administrativo.pdf' },
-            { id: 15, title: 'Orden DEF/111/2019 - Observatorio', desc: 'Observatorio Militar para la igualdad', color: 'rose', pdf: 'pdfs/16_orden_def_111_2019_observatorio_igualdad.pdf' },
-            { id: 16, title: 'RD 1150/2021 - Estrategia SN', desc: 'Estrategia de Seguridad Nacional 2021', color: 'teal', pdf: 'pdfs/17_real_decreto_1150_2021_estrategia_seguridad.pdf' },
-            { id: 17, title: 'Instr. 55/2021 - EMAD', desc: 'Organización del EMAD', color: 'indigo', pdf: 'pdfs/18_instruccion_55_2021_organizacion_emad.pdf' },
-            { id: 18, title: 'Instr. 14/2021 - Ejército de Tierra', desc: 'Organización del Ejército de Tierra', color: 'pink', pdf: 'pdfs/19_instruccion_14_2021_organizacion_ejercito_tierra.pdf' },
-            { id: 19, title: 'Instr. 15/2021 - Armada', desc: 'Organización de la Armada', color: 'cyan', pdf: 'pdfs/20_instruccion_15_2021_organizacion_armada.pdf' },
-            { id: 20, title: 'Instr. 6/2025 - Ejército del Aire', desc: 'Organización del Ejército del Aire', color: 'emerald', pdf: 'pdfs/21_instruccion_6_2025_organizacion_ea.pdf' }
-        ];
-
-        function renderTemas(filter = '') {
-            const grid = document.getElementById('temasGrid');
-            const filtered = temas.filter(t => t.title.toLowerCase().includes(filter.toLowerCase()) || t.desc.toLowerCase().includes(filter.toLowerCase()));
-            const completed = currentUser.progress.temas || [];
-            
-            grid.innerHTML = filtered.map(tema => `
-                <div class="tema-card bg-slate-900/50 border border-slate-800/50 rounded-xl p-6 hover:border-${tema.color}-500/50 transition-all">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="w-12 h-12 rounded-xl bg-${tema.color}-500/20 flex items-center justify-center">
-                            <span class="text-${tema.color}-400 font-bold text-lg">${tema.id}</span>
-                        </div>
-                        ${completed.includes(tema.id) ? '<span class="text-emerald-400 text-sm">✓ Completado</span>' : ''}
-                    </div>
-                    <h3 class="font-semibold text-white text-lg mb-2">${tema.title}</h3>
-                    <p class="text-slate-400 text-sm mb-4">${tema.desc}</p>
-                    <div class="flex flex-wrap gap-2">
-                        <a href="${tema.pdf}" target="_blank" class="flex-1 text-center px-4 py-2 bg-${tema.color}-500/20 text-${tema.color}-400 hover:bg-${tema.color}-500/30 rounded-lg text-sm font-medium transition-colors">
-                            📖 Leer PDF
-                        </a>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function openTema(id) {
-            updateProgress('temas', id);
-            const tema = temas.find(t => t.id === id);
-            if (tema) {
-                window.open(tema.pdf, '_blank');
-            }
-        }
-
-        function filterTemas() {
-            const search = document.getElementById('searchInput').value;
-            renderTemas(search);
-        }
-
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('-translate-x-full');
-        }
-
-        function toggleSidebarCollapse() {
-            const sidebar = document.getElementById('sidebar');
-            const main = document.querySelector('main');
-            const footer = document.querySelector('footer');
-            const collapseIcon = document.getElementById('collapseIcon');
-            const texts = document.querySelectorAll('.sidebar-text');
-            
-            if (sidebar.classList.contains('w-64')) {
-                // Collapse
-                sidebar.classList.remove('w-64');
-                sidebar.classList.add('w-20');
-                main.classList.remove('md:ml-64');
-                main.classList.add('md:ml-20');
-                if (footer) {
-                    footer.classList.remove('md:ml-64');
-                    footer.classList.add('md:ml-20');
-                }
-                collapseIcon.classList.add('rotate-180');
-                texts.forEach(t => t.classList.add('opacity-0'));
-            } else {
-                // Expand
-                sidebar.classList.remove('w-20');
-                sidebar.classList.add('w-64');
-                main.classList.remove('md:ml-20');
-                main.classList.add('md:ml-64');
-                if (footer) {
-                    footer.classList.remove('md:ml-20');
-                    footer.classList.add('md:ml-64');
-                }
-                collapseIcon.classList.remove('rotate-180');
-                texts.forEach(t => t.classList.remove('opacity-0'));
-            }
-        }
-
-        renderTemas();
-    </script>
+    <script src="js/pages/temas.js"></script>
 </body>
 </html>

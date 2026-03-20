@@ -1,0 +1,17 @@
+{
+  "name": "Academia Tropa Permanente",
+  "short_name": "TropaPerma",
+  "description": "Academia estática para preparar la permanencia con tests, temario y recursos multimedia.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

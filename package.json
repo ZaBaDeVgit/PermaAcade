@@ -1,26 +1,7 @@
 {
-  "name": "tropa-permanente-academy",
-  "version": "2.0.0",
-  "description": "Academia online gratuita para aprobar las pruebas de acceso a Tropa Permanente del Ejército de Tierra",
-  "type": "module",
+  "name": "perma-academia",
+  "private": true,
   "scripts": {
-    "dev": "echo 'Use a local server like: npx serve' && exit 1",
-    "test": "vitest",
-    "test:run": "vitest run",
-    "test:coverage": "vitest run --coverage",
-    "test:watch": "vitest --watch"
-  },
-  "keywords": [
-    "education",
-    "military",
-    "spain",
-    "academy",
-    "tropa-permanente"
-  ],
-  "author": "ZaBaDeV",
-  "license": "MIT",
-  "devDependencies": {
-    "vitest": "^1.2.0",
-    "jsdom": "^24.0.0"
+    "check": "node scripts/check-static.js"
   }
 }

@@ -34,7 +34,10 @@ const testsData = {
             { q: "El Defensor del Pueblo es designado por:", options: ["Congreso y Senado", "El Gobierno", "El Rey", "El Tribunal Constitucional"], correct: 0 },
             { q: "El Tribunal de Cuentas depende de:", options: ["Las Cortes Generales", "El Gobierno", "El Rey", "Ministerio de Justicia"], correct: 0 },
             { q: "¿Qué son las Cortes Generales?", options: ["Órgano legislativo del Estado", "Órgano judicial", "Órgano ejecutivo", "Ninguno"], correct: 0 },
-            { q: "El Congreso de los Diputados tiene:", options: ["Función legislativa y de control", "Solo función legislativa", "Solo control", "Ninguna"], correct: 0 }
+            { q: "El Congreso de los Diputados tiene:", options: ["Función legislativa y de control", "Solo función legislativa", "Solo control", "Ninguna"], correct: 0 },
+            { q: "Según la Constitución, las Cortes Generales representan al:", options: ["Pueblo español", "Gobierno", "Poder judicial", "Senado exclusivamente"], correct: 0 },
+            { q: "Las Cortes Generales ejercen la potestad:", options: ["Legislativa del Estado", "Judicial del Estado", "Reglamentaria autonómica", "Sancionadora militar"], correct: 0 },
+            { q: "La Constitución configura a las Cortes Generales como unas Cámaras:", options: ["Bicamerales", "Unicamerales", "Consultivas", "Judiciales"], correct: 0 }
         ]
     },
     
@@ -57,7 +60,7 @@ const testsData = {
             { q: "La disolución de las Cortes la decreta:", options: ["El Rey, a propuesta del Presidente", "El Congreso", "El pueblo", "El Tribunal"], correct: 0 },
             { q: "El nuevo Gobierno toma posesión ante:", options: ["El Rey", "El Congreso", "El Senado", "El Tribunal Supremo"], correct: 0 },
             { q: "¿Qué son las sesiones del Consejo de Ministros?", options: ["Reuniones semanales del gobierno", "Solo mensuales", "Anuales", "No hay"], correct: 0 },
-            { q: "Los Órganos superiores de la Administración General del Estado son:", options: ["Secretarios de Estado y Untersecretarios", "Directores generales", "Jefes de servicio", "Ninguno"], correct: 0 },
+            { q: "Los órganos superiores de la Administración General del Estado son:", options: ["Secretarios de Estado y subsecretarios", "Directores generales", "Jefes de servicio", "Ninguno"], correct: 0 },
             { q: "Los organismos autónomos dependen de:", options: ["Un Ministerio", "La UE", "Las CCAA", "El Banco de España"], correct: 0 },
             { q: "¿Qué son las empresas públicas?", options: ["Derecho privado con control público", "Solo derecho privado", "Solo público", "No existen"], correct: 0 },
             { q: "La organización ministerial puede establecerse por:", options: ["Real Decreto", "Constitución", "Ley orgánica", "Orden ministerial"], correct: 0 },
@@ -65,7 +68,10 @@ const testsData = {
             { q: "El régimen de sesiones del Congreso incluye:", options: ["Sesiones ordinarias y extraordinarias", "Solo Madrid", "Solo cuando quiere", "Nunca"], correct: 0 },
             { q: "Las leyes de presupuestos las presenta:", options: ["El Gobierno", "El Congreso", "El Senado", "El Rey"], correct: 0 },
             { q: "¿Qué es la función ejecutiva?", options: ["Dirigir la Administración Pública", "Legislar", "Juzgar", "Controlar"], correct: 0 },
-            { q: "El Gobierno responde ante:", options: ["El Congreso de los Diputados", "El Senado", "El Rey", "El Tribunal Constitucional"], correct: 0 }
+            { q: "El Gobierno responde ante:", options: ["El Congreso de los Diputados", "El Senado", "El Rey", "El Tribunal Constitucional"], correct: 0 },
+            { q: "Según el artículo 97 de la Constitución, el Gobierno dirige la política:", options: ["Interior y exterior", "Solo interior", "Solo exterior", "Municipal"], correct: 0 },
+            { q: "El Gobierno cesa tras la celebración de:", options: ["Elecciones generales", "Elecciones municipales", "Elecciones europeas", "Referéndums"], correct: 0 },
+            { q: "Además del Presidente y los Ministros, la ley puede reconocer como miembros del Gobierno a:", options: ["Otros miembros", "Diputados autonómicos", "Magistrados", "Delegados provinciales"], correct: 0 }
         ]
     },
     
@@ -96,7 +102,10 @@ const testsData = {
             { q: "¿Qué es una comunidad uniprovincial?", options: ["Asturias, Cantabria, Madrid, etc.", "Andalucía", "Cataluña", "País Vasco"], correct: 0 },
             { q: "Las competencias exclusivas del Estado incluyen:", options: ["Defensa, relaciones internacionales", "Educación", "Sanidad", "Servicios sociales"], correct: 0 },
             { q: "Las competencias compartidas son:", options: ["Estado y CCAA pueden legislar", "Solo el Estado", "Solo las CCAA", "Ninguna"], correct: 0 },
-            { q: "El principio de autonomía local garantiza:", options: ["Autosuficiencia municipal", "Dependencia del Estado", "Solo grandes ciudades", "Ninguna"], correct: 0 }
+            { q: "El principio de autonomía local garantiza:", options: ["Autosuficiencia municipal", "Dependencia del Estado", "Solo grandes ciudades", "Ninguna"], correct: 0 },
+            { q: "Según la Constitución, el Estado se organiza territorialmente en municipios, provincias y:", options: ["Comunidades autónomas", "Comarcas", "Partidos judiciales", "Delegaciones"], correct: 0 },
+            { q: "La Constitución garantiza la realización efectiva del principio de:", options: ["Solidaridad", "Centralización", "Uniformidad económica absoluta", "Dependencia militar"], correct: 0 },
+            { q: "La autonomía de municipios, provincias y comunidades autónomas es para la gestión de sus:", options: ["Respectivos intereses", "Tribunales", "Fuerzas armadas", "Elecciones"], correct: 0 }
         ]
     },
     
@@ -127,7 +136,10 @@ const testsData = {
             { q: "Los Juzgados de Primera Instancia conocen de:", options: ["Asuntos civiles generales", "Solo penales", "Solo laborales", "Administrativos"], correct: 0 },
             { q: "El principio de juridicidad significa:", options: ["Actuación según derecho", "Arbitrio", "Politiqueo", "Ninguno"], correct: 0 },
             { q: "La tutela judicial efectiva es un derecho:", options: ["Fundamental", "Ordinario", "Secundario", "Ninguno"], correct: 0 },
-            { q: "El derecho a la defensa es:", options: ["Fundamental", "Ordinario", "Limitado", "Ninguno"], correct: 0 }
+            { q: "El derecho a la defensa es:", options: ["Fundamental", "Ordinario", "Limitado", "Ninguno"], correct: 0 },
+            { q: "La justicia emana del:", options: ["Pueblo", "Gobierno", "Rey", "Congreso"], correct: 0 },
+            { q: "Jueces y magistrados están sometidos únicamente al imperio de la:", options: ["Ley", "Costumbre", "Orden ministerial", "Disciplina partidista"], correct: 0 },
+            { q: "El órgano de gobierno del Poder Judicial es el:", options: ["Consejo General del Poder Judicial", "Tribunal Supremo", "Consejo de Estado", "Defensor del Pueblo"], correct: 0 }
         ]
     },
     
@@ -159,7 +171,10 @@ const testsData = {
             { q: "El dispositivo de las FAS se organiza en:", options: ["Fuerzas", "Regiones", "Provincias", "Municipios"], correct: 0 },
             { q: "La Defensa Coordinada incluye:", options: ["FAS y fuerzas de seguridad", "Solo FAS", "Solo policía", "Ninguna"], correct: 0 },
             { q: "El Estado de Sitio lo declara:", options: ["Cortes Generales", "El Gobierno", "El Rey", "El TC"], correct: 0 },
-            { q: "La movilización de las FAS la ordena:", options: ["El Gobierno", "El Rey", "El Congreso", "El JEMAD"], correct: 0 }
+            { q: "La movilización de las FAS la ordena:", options: ["El Gobierno", "El Rey", "El Congreso", "El JEMAD"], correct: 0 },
+            { q: "La Ley Orgánica 5/2005 regula la:", options: ["Defensa Nacional", "Seguridad Social", "Organización territorial", "Administración local"], correct: 0 },
+            { q: "La misión de las Fuerzas Armadas incluye garantizar la soberanía e independencia de:", options: ["España", "La UE", "Las comunidades autónomas", "La OTAN"], correct: 0 },
+            { q: "La Corona ejerce, en materia militar, el mando supremo de:", options: ["Las Fuerzas Armadas", "Las Cortes Generales", "Las fuerzas policiales", "La Administración Civil"], correct: 0 }
         ]
     },
     
@@ -172,7 +187,7 @@ const testsData = {
             { q: "Los principios de la Administración Pública son:", options: ["Legalidad, eficacia, jerarquía", "Solo eficacia", "Solo legalidad", "Ninguno"], correct: 0 },
             { q: "Los Órganos de las AAPP se clasifican en:", options: ["Superiores y subordinados", "Solo superiores", "Solo subordinados", "Ninguno"], correct: 0 },
             { q: "La Administración General del Estado se estructura en:", options: ["Ministerios y organismos", "Solo ministerios", "Solo organismos", "Ninguno"], correct: 0 },
-            { q: "Los Ministerios se dividen en:", options: ["Secretarías de Estado y Untersecretarías", "Direcciones Generales", "Subdirecciones", "Ninguno"], correct: 0 },
+            { q: "Los Ministerios se dividen en:", options: ["Secretarías de Estado y subsecretarías", "Direcciones Generales", "Subdirecciones", "Ninguno"], correct: 0 },
             { q: "Las relaciones interadministrativas se rigen por:", options: ["Cooperación, coordinación y control", "Competencia", "Independencia", "Ninguno"], correct: 0 },
             { q: "El principio de cooperación administrativa implica:", options: ["Actuar conjuntamente", "Competir", "Independizarse", "Ninguno"], correct: 0 },
             { q: "La coordinación administrativa significa:", options: ["Concertar actuación", "Competir", "Independizarse", "Ninguno"], correct: 0 },
@@ -180,7 +195,7 @@ const testsData = {
             { q: "La potestad sancionadora de la Administración requiere:", options: ["Legalidad, tipicidad, culpabilidad", "Solo dinero", "Juicio previo", "Aprobación real"], correct: 0 },
             { q: "Las sanciones administrativas prescriben en:", options: ["1 año si grave, 6 meses leve", "5 años", "Nunca", "2 años"], correct: 0 },
             { q: "La responsabilidad patrimonial de la Administración requiere:", options: ["Daño efectivo y evaluable", "Solo daño moral", "Queja previa", "Juicio"], correct: 0 },
-            { q: "Los actos administrativos son:", options: ["Presunción de legality", "Ilegales por defecto", "Solo gubernativos", "Irrecurrrubles"], correct: 0 },
+            { q: "Los actos administrativos son:", options: ["Presunción de legalidad", "Ilegales por defecto", "Solo gubernativos", "Irrecurribles"], correct: 0 },
             { q: "El silencio administrativo en procedimientos positivos:", options: ["Efectos desestimatorios", "Efectos estimatorios", "No tiene efectos", "Depende"], correct: 0 },
             { q: "Las notificaciones administrativas se hacen en:", options: ["Registro electrónico", "Solo correo postal", "Prensa", "Radio"], correct: 0 },
             { q: "El interesado puede actuar con:", options: ["Representante legal", "Solo personalmente", "Solo abogado", "Solo procurador"], correct: 0 },
@@ -191,7 +206,10 @@ const testsData = {
             { q: "La Administración Institucional se crea por:", options: ["Ley o Real Decreto", "Orden ministerial", "Instrucción", "Ninguno"], correct: 0 },
             { q: "Los principios del procedimiento administrativo son:", options: ["Economía, celeridad, eficacia", "Solo legalidad", "Solo burocracia", "Ninguno"], correct: 0 },
             { q: "El derecho administrativo se basa en:", options: ["Ley 39/2015 y 40/2015", "Código Civil", "Código Penal", "Leyes militares"], correct: 0 },
-            { q: "Los procedimientos administrativos deben ser:", options: ["Eficaces, ágiles y garantistas", "Secretos", "Ilimitados", "Costosos"], correct: 0 }
+            { q: "Los procedimientos administrativos deben ser:", options: ["Eficaces, ágiles y garantistas", "Secretos", "Ilimitados", "Costosos"], correct: 0 },
+            { q: "La Ley 40/2015 regula el régimen jurídico del:", options: ["Sector público", "Sector privado", "Poder judicial", "Mercado laboral"], correct: 0 },
+            { q: "Entre las materias del Título Preliminar de la Ley 40/2015 figura la relativa a los órganos:", options: ["colegiados de las administraciones públicas", "Constitucionales del Estado", "Militares aliados", "Parlamentarios europeos"], correct: 0 },
+            { q: "La Administración Institucional forma parte del:", options: ["Sector público institucional", "Poder judicial", "Poder legislativo", "Sector exterior"], correct: 0 }
         ]
     },
     
@@ -222,8 +240,11 @@ const testsData = {
             { q: "Los órganos subordinados del Ministerio son:", options: ["Organismos y entidades", "Solo organismos", "Solo entidades", "Ninguno"], correct: 0 },
             { q: "La estructura se articula mediante:", options: ["Órganos jerárquicos", "Órganos independientes", "Sin jerarquía", "Ninguno"], correct: 0 },
             { q: "El ámbito de la Defensa incluye:", options: ["Dimensión militar y civil", "Solo militar", "Solo civil", "Ninguno"], correct: 0 },
-            { q: "Los centros directivos del Ministerio son:", options: ["Secretarios, Untersecretarios, DG", "Solo DG", "Solo ministros", "Ninguno"], correct: 0 },
-            { q: "La estructura orgánica es competencia del:", options: ["Gobierno", "Congreso", "Rey", "CCAA"], correct: 0 }
+            { q: "Los centros directivos del Ministerio son:", options: ["Secretarios, subsecretarios y DG", "Solo DG", "Solo ministros", "Ninguno"], correct: 0 },
+            { q: "La estructura orgánica es competencia del:", options: ["Gobierno", "Congreso", "Rey", "CCAA"], correct: 0 },
+            { q: "El RD 205/2024 fue aprobado el:", options: ["27 de febrero de 2024", "28 de febrero de 2024", "19 de mayo de 2020", "11 de marzo de 2025"], correct: 0 },
+            { q: "El artículo 4 del RD 205/2024 regula la Dirección General de:", options: ["Estrategia e Innovación de la Industria de Defensa", "Personal", "Reclutamiento", "Infraestructuras militares"], correct: 0 },
+            { q: "El RD 205/2024 desarrolla la estructura orgánica básica del:", options: ["Ministerio de Defensa", "Estado Mayor de la Defensa", "Ejército de Tierra", "Consejo de Seguridad Nacional"], correct: 0 }
         ]
     },
     
@@ -239,7 +260,7 @@ const testsData = {
             { q: "Las unidades de las FAS se organizan en:", options: ["Grandes unidades y apoyo a la fuerza", "Solo combate", "Solo logística", "Solo admin"], correct: 0 },
             { q: "La preparación operativa de la Fuerza se realiza a través de:", options: ["Mando de Adiestramiento y Doctrina", "Universidad", "Ministerio", "Congreso"], correct: 0 },
             { q: "El apoyo logístico a la Fuerza lo realiza:", options: ["Mando de Apoyo Logístico", "La empresa", "CCAA", "Ayuntamiento"], correct: 0 },
-            { q: "Las UNQR (QBRN) dependen de:", options: ["Brigada de特殊", "Ministerio", "UE", "OTAN"], correct: 0 },
+            { q: "Las unidades QBRN dependen de:", options: ["La estructura de defensa NBQ/QBRN", "Ministerio", "UE", "OTAN"], correct: 0 },
             { q: "El régimen conjunto de las FAS implica:", options: ["Coordinación de todos los ejércitos", "Solo tierra", "Solo mar", "Solo aire"], correct: 0 },
             { q: "El régimen de las FAS se basa en:", options: ["Principio de unidad", "Regional", "Provincial", "Local"], correct: 0 },
             { q: "Los Cuarteles Generales de la NATO en España están en:", options: ["Rota (JFC) y Torrejón (CAOCTJ)", "Madrid", "Barcelona", "Sevilla"], correct: 0 },
@@ -255,7 +276,10 @@ const testsData = {
             { q: "Las operaciones pueden ser:", options: ["Nacionales e internacionales", "Solo internas", "Solo bilaterales", "Prohibidas"], correct: 0 },
             { q: "Las OAP (Operaciones de Apoyo a la Paz) son:", options: ["Misiones de paz ONU/OSCE", "Guerra", "Ejercicios", "Sociedad"], correct: 0 },
             { q: "El ámbito de la defensa incluye:", options: ["Prevención, respuesta, recuperación", "Solo respuesta", "Solo guerra", "Ninguno"], correct: 0 },
-            { q: "El régimen de las FAS se articula mediante:", options: ["Mando y control", "Sin mando", "Mando único", "Comités"], correct: 0 }
+            { q: "El régimen de las FAS se articula mediante:", options: ["Mando y control", "Sin mando", "Mando único", "Comités"], correct: 0 },
+            { q: "El RD 521/2020 establece la organización básica de:", options: ["Las Fuerzas Armadas", "Solo el Ejército de Tierra", "Solo la Armada", "Solo el EMAD"], correct: 0 },
+            { q: "En el Título preliminar del RD 521/2020 se regula el modelo de organización y la:", options: ["Transformación digital", "Jurisdicción militar", "Reserva voluntaria", "Política retributiva"], correct: 0 },
+            { q: "El artículo 4 del RD 521/2020 se refiere al:", options: ["Jefe de Estado Mayor de la Defensa", "Subsecretario de Defensa", "Rey", "Defensor del Pueblo"], correct: 0 }
         ]
     },
     
@@ -287,7 +311,10 @@ const testsData = {
             { q: "Las unidades de la Armada se organizan en:", options: ["Fuerzas y apoyo", "Solo barcos", "Solo infantes", "Ninguno"], correct: 0 },
             { q: "El régimen operativo depende de:", options: ["JEMAD", "Ministro", "Presidente", "Congreso"], correct: 0 },
             { q: "El régimen de la Defensa se articula mediante:", options: ["Mando y control", "Sin mando", "Mando único", "Comités"], correct: 0 },
-            { q: "El Jefe de Estado Mayor del ET (JEME) es:", options: ["General de cuatro estrellas", "General de tres", "Almirante", "Coronel"], correct: 0 }
+            { q: "El Jefe de Estado Mayor del ET (JEME) es:", options: ["General de cuatro estrellas", "General de tres", "Almirante", "Coronel"], correct: 0 },
+            { q: "La Instrucción 55/2021 desarrolla la organización del:", options: ["Estado Mayor de la Defensa", "Ministerio del Interior", "Congreso", "Consejo de Estado"], correct: 0 },
+            { q: "La Instrucción 14/2021 corresponde al desarrollo organizativo del:", options: ["Ejército de Tierra", "Ejército del Aire y del Espacio", "Ministerio de Defensa", "Consejo de Ministros"], correct: 0 },
+            { q: "La Instrucción 6/2025 desarrolla la organización básica del:", options: ["Ejército del Aire y del Espacio", "Ejército de Tierra", "Estado Mayor Conjunto", "Mando Operativo Terrestre"], correct: 0 }
         ]
     },
     
@@ -323,7 +350,10 @@ const testsData = {
             { q: "El régimen profesional incluye:", options: ["Carrera y régimen profesional", "Solo rango", "Solo destino", "Ninguno"], correct: 0 },
             { q: "La tropa temporal puede convertirse en:", options: ["Permanente", "Solo temporal", "Voluntario", "Reserva"], correct: 0 },
             { q: "Los requisitos de ingreso en tropa incluyen:", options: ["Edad, titulación, condiciones físicas", "Solo edad", "Solo titulación", "Ninguno"], correct: 0 },
-            { q: "El proceso selectivo de tropa incluye:", options: ["Oposición y concurso", "Solo oposición", "Solo concurso", "Ninguno"], correct: 0 }
+            { q: "El proceso selectivo de tropa incluye:", options: ["Oposición y concurso", "Solo oposición", "Solo concurso", "Ninguno"], correct: 0 },
+            { q: "La Ley 39/2007 regula la:", options: ["Carrera militar", "Seguridad Nacional", "Organización territorial", "Unión Europea"], correct: 0 },
+            { q: "La Ley 8/2006 regula específicamente a la:", options: ["Tropa y Marinería", "Guardia Civil", "Policía Nacional", "Administración civil"], correct: 0 },
+            { q: "La modificación del artículo 20.3 de la Ley 8/2006 se produjo mediante la Ley:", options: ["11/2020", "39/2015", "40/2015", "3/2007"], correct: 0 }
         ]
     },
     
@@ -355,7 +385,10 @@ const testsData = {
             { q: "La desobediencia es:", options: ["Infracción muy grave", "Infracción leve", "Solo error", "Ninguna"], correct: 0 },
             { q: "El abandono de destino es:", options: ["Infracción muy grave", "Leve", "Error", "Ninguna"], correct: 0 },
             { q: "La integridad física del militar se protege mediante:", options: ["Seguridad y salud", "Solo seguro", "Solo salud", "Ninguno"], correct: 0 },
-            { q: "El deber del militar incluye:", options: ["Usar distintivos adecuados", "Solo uniforme", "Solo armas", "Ninguno"], correct: 0 }
+            { q: "El deber del militar incluye:", options: ["Usar distintivos adecuados", "Solo uniforme", "Solo armas", "Ninguno"], correct: 0 },
+            { q: "Las Reales Ordenanzas para las Fuerzas Armadas fueron aprobadas por el Real Decreto:", options: ["96/2009", "176/2014", "521/2020", "205/2024"], correct: 0 },
+            { q: "Las Reales Ordenanzas fueron aprobadas el:", options: ["6 de febrero de 2009", "19 de mayo de 2020", "21 de marzo de 2014", "22 de marzo de 2007"], correct: 0 },
+            { q: "La disposición adicional única del RD 96/2009 se refiere a la aplicación a:", options: ["La Guardia Civil", "La Policía Local", "La Armada", "La OTAN"], correct: 0 }
         ]
     },
     
@@ -387,7 +420,10 @@ const testsData = {
             { q: "Los límites a derechos se justifican por:", options: ["Necesidades de la defensa", "Conveniencia", "Política", "Ninguno"], correct: 0 },
             { q: "El derecho de petición incluye:", options: ["Presentar solicitudes", "Solo quejas", "Solo recursos", "Ninguno"], correct: 0 },
             { q: "El derecho a la tutela judicial efectiva:", options: ["Pleno con especialidades", "Limitado", "No reconocido", "Ninguno"], correct: 0 },
-            { q: "Los derechos se ejercen según:", options: ["Normativa militar", "Solo Constitución", "Solo leyes", "Ninguno"], correct: 0 }
+            { q: "Los derechos se ejercen según:", options: ["Normativa militar", "Solo Constitución", "Solo leyes", "Ninguno"], correct: 0 },
+            { q: "La Ley Orgánica 9/2011 regula los derechos y deberes de los miembros de:", options: ["Las Fuerzas Armadas", "Las Cortes Generales", "Las policías autonómicas", "La Administración de Justicia"], correct: 0 },
+            { q: "La Ley Orgánica 9/2011 es de fecha:", options: ["27 de julio de 2011", "4 de diciembre de 2014", "22 de marzo de 2007", "1 de octubre de 2015"], correct: 0 },
+            { q: "La titularidad y ejercicio de los derechos se regula en el artículo:", options: ["3", "1", "10", "20"], correct: 0 }
         ]
     },
     
@@ -410,7 +446,7 @@ const testsData = {
             { q: "El procedimiento disciplinario puede ser:", options: ["Ordinario y sumario", "Solo ordinario", "Solo sumario", "Ninguno"], correct: 0 },
             { q: "El procedimiento disciplinario es:", options: ["Garantizador de derechos", "Solo castigo", "Solo rápido", "Ninguno"], correct: 0 },
             { q: "El expediente disciplinario incluye:", options: ["Instrucción, audiencia, resolución", "Solo instrucción", "Solo resolución", "Ninguna"], correct: 0 },
-            { q: "El interesado puede:", options: ["Presentary defenderse", "Solo recibir", "Solo aceptar", "Ninguno"], correct: 0 },
+            { q: "El interesado puede:", options: ["Presentar y defenderse", "Solo recibir", "Solo aceptar", "Ninguno"], correct: 0 },
             { q: "Las sanciones se ejecutan según:", options: ["Gravedad", "Solo criterio", "Arbitrio", "Ninguno"], correct: 0 },
             { q: "La reincidencia agrava:", options: ["La sanción", "No afecta", "La reduce", "Ninguno"], correct: 0 },
             { q: "Las circunstancias atenuantes incluyen:", options: ["Arrepentimiento, cumplimiento", "Solo edad", "Solo rango", "Ninguna"], correct: 0 },
@@ -419,7 +455,10 @@ const testsData = {
             { q: "El arresto militar incluye:", options: ["Internamiento", "Solo libertad", "Solo multa", "Ninguna"], correct: 0 },
             { q: "Las sanciones se notifican:", options: ["Al interesado y superiores", "Solo al interesado", "Solo al superior", "Ninguno"], correct: 0 },
             { q: "Contra la sanción puede interponerse:", options: ["Recurso", "Solo reclamación", "Nada", "Solo demanda"], correct: 0 },
-            { q: "Las infracciones se aplican a:", options: ["Todos los militares", "Solo tropa", "Solo oficiales", "Civil"], correct: 0 }
+            { q: "Las infracciones se aplican a:", options: ["Todos los militares", "Solo tropa", "Solo oficiales", "Civil"], correct: 0 },
+            { q: "La Ley Orgánica 8/2014 regula el régimen disciplinario de:", options: ["Las Fuerzas Armadas", "Las comunidades autónomas", "Los ministerios civiles", "La OTAN"], correct: 0 },
+            { q: "La Ley Orgánica 8/2014 fue aprobada el:", options: ["4 de diciembre de 2014", "27 de julio de 2011", "21 de marzo de 2014", "28 de septiembre de 2015"], correct: 0 },
+            { q: "Según su índice, la LO 8/2014 incluye un título preliminar de:", options: ["Disposiciones generales", "Procedimiento electoral", "Política exterior", "Defensa europea"], correct: 0 }
         ]
     },
     
@@ -443,7 +482,7 @@ const testsData = {
             { q: "Las quejas son:", options: ["Derecho del militar", "Obligación", "Prohibido", "Ninguno"], correct: 0 },
             { q: "Las quejas deben ser:", options: ["Veraces y respetuosas", "Solo veraces", "Solo respetuosas", "Ninguna"], correct: 0 },
             { q: "El procedimiento incluye:", options: ["Recepción, tramitación, respuesta", "Solo recepción", "Solo respuesta", "Ninguno"], correct: 0 },
-            { q: "Las iniciativas collectives firman:", options: ["Todos los solicitantes", "Solo uno", "Solo representantes", "Ninguno"], correct: 0 },
+            { q: "Las iniciativas colectivas firman:", options: ["Todos los solicitantes", "Solo uno", "Solo representantes", "Ninguno"], correct: 0 },
             { q: "El plazo para presentar es de:", options: ["No hay plazo", "30 días", "60 días", "1 año"], correct: 0 },
             { q: "El militar puede presentar:", options: ["Iniciativas y quejas", "Solo iniciativas", "Solo quejas", "Ninguna"], correct: 0 },
             { q: "Las iniciativas se clasifican en:", options: ["De régimen de personal y condiciones de vida", "Solo personales", "Solo condiciones", "Ninguna"], correct: 0 },
@@ -451,7 +490,10 @@ const testsData = {
             { q: "Si la iniciativa es estimada se:", options: ["Ejecuta si es posible", "Archiva", "No hace nada", "Solo responde"], correct: 0 },
             { q: "El procedimiento es:", options: ["Garantista", "Arbitrario", "Discrecional", "Ninguno"], correct: 0 },
             { q: "El interesado puede aportar:", options: ["Documentación", "Solo oral", "Solo escrito", "Ninguno"], correct: 0 },
-            { q: "El competente para resolver es:", options: ["Superior jerárquico", "El mismo", "Tribunal", "Ninguno"], correct: 0 }
+            { q: "El competente para resolver es:", options: ["Superior jerárquico", "El mismo", "Tribunal", "Ninguno"], correct: 0 },
+            { q: "El RD 176/2014 regula la tramitación de las iniciativas y:", options: ["Quejas", "Sanciones penales", "Recursos de amparo", "Nombramientos"], correct: 0 },
+            { q: "El RD 176/2014 es de fecha:", options: ["21 de marzo de 2014", "4 de diciembre de 2014", "8 de febrero de 2019", "1 de octubre de 2015"], correct: 0 },
+            { q: "Las iniciativas y quejas del RD 176/2014 se refieren al régimen de personal y a las:", options: ["Condiciones de vida", "Elecciones generales", "Operaciones exteriores", "Normas tributarias"], correct: 0 }
         ]
     },
     
@@ -483,7 +525,10 @@ const testsData = {
             { q: "Los planes de igualdad incluyen:", options: ["Medidas, objetivos, evaluación", "Solo medidas", "Solo objetivos", "Ninguno"], correct: 0 },
             { q: "Las diferencias de retribución:", options: ["Prohibido sin justificación", "Allowed", "Solo positivo", "Ninguno"], correct: 0 },
             { q: "La representación sindical debe:", options: ["Tener equilibrio de género", "No importa", "Solo hombres", "Solo mujeres"], correct: 0 },
-            { q: "Las sanciones por discriminación incluyen:", options: ["Graves para discriminación", "Leves", "Ningunas", "Solo leves"], correct: 0 }
+            { q: "Las sanciones por discriminación incluyen:", options: ["Graves para discriminación", "Leves", "Ningunas", "Solo leves"], correct: 0 },
+            { q: "La LO 3/2007 fue aprobada el:", options: ["22 de marzo de 2007", "27 de julio de 2011", "8 de febrero de 2019", "1 de octubre de 2015"], correct: 0 },
+            { q: "El objeto de la LO 3/2007 es hacer efectivo el derecho de igualdad de trato entre:", options: ["Mujeres y hombres", "Militares y civiles", "Nacionales y extranjeros", "Oficiales y tropa"], correct: 0 },
+            { q: "El Título I de la LO 3/2007 trata sobre el principio de igualdad y la tutela contra la:", options: ["Discriminación", "Jerarquía", "Sanción", "Movilidad"], correct: 0 }
         ]
     },
     
@@ -515,7 +560,10 @@ const testsData = {
             { q: "La mediación en acoso:", options: ["Puede utilizarse si ambas partes quieren", "Obligatoria", "Prohibida", "Nunca"], correct: 0 },
             { q: "La documentación del procedimiento es:", options: ["Confidencial", "Pública", "Solo para víctima", "Ninguno"], correct: 0 },
             { q: "Las víctimas de violencia de género tienen:", options: ["Derechos específicos", "Iguales que todas", "Menos derechos", "Ninguno"], correct: 0 },
-            { q: "La difusión del Protocolo llega:", options: ["A todos los militares", "Solo a mujeres", "Solo a mandos", "Ninguno"], correct: 0 }
+            { q: "La difusión del Protocolo llega:", options: ["A todos los militares", "Solo a mujeres", "Solo a mandos", "Ninguno"], correct: 0 },
+            { q: "La Orden DEF/111/2019 regula la estructura y funcionamiento del:", options: ["Observatorio Militar para la Igualdad", "Consejo de Defensa", "Tribunal Militar Central", "ISFAS"], correct: 0 },
+            { q: "Según la Orden DEF/111/2019, el Observatorio depende directamente del:", options: ["Subsecretario de Defensa", "JEMAD", "Ministro del Interior", "Congreso"], correct: 0 },
+            { q: "Las Unidades de Protección frente al Acoso se regulan por la Orden:", options: ["DEF/482/2016", "DEF/111/2019", "DEF/264/2023", "DEF/710/2020"], correct: 0 }
         ]
     },
     
@@ -535,7 +583,7 @@ const testsData = {
             { q: "Las notificaciones se hacen en:", options: ["Registro electrónico", "Solo correo", "Solo presencial", "Ninguno"], correct: 0 },
             { q: "El plazo para resolver es de:", options: ["3 meses si no hay otro", "6 meses", "1 mes", "Sin límite"], correct: 0 },
             { q: "El expediente incluye:", options: ["Documentación de todo el procedimiento", "Solo la solicitud", "Solo la resolución", "Ninguno"], correct: 0 },
-            { q: "Los actos administrativos son:", options: ["Presunción de legalidad", "Ilegales por defecto", "Solo gubernativos", "Irrecurrrubles"], correct: 0 },
+            { q: "Los actos administrativos son:", options: ["Presunción de legalidad", "Ilegales por defecto", "Solo gubernativos", "Irrecurribles"], correct: 0 },
             { q: "Contra los actos puede interponerse:", options: ["Recurso administrativo", "Demanda civil", "Denuncia penal", "Nada"], correct: 0 },
             { q: "El recurso de alzada es ante:", options: ["Superior jerárquico", "El mismo órgano", "Tribunal", "Ninguno"], correct: 0 },
             { q: "El recurso potestativo de reposición es ante:", options: ["El mismo órgano", "Superior", "Tribunal", "Ninguno"], correct: 0 },
@@ -544,10 +592,13 @@ const testsData = {
             { q: "Son actos anulables:", options: ["Los que vulneran la ley", "Los nulos", "Los vigentes", "Ninguno"], correct: 0 },
             { q: "Los principios del procedimiento incluyen:", options: ["Impulso, economía, celeridad", "Solo rigor", "Solo formalismo", "Ninguna"], correct: 0 },
             { q: "El derecho de los interesados incluye:", options: ["Derecho a información y asistencia", "Solo información", "Solo asistencia", "Ninguno"], correct: 0 },
-            { q: "La representación ante la Admin. requiere:", options: ["Poder o representación", "Solo poder", "Solo现场", "Ninguno"], correct: 0 },
+            { q: "La representación ante la Admin. requiere:", options: ["Poder o representación", "Solo poder", "Solo presencia física", "Ninguno"], correct: 0 },
             { q: "Los medios de prueba pueden ser:", options: ["Documental, pericial, testifical", "Solo documental", "Solo testifical", "Ninguna"], correct: 0 },
             { q: "La resolución administrativa debe ser:", options: ["Motivada", "Sin motivación", "Opcional", "Ninguna"], correct: 0 },
-            { q: "La ejecutividad de los actos es:", options: ["Inmediata", "Solo judicial", "Solo legislativa", "Ninguna"], correct: 0 }
+            { q: "La ejecutividad de los actos es:", options: ["Inmediata", "Solo judicial", "Solo legislativa", "Ninguna"], correct: 0 },
+            { q: "La Ley 39/2015 regula el Procedimiento Administrativo Común de las:", options: ["Administraciones Públicas", "Fuerzas Armadas exclusivamente", "Cortes Generales", "Misiones internacionales"], correct: 0 },
+            { q: "Según el índice de la Ley 39/2015, el Título I trata de:", options: ["Los interesados en el procedimiento", "Los órganos constitucionales", "Las Fuerzas Armadas", "La Seguridad Nacional"], correct: 0 },
+            { q: "La Ley 39/2015 fue aprobada el:", options: ["1 de octubre de 2015", "28 de septiembre de 2015", "22 de marzo de 2007", "4 de diciembre de 2014"], correct: 0 }
         ]
     },
     
@@ -583,7 +634,10 @@ const testsData = {
             { q: "El espacio cibernético es:", options: ["Prioridad en seguridad", "Secundario", "No incluido", "Ninguno"], correct: 0 },
             { q: "La seguridad económica incluye:", options: ["Proteger intereses económicos", "Solo defensa", "Solo inteligencia", "Ninguna"], correct: 0 },
             { q: "La seguridad energética incluye:", options: ["Garantizar suministro", "Solo producción", "Solo distribución", "Ninguno"], correct: 0 },
-            { q: "La seguridad sanitaria incluye:", options: ["Preparación ante pandemias", "Solo hospitales", "Solo medicamentos", "Ninguna"], correct: 0 }
+            { q: "La seguridad sanitaria incluye:", options: ["Preparación ante pandemias", "Solo hospitales", "Solo medicamentos", "Ninguna"], correct: 0 },
+            { q: "La Ley 36/2015, de Seguridad Nacional, es de fecha:", options: ["28 de septiembre de 2015", "1 de octubre de 2015", "28 de diciembre de 2021", "19 de mayo de 2020"], correct: 0 },
+            { q: "El RD 1150/2021 aprueba la Estrategia de Seguridad Nacional:", options: ["2021", "2017", "2015", "2024"], correct: 0 },
+            { q: "El RD 1150/2021 deroga el Real Decreto:", options: ["1008/2017", "205/2024", "521/2020", "176/2014"], correct: 0 }
         ]
     },
     
@@ -615,7 +669,10 @@ const testsData = {
             { q: "Las operaciones de estabilidad son:", options: ["Mantenimiento de la paz", "Solo guerra", "Solo defensa", "Ninguna"], correct: 0 },
             { q: "La ayuda humanitaria es:", options: ["Apoyo a poblaciones", "Solo militar", "Solo político", "Ninguno"], correct: 0 },
             { q: "Las evacuaciones son para:", options: ["Protección de nacionales", "Solo ciudadanos", "Solo militares", "Ninguna"], correct: 0 },
-            { q: "La doctrina se actualiza:", options: ["Periódicamente", "Solo una vez", "Nunca", "Solo si hay guerra"], correct: 0 }
+            { q: "La doctrina se actualiza:", options: ["Periódicamente", "Solo una vez", "Nunca", "Solo si hay guerra"], correct: 0 },
+            { q: "La versión vigente citada en el temario es la PDC-01:", options: ["(B)", "(A)", "(C)", "(D)"], correct: 0 },
+            { q: "La PDC-01(B) fue firmada el 17 de julio de:", options: ["2024", "2021", "2018", "2015"], correct: 0 },
+            { q: "La PDC-01(B) aborda, entre otras materias, el mando y control y la integración en estructuras:", options: ["Multinacionales", "Judiciales", "Locales", "Sindicales"], correct: 0 }
         ]
     },
     
@@ -647,7 +704,10 @@ const testsData = {
             { q: "España ha sido miembro no permanente:", options: ["Varias veces", "Nunca", "Una vez", "Dos veces"], correct: 0 },
             { q: "La cooperación de España con la ONU incluye:", options: ["Cooperación al desarrollo", "Solo militar", "Solo comercio", "Ninguno"], correct: 0 },
             { q: "La relación de la ONU con la UE incluye:", options: ["Cooperación estratégica", "Solo económica", "Solo comercial", "Ninguna"], correct: 0 },
-            { q: "Las fuerzas españolas en misiones ONU son:", options: ["Contribución significativa", "Ninguna", "Mínima", "Solo observadores"], correct: 0 }
+            { q: "Las fuerzas españolas en misiones ONU son:", options: ["Contribución significativa", "Ninguna", "Mínima", "Solo observadores"], correct: 0 },
+            { q: "La ONU cuenta con órganos principales en número de:", options: ["Seis", "Cuatro", "Ocho", "Diez"], correct: 0 },
+            { q: "La Carta de las Naciones Unidas entró en vigor en:", options: ["1945", "1949", "1955", "1978"], correct: 0 },
+            { q: "España ingresó en la ONU en:", options: ["1955", "1945", "1982", "1986"], correct: 0 }
         ]
     },
     
@@ -666,20 +726,23 @@ const testsData = {
             { q: "Las operaciones de la OTAN incluyen:", options: ["De gestión de crisis", "Solo defensivas", "Solo territoriales", "Ninguna"], correct: 0 },
             { q: "El concepto estratégico de la OTAN:", options: ["Define misión y prioridades", "Solo estructura", "Solo presupuesto", "Ninguno"], correct: 0 },
             { q: "La disuasión incluye:", options: ["Nuclear y convencional", "Solo nuclear", "Solo convencional", "Ninguna"], correct: 0 },
-            { q: "La relación de España con la OTAVN incluye:", options: ["Bases y personal", "Solo dinero", "Solo comercio", "Ninguno"], correct: 0 },
+            { q: "La relación de España con la OTAN incluye:", options: ["Bases y personal", "Solo dinero", "Solo comercio", "Ninguno"], correct: 0 },
             { q: "El Cuartel General de Allied Force Command está en:", options: ["Rota", "Madrid", "Barcelona", "Sevilla"], correct: 0 },
             { q: "La respuesta aliada es:", options: ["Colectiva e individual", "Solo colectiva", "Solo individual", "Ninguna"], correct: 0 },
             { q: "Las capacidades incluyen:", options: ["Aéreas, terrestres, marítimas, cibernéticas", "Solo terrestres", "Solo aéreas", "Ninguna"], correct: 0 },
             { q: "La cooperación euro-atlántica es con:", options: ["Países socios", "Solo miembros", "Solo Europa", "Ninguno"], correct: 0 },
-            { q: "La OTAVN en Afghanistan fue:", options: ["Misión ISAF", "Solo USA", "Solo UE", "Ninguna"], correct: 0 },
+            { q: "La OTAN en Afghanistan fue:", options: ["Misión ISAF", "Solo USA", "Solo UE", "Ninguna"], correct: 0 },
             { q: "La NATO Response Force es:", options: ["Fuerza de respuesta rápida", "Fuerza permanente", "Solo terrestre", "Ninguna"], correct: 0 },
             { q: "El Defense Planning es:", options: ["Planificación de defensa", "Solo presupuesto", "Solo estructura", "Ninguno"], correct: 0 },
             { q: "Los objetivos de capacidad incluyen:", options: ["2% del PIB en defensa", "1%", "5%", "Ninguno"], correct: 0 },
             { q: "La capacidad cibernética es:", options: ["Protección del espacio cibernético", "Solo ataque", "Solo defensa", "Ninguno"], correct: 0 },
             { q: "Los ejercicios incluyen:", options: ["Alliance Strike", "Solo nacionales", "Solo bilaterales", "Ninguna"], correct: 0 },
             { q: "La respuesta híbrida es contra:", options: ["Amenazas híbridas", "Solo militares", "Solo políticas", "Ninguno"], correct: 0 },
-            { q: "Los socios de la OTAVN incluyen:", options: ["Ucrania, Georgia, Finlandia", "Solo Europa", "Solo América", "Ninguna"], correct: 0 },
-            { q: "La contribución de España a la OTAVN es:", options: ["Significativa", "Mínima", "Ninguna", "Solo observador"], correct: 0 }
+            { q: "Los socios de la OTAN incluyen:", options: ["Ucrania, Georgia, Finlandia", "Solo Europa", "Solo América", "Ninguna"], correct: 0 },
+            { q: "La contribución de España a la OTAN es:", options: ["Significativa", "Mínima", "Ninguna", "Solo observador"], correct: 0 },
+            { q: "La OTAN se fundó en el año:", options: ["1949", "1945", "1955", "1991"], correct: 0 },
+            { q: "España ingresó en la OTAN en:", options: ["1982", "1986", "1955", "1992"], correct: 0 },
+            { q: "Entre las grandes estructuras militares de la OTAN figuran ACO y:", options: ["ACT", "ONU", "OSCE", "UEO"], correct: 0 }
         ]
     },
     
@@ -711,7 +774,10 @@ const testsData = {
             { q: "La relación con la UE es:", options: ["Complementariedad", "Competencia", "Ninguna", "Solo"], correct: 0 },
             { q: "El ámbito económico incluye:", options: ["Libre comercio, desarrollo", "Solo ayuda", "Solo comercio", "Ninguno"], correct: 0 },
             { q: "El ámbito ambiental es:", options: ["Cooperación ambiental", "Solo control", "Solo protección", "Ninguna"], correct: 0 },
-            { q: "La participación de España en la OSCE es:", options: ["Activa y comprometida", "Pasiva", "Solo observador", "Ninguno"], correct: 0 }
+            { q: "La participación de España en la OSCE es:", options: ["Activa y comprometida", "Pasiva", "Solo observador", "Ninguno"], correct: 0 },
+            { q: "La denominación OSCE se adopta en:", options: ["1995", "1949", "1982", "2001"], correct: 0 },
+            { q: "La OSCE cuenta con Estados participantes en número de:", options: ["57", "27", "32", "46"], correct: 0 },
+            { q: "La OSCE procede históricamente de la:", options: ["CSCE", "CEE", "UEO", "NATO"], correct: 0 }
         ]
     },
     
@@ -735,7 +801,7 @@ const testsData = {
             { q: "La política de seguridad incluye:", options: ["Cooperación policial y judicial", "Solo policial", "Solo judicial", "Ninguno"], correct: 0 },
             { q: "La Carta de Derechos Fundamentales es:", options: ["Carta de Derechos Fundamentales", "Solo constitución", "Solo tratados", "Ninguna"], correct: 0 },
             { q: "La política europea de defensa incluye:", options: ["Capacidades conjuntas", "Solo armas", "Solo tropas", "Ninguno"], correct: 0 },
-            { q: "La relación con la OTAVN es:", options: ["Cooperación estratégica", "Competencia", "Ninguna", "Solo económica"], correct: 0 },
+            { q: "La relación con la OTAN es:", options: ["Cooperación estratégica", "Competencia", "Ninguna", "Solo económica"], correct: 0 },
             { q: "La trata de seres humanos incluye:", options: ["Combatir tráfico personas", "Solo migración", "Solo asilo", "Ninguno"], correct: 0 },
             { q: "La política energética es:", options: ["Energía, medio ambiente", "Solo energía", "Solo medio", "Ninguna"], correct: 0 },
             { q: "El programa Erasmus es:", options: ["Educación, cultura, juventud", "Solo educación", "Solo cultura", "Ninguno"], correct: 0 },
@@ -743,7 +809,10 @@ const testsData = {
             { q: "Los batallones multinacionales son:", options: ["Batallones multinacionales", "Solo nacionales", "Solo bilaterales", "Ninguno"], correct: 0 },
             { q: "La industria de defensa incluye:", options: ["Industria de defensa", "Solo armas", "Solo tropas", "Ninguna"], correct: 0 },
             { q: "Los acuerdos con terceros países incluyen:", options: ["Acuerdos, socios estratégicos", "Solo aliados", "Solo vecinos", "Ninguno"], correct: 0 },
-            { q: "La participación de España en la UE es:", options: ["Activa y constructiva", "Pasiva", "Solo observador", "Ninguna"], correct: 0 }
+            { q: "La participación de España en la UE es:", options: ["Activa y constructiva", "Pasiva", "Solo observador", "Ninguna"], correct: 0 },
+            { q: "La Unión Europea nace con el Tratado de:", options: ["Maastricht", "Washington", "Lisboa", "Roma"], correct: 0 },
+            { q: "España se incorporó a las Comunidades Europeas en:", options: ["1986", "1982", "1992", "1955"], correct: 0 },
+            { q: "Entre las instituciones de la UE se encuentra el Tribunal de Justicia de la:", options: ["Unión Europea", "OTAN", "OSCE", "ONU"], correct: 0 }
         ]
     },
     
@@ -775,7 +844,10 @@ const testsData = {
             { q: "El reconocimiento de misiones incluye:", options: ["Por misiones realizadas", "No se reconoce", "Solo por una", "Ninguno"], correct: 0 },
             { q: "Los veteranos de misiones tienen:", options: ["Derechos específicos", "Solo veteranos", "Solo militares", "Ninguna"], correct: 0 },
             { q: "La promoción por méritos de guerra permite:", options: ["Ascenso por méritos de guerra", "Solo antigüedad", "Solo oposición", "Ninguno"], correct: 0 },
-            { q: "La tradición de España en misiones es:", options: ["Tradición y compromiso", "Rechazo", "Indiferencia", "Ninguna"], correct: 0 }
+            { q: "La tradición de España en misiones es:", options: ["Tradición y compromiso", "Rechazo", "Indiferencia", "Ninguna"], correct: 0 },
+            { q: "España participa en misiones internacionales en marcos como la ONU, la OTAN y la:", options: ["UE", "OSCE exclusivamente", "OCDE", "UNESCO"], correct: 0 },
+            { q: "Las misiones internacionales pueden incluir cometidos de estabilización, formación y:", options: ["Seguridad", "Recaudación tributaria", "Actividad electoral", "Función judicial"], correct: 0 },
+            { q: "La participación española en misiones internacionales se caracteriza por su continuidad y compromiso:", options: ["Exterior", "Municipal", "Autonómico", "Parlamentario"], correct: 0 }
         ]
     },
     
@@ -798,6 +870,66 @@ const testsData = {
     },
     completo: {
         title: "Test Completo - Todo el Temario",
+        questions: []
+    },
+    examen_1: {
+        title: "Examen Oficial 1 - 100 preguntas",
+        questions: []
+    },
+    examen_2: {
+        title: "Examen Oficial 2 - 100 preguntas",
+        questions: []
+    },
+    examen_3: {
+        title: "Examen Oficial 3 - 100 preguntas",
+        questions: []
+    },
+    examen_4: {
+        title: "Examen Oficial 4 - 100 preguntas",
+        questions: []
+    },
+    examen_5: {
+        title: "Examen Oficial 5 - 100 preguntas",
+        questions: []
+    },
+    examen_6: {
+        title: "Examen Oficial 6 - 100 preguntas",
+        questions: []
+    },
+    examen_7: {
+        title: "Examen Oficial 7 - 100 preguntas",
+        questions: []
+    },
+    examen_8: {
+        title: "Examen Oficial 8 - 100 preguntas",
+        questions: []
+    },
+    examen_9: {
+        title: "Examen Oficial 9 - 100 preguntas",
+        questions: []
+    },
+    examen_10: {
+        title: "Examen Oficial 10 - 100 preguntas",
+        questions: []
+    },
+    examen_11: {
+        title: "Examen Oficial 11 - 100 preguntas",
+        questions: []
+    },
+    examen_12: {
+        title: "Examen Oficial 12 - 100 preguntas",
+        questions: []
+    },
+    examen_13: {
+        title: "Examen Oficial 13 - 100 preguntas",
+        questions: []
+    },
+    examen_14: {
+        title: "Examen Oficial 14 - 100 preguntas",
+        questions: []
+    },
+    examen_15: {
+        title: "Examen Oficial 15 - 100 preguntas",
         questions: []
     }
 };
@@ -842,5 +974,68 @@ function combineBlockQuestions() {
     testsData.completo.questions = b1Questions.concat(b2Questions).concat(b3Questions);
 }
 
+function annotateQuestions() {
+    Object.entries(testsData).forEach(([key, test]) => {
+        if (!Array.isArray(test.questions)) return;
+        test.questions = test.questions.map((question, index) => ({
+            ...question,
+            topicKey: question.topicKey || key,
+            topicTitle: question.topicTitle || test.title,
+            difficulty: question.difficulty || (
+                index < 10 ? "easy" : index < 19 ? "medium" : "hard"
+            )
+        }));
+    });
+}
+
+function seededShuffle(array, seed) {
+    const copy = [...array];
+    let randomSeed = seed;
+
+    function nextRandom() {
+        randomSeed = (randomSeed * 1664525 + 1013904223) % 4294967296;
+        return randomSeed / 4294967296;
+    }
+
+    for (let index = copy.length - 1; index > 0; index -= 1) {
+        const randomIndex = Math.floor(nextRandom() * (index + 1));
+        [copy[index], copy[randomIndex]] = [copy[randomIndex], copy[index]];
+    }
+
+    return copy;
+}
+
+function buildExamQuestions(seed) {
+    const allQuestions = seededShuffle(testsData.completo.questions, seed);
+    return allQuestions.slice(0, 100).map((question) => ({ ...question }));
+}
+
+function createExamTests() {
+    const examConfigs = [
+        ["examen_1", 101],
+        ["examen_2", 202],
+        ["examen_3", 303],
+        ["examen_4", 404],
+        ["examen_5", 505],
+        ["examen_6", 606],
+        ["examen_7", 707],
+        ["examen_8", 808],
+        ["examen_9", 909],
+        ["examen_10", 1010],
+        ["examen_11", 1111],
+        ["examen_12", 1212],
+        ["examen_13", 1313],
+        ["examen_14", 1414],
+        ["examen_15", 1515]
+    ];
+
+    examConfigs.forEach(([key, seed]) => {
+        testsData[key].questions = buildExamQuestions(seed);
+    });
+}
+
 // Combinar al cargar
 combineBlockQuestions();
+annotateQuestions();
+createExamTests();
+window.testsData = testsData;

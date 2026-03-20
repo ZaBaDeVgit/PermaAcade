@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tests - Academia Tropa Permanente</title>
+    <meta name="description" content="Tests, simulacros oficiales, modos aleatorios y repaso de falladas para preparar la permanencia.">
+    <meta name="theme-color" content="#020617">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="manifest" href="manifest.webmanifest">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,13 +26,9 @@
             </div>
         </div>
 
-        <!-- User Avatar + Info -->
+        <!-- User Avatar + Donate -->
         <div class="p-4 border-b border-slate-800 flex flex-col items-center gap-3">
-            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center font-bold text-white text-xl user-avatar" id="userAvatar">U</div>
-            <div class="text-center">
-                <div class="font-semibold text-white user-name">Usuario</div>
-                <div class="text-xs text-slate-400">Miembro desde <span class="user-member-since">-</span></div>
-            </div>
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center font-bold text-white" id="userAvatar">U</div>
             <a href="https://ko-fi.com/zabadev" target="_blank" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-400 hover:to-pink-400 transition-all text-white text-xs font-semibold">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                 <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Donar</span>
@@ -42,6 +42,12 @@
                     <a href="dashboard.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Inicio">
                         <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                         <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Inicio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="progreso.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Mi Espacio">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v18l7-5 7 5V3H5z"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Mi Espacio</span>
                     </a>
                 </li>
                 <li>
@@ -105,45 +111,98 @@
         <div class="max-w-7xl mx-auto p-4 md:p-8">
             <div class="mb-8">
                 <h1 class="font-orbitron font-bold text-2xl md:text-3xl text-white mb-2">Tests de Preparación</h1>
-                <p class="text-slate-400">Pon a prueba tus conocimientos con exámenes tipo test - +500 preguntas</p>
+                <p class="text-slate-400">Pon a prueba tus conocimientos con exámenes tipo test, dificultad por tema y 15 simulacros oficiales - 672 preguntas</p>
             </div>
+
+            <div id="draftResumeBanner" class="mb-6 hidden rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-5"></div>
 
             <!-- Test Categories - Bloque 1: Organización -->
             <div class="mb-8">
+                <div class="mb-6 rounded-2xl border border-cyan-500/30 bg-gradient-to-br from-cyan-500/10 to-sky-500/10 p-5">
+                    <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                        <div>
+                            <h3 class="font-orbitron font-bold text-lg text-cyan-300">Dificultad por tema</h3>
+                            <p class="text-sm text-slate-300">Este selector se aplica a los tests individuales de cada tema. Los bloques completos y exámenes oficiales siguen en modo mixto.</p>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-3">
+                            <span class="text-sm text-slate-300">Modo actual: <strong id="difficultyModeLabel" class="text-cyan-200">Mixto</strong></span>
+                            <button type="button" data-difficulty-mode="mixed" onclick="setDifficultyMode('mixed')" class="rounded-lg border border-slate-700 bg-slate-900/60 px-4 py-2 text-sm font-semibold text-slate-300 transition">Mixto</button>
+                            <button type="button" data-difficulty-mode="easy" onclick="setDifficultyMode('easy')" class="rounded-lg border border-slate-700 bg-slate-900/60 px-4 py-2 text-sm font-semibold text-slate-300 transition">Fácil</button>
+                            <button type="button" data-difficulty-mode="medium" onclick="setDifficultyMode('medium')" class="rounded-lg border border-slate-700 bg-slate-900/60 px-4 py-2 text-sm font-semibold text-slate-300 transition">Medio</button>
+                            <button type="button" data-difficulty-mode="hard" onclick="setDifficultyMode('hard')" class="rounded-lg border border-slate-700 bg-slate-900/60 px-4 py-2 text-sm font-semibold text-slate-300 transition">Difícil</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <div class="rounded-2xl border border-teal-500/30 bg-gradient-to-br from-teal-500/10 to-cyan-500/10 p-5 mb-4">
+                        <h3 class="font-orbitron font-bold text-lg text-teal-300">Modos de estudio rápido</h3>
+                        <p class="mb-4 text-sm text-slate-300">Lanza mezclas cortas o repasa solo las preguntas que has fallado.</p>
+                        <div class="grid grid-cols-2 gap-3 md:grid-cols-4">
+                            <button type="button" onclick="startTest('aleatorio_20')" class="rounded-lg border border-teal-400/40 px-4 py-3 text-sm font-semibold text-white transition hover:bg-teal-500/10">Aleatorio 20</button>
+                            <button type="button" onclick="startTest('aleatorio_50')" class="rounded-lg border border-teal-400/40 px-4 py-3 text-sm font-semibold text-white transition hover:bg-teal-500/10">Aleatorio 50</button>
+                            <button type="button" onclick="startTest('aleatorio_100')" class="rounded-lg border border-teal-400/40 px-4 py-3 text-sm font-semibold text-white transition hover:bg-teal-500/10">Aleatorio 100</button>
+                            <button type="button" onclick="startTest('falladas')" class="rounded-lg border border-amber-400/40 px-4 py-3 text-sm font-semibold text-amber-200 transition hover:bg-amber-500/10">Repasar falladas</button>
+                        </div>
+                    </div>
+
+                    <div class="rounded-2xl border border-rose-500/30 bg-gradient-to-br from-rose-500/10 to-fuchsia-500/10 p-5">
+                        <h3 class="font-orbitron font-bold text-lg text-rose-300">Exámenes de 100 preguntas</h3>
+                        <p class="mb-4 text-sm text-slate-300">15 simulacros de 100 preguntas, inspirados en el formato oficial de permanencia y mezclados desde todo el temario.</p>
+                        <div class="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-5">
+                            <button type="button" onclick="startTest('examen_1')" class="rounded-lg border border-rose-400/40 px-4 py-3 text-sm font-semibold text-white transition hover:bg-rose-500/10">Examen 1</button>
+                            <button type="button" onclick="startTest('examen_2')" class="rounded-lg border border-rose-400/40 px-4 py-3 text-sm font-semibold text-white transition hover:bg-rose-500/10">Examen 2</button>
+                            <button type="button" onclick="startTest('examen_3')" class="rounded-lg border border-rose-400/40 px-4 py-3 text-sm font-semibold text-white transition hover:bg-rose-500/10">Examen 3</button>
+                            <button type="button" onclick="startTest('examen_4')" class="rounded-lg border border-rose-400/40 px-4 py-3 text-sm font-semibold text-white transition hover:bg-rose-500/10">Examen 4</button>
+                            <button type="button" onclick="startTest('examen_5')" class="rounded-lg border border-rose-400/40 px-4 py-3 text-sm font-semibold text-white transition hover:bg-rose-500/10">Examen 5</button>
+                            <button type="button" onclick="startTest('examen_6')" class="rounded-lg border border-rose-400/40 px-4 py-3 text-sm font-semibold text-white transition hover:bg-rose-500/10">Examen 6</button>
+                            <button type="button" onclick="startTest('examen_7')" class="rounded-lg border border-rose-400/40 px-4 py-3 text-sm font-semibold text-white transition hover:bg-rose-500/10">Examen 7</button>
+                            <button type="button" onclick="startTest('examen_8')" class="rounded-lg border border-rose-400/40 px-4 py-3 text-sm font-semibold text-white transition hover:bg-rose-500/10">Examen 8</button>
+                            <button type="button" onclick="startTest('examen_9')" class="rounded-lg border border-rose-400/40 px-4 py-3 text-sm font-semibold text-white transition hover:bg-rose-500/10">Examen 9</button>
+                            <button type="button" onclick="startTest('examen_10')" class="rounded-lg border border-rose-400/40 px-4 py-3 text-sm font-semibold text-white transition hover:bg-rose-500/10">Examen 10</button>
+                            <button type="button" onclick="startTest('examen_11')" class="rounded-lg border border-rose-400/40 px-4 py-3 text-sm font-semibold text-white transition hover:bg-rose-500/10">Examen 11</button>
+                            <button type="button" onclick="startTest('examen_12')" class="rounded-lg border border-rose-400/40 px-4 py-3 text-sm font-semibold text-white transition hover:bg-rose-500/10">Examen 12</button>
+                            <button type="button" onclick="startTest('examen_13')" class="rounded-lg border border-rose-400/40 px-4 py-3 text-sm font-semibold text-white transition hover:bg-rose-500/10">Examen 13</button>
+                            <button type="button" onclick="startTest('examen_14')" class="rounded-lg border border-rose-400/40 px-4 py-3 text-sm font-semibold text-white transition hover:bg-rose-500/10">Examen 14</button>
+                            <button type="button" onclick="startTest('examen_15')" class="rounded-lg border border-rose-400/40 px-4 py-3 text-sm font-semibold text-white transition hover:bg-rose-500/10">Examen 15</button>
+                        </div>
+                    </div>
+                </div>
+
                 <h3 class="font-orbitron font-bold text-lg text-cyan-400 mb-4">Bloque 1: ORGANIZACIÓN</h3>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <!-- B1-T1: Constitución -->
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-cyan-500/50 transition-all cursor-pointer" onclick="startTest('b1_t1_cortes')">
-                        <h4 class="font-semibold text-white text-sm">T1: Cortes Generales</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T1: Cortes Generales</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-cyan-500/50 transition-all cursor-pointer" onclick="startTest('b1_t1_gobierno')">
-                        <h4 class="font-semibold text-white text-sm">T1: El Gobierno</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T1: El Gobierno</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-cyan-500/50 transition-all cursor-pointer" onclick="startTest('b1_t1_territorial')">
-                        <h4 class="font-semibold text-white text-sm">T1: Org. Territorial</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T1: Org. Territorial</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-cyan-500/50 transition-all cursor-pointer" onclick="startTest('b1_t1_poderjudicial')">
-                        <h4 class="font-semibold text-white text-sm">T1: Poder Judicial</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T1: Poder Judicial</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <!-- B1-T2 a T6 -->
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-cyan-500/50 transition-all cursor-pointer" onclick="startTest('b1_t2_defensa')">
-                        <h4 class="font-semibold text-white text-sm">T2: LO 5/2005 Defensa</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T2: LO 5/2005 Defensa</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-cyan-500/50 transition-all cursor-pointer" onclick="startTest('b1_t3_ley40')">
-                        <h4 class="font-semibold text-white text-sm">T3: Ley 40/2015</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T3: Ley 40/2015</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-cyan-500/50 transition-all cursor-pointer" onclick="startTest('b1_t4_rd205')">
-                        <h4 class="font-semibold text-white text-sm">T4: RD 205/2024</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T4: RD 205/2024</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-cyan-500/50 transition-all cursor-pointer" onclick="startTest('b1_t5_rd521')">
-                        <h4 class="font-semibold text-white text-sm">T5: RD 521/2020</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T5: RD 521/2020</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-cyan-500/50 transition-all cursor-pointer" onclick="startTest('b1_t6_instrucciones')">
-                        <h4 class="font-semibold text-white text-sm">T6: Instrucciones</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T6: Instrucciones</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <!-- Bloque 1 completo -->
                     <div class="bg-slate-900/50 border border-cyan-500/50 rounded-xl p-4 hover:border-cyan-400/50 transition-all cursor-pointer col-span-full" onclick="startTest('bloque1')">
-                        <h4 class="font-semibold text-cyan-400 text-base">✓ Todo el Bloque 1</h4><p class="text-slate-400 text-xs">225 preguntas</p>
+                        <h4 class="font-semibold text-cyan-400 text-base">✓ Todo el Bloque 1</h4><p class="text-slate-400 text-xs">252 preguntas</p>
                     </div>
                 </div>
             </div>
@@ -153,31 +212,31 @@
                 <h3 class="font-orbitron font-bold text-lg text-emerald-400 mb-4">Bloque 2: JURÍDICO-SOCIAL</h3>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-emerald-500/50 transition-all cursor-pointer" onclick="startTest('b2_t1_ley39')">
-                        <h4 class="font-semibold text-white text-sm">T1: Ley 39/2007 y 8/2006</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T1: Ley 39/2007 y 8/2006</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-emerald-500/50 transition-all cursor-pointer" onclick="startTest('b2_t2_ordenanzas')">
-                        <h4 class="font-semibold text-white text-sm">T2: Reales Ordenanzas</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T2: Reales Ordenanzas</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-emerald-500/50 transition-all cursor-pointer" onclick="startTest('b2_t3_ley9')">
-                        <h4 class="font-semibold text-white text-sm">T3: LO 9/2011 Derechos</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T3: LO 9/2011 Derechos</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-emerald-500/50 transition-all cursor-pointer" onclick="startTest('b2_t4_ley8')">
-                        <h4 class="font-semibold text-white text-sm">T4: LO 8/2014 Disciplinario</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T4: LO 8/2014 Disciplinario</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-emerald-500/50 transition-all cursor-pointer" onclick="startTest('b2_t5_quejas')">
-                        <h4 class="font-semibold text-white text-sm">T5: RD 176/2014 Quejas</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T5: RD 176/2014 Quejas</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-emerald-500/50 transition-all cursor-pointer" onclick="startTest('b2_t6_igualdad')">
-                        <h4 class="font-semibold text-white text-sm">T6: LO 3/2007 Igualdad</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T6: LO 3/2007 Igualdad</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-emerald-500/50 transition-all cursor-pointer" onclick="startTest('b2_t7_observatorio')">
-                        <h4 class="font-semibold text-white text-sm">T7: Observatorio y Acoso</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T7: Observatorio y Acoso</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-emerald-500/50 transition-all cursor-pointer" onclick="startTest('b2_t8_ley39')">
-                        <h4 class="font-semibold text-white text-sm">T8: Ley 39/2015 PAC</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T8: Ley 39/2015 PAC</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-emerald-500/50 rounded-xl p-4 hover:border-emerald-400/50 transition-all cursor-pointer col-span-full" onclick="startTest('bloque2')">
-                        <h4 class="font-semibold text-emerald-400 text-base">✓ Todo el Bloque 2</h4><p class="text-slate-400 text-xs">200 preguntas</p>
+                        <h4 class="font-semibold text-emerald-400 text-base">✓ Todo el Bloque 2</h4><p class="text-slate-400 text-xs">224 preguntas</p>
                     </div>
                 </div>
             </div>
@@ -187,28 +246,28 @@
                 <h3 class="font-orbitron font-bold text-lg text-blue-400 mb-4">Bloque 3: SEGURIDAD NACIONAL</h3>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-blue-500/50 transition-all cursor-pointer" onclick="startTest('b3_t1_seguridad')">
-                        <h4 class="font-semibold text-white text-sm">T1: Ley 36/2015 y Estrategia</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T1: Ley 36/2015 y Estrategia</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-blue-500/50 transition-all cursor-pointer" onclick="startTest('b3_t2_pdc01')">
-                        <h4 class="font-semibold text-white text-sm">T2: PDC-01 Doctrina</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T2: PDC-01 Doctrina</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-blue-500/50 transition-all cursor-pointer" onclick="startTest('b3_t3_onu')">
-                        <h4 class="font-semibold text-white text-sm">T3: ONU</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T3: ONU</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-blue-500/50 transition-all cursor-pointer" onclick="startTest('b3_t4_otan')">
-                        <h4 class="font-semibold text-white text-sm">T4: OTAN</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T4: OTAN</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-blue-500/50 transition-all cursor-pointer" onclick="startTest('b3_t5_osce')">
-                        <h4 class="font-semibold text-white text-sm">T5: OSCE</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T5: OSCE</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-blue-500/50 transition-all cursor-pointer" onclick="startTest('b3_t6_ue')">
-                        <h4 class="font-semibold text-white text-sm">T6: Unión Europea</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T6: Unión Europea</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/50 rounded-xl p-4 hover:border-blue-500/50 transition-all cursor-pointer" onclick="startTest('b3_t7_misiones')">
-                        <h4 class="font-semibold text-white text-sm">T7: Misiones Internacionales</h4><p class="text-slate-400 text-xs">25 preguntas</p>
+                        <h4 class="font-semibold text-white text-sm">T7: Misiones Internacionales</h4><p class="text-slate-400 text-xs">28 preguntas</p>
                     </div>
                     <div class="bg-slate-900/50 border border-blue-500/50 rounded-xl p-4 hover:border-blue-400/50 transition-all cursor-pointer col-span-full" onclick="startTest('bloque3')">
-                        <h4 class="font-semibold text-blue-400 text-base">✓ Todo el Bloque 3</h4><p class="text-slate-400 text-xs">175 preguntas</p>
+                        <h4 class="font-semibold text-blue-400 text-base">✓ Todo el Bloque 3</h4><p class="text-slate-400 text-xs">196 preguntas</p>
                     </div>
                 </div>
             </div>
@@ -226,7 +285,7 @@
                                 <p class="text-slate-400 text-sm">Todas las categorías del temario</p>
                             </div>
                         </div>
-                        <span class="text-emerald-400 font-bold text-xl">600+ preg.</span>
+                        <span class="text-emerald-400 font-bold text-xl">672 preg.</span>
                     </div>
                 </div>
             </div>
@@ -251,6 +310,7 @@
                     
                     <div style="margin-bottom: 15px;">
                         <h3 style="font-size: 16px; color: white; margin-bottom: 12px; line-height: 1.5;" id="questionText">Pregunta</h3>
+                        <div id="questionMetaBar" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px;"></div>
                         <div id="optionsContainer"></div>
                     </div>
                     
@@ -302,337 +362,9 @@
         </div>
     </footer>
 
-    <script src="js/components.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/app.js"></script>
     <script src="js/tests.js"></script>
-    <script>
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (!currentUser) window.location.href = 'index.html';
-
-        const currentYearEl = document.getElementById('currentYear');
-        if (currentYearEl) currentYearEl.textContent = new Date().getFullYear();
-        
-        const userAvatarEl = document.getElementById('userAvatar');
-        if (userAvatarEl) userAvatarEl.textContent = currentUser.name.charAt(0).toUpperCase();
-
-        // Get all questions from tests.js
-        let testQuestions = {};
-        
-        function getAllQuestions() {
-            let all = [];
-            for (let key in testsData) {
-                if (testsData[key].questions) {
-                    testsData[key].questions.forEach(q => all.push(q));
-                }
-            }
-            return all;
-        }
-
-        // Map topic keys to data - correlate with HTML onclick categories
-        const topicTitles = {
-            // Bloque 1
-            'b1_t1_cortes': 'B1-T1: Cortes Generales',
-            'b1_t1_gobierno': 'B1-T1: El Gobierno',
-            'b1_t1_territorial': 'B1-T1: Organización Territorial',
-            'b1_t1_poderjudicial': 'B1-T1: Poder Judicial',
-            'b1_t2_defensa': 'B1-T2: LO 5/2005 Defensa Nacional',
-            'b1_t3_ley40': 'B1-T3: Ley 40/2015 RJSP',
-            'b1_t4_rd205': 'B1-T4: RD 205/2024 Ministerio',
-            'b1_t5_rd521': 'B1-T5: RD 521/2020 Org. FAS',
-            'b1_t6_instrucciones': 'B1-T6: Instrucciones Organizativas',
-            'bloque1': 'Bloque 1: ORGANIZACIÓN (Completo)',
-            
-            // Bloque 2
-            'b2_t1_ley39': 'B2-T1: Ley 39/2007 y 8/2006',
-            'b2_t2_ordenanzas': 'B2-T2: Reales Ordenanzas',
-            'b2_t3_ley9': 'B2-T3: LO 9/2011 Derechos',
-            'b2_t4_ley8': 'B2-T4: LO 8/2014 Disciplinario',
-            'b2_t5_quejas': 'B2-T5: RD 176/2014 Quejas',
-            'b2_t6_igualdad': 'B2-T6: LO 3/2007 Igualdad',
-            'b2_t7_observatorio': 'B2-T7: Observatorio y Protocolo',
-            'b2_t8_ley39': 'B2-T8: Ley 39/2015 PAC',
-            'bloque2': 'Bloque 2: JURÍDICO-SOCIAL (Completo)',
-            
-            // Bloque 3
-            'b3_t1_seguridad': 'B3-T1: Ley 36/2015 y Estrategia',
-            'b3_t2_pdc01': 'B3-T2: PDC-01 Doctrina FAS',
-            'b3_t3_onu': 'B3-T3: ONU',
-            'b3_t4_otan': 'B3-T4: OTAN',
-            'b3_t5_osce': 'B3-T5: OSCE',
-            'b3_t6_ue': 'B3-T6: Unión Europea',
-            'b3_t7_misiones': 'B3-T7: Misiones Internacionales',
-            'bloque3': 'Bloque 3: SEGURIDAD NACIONAL (Completo)',
-            
-            // Test completo
-            'completo': 'TEST COMPLETO - Todo el Temario',
-            'random': 'TEST COMPLETO'
-        };
-
-        function startTest(category) {
-            let questions = [];
-            
-            // Buscar directamente en testsData primero
-            if (testsData[category] && testsData[category].questions) {
-                questions = testsData[category].questions;
-            } else {
-                // Si no existe, usar test completo
-                questions = getAllQuestions();
-            }
-            
-            if (questions.length === 0) {
-                showToast('No hay preguntas para esta categoría. Usando test completo.', 'warning');
-                questions = getAllQuestions();
-            }
-            
-            currentTest = questions;
-            currentQuestionIndex = 0;
-            userAnswers = new Array(currentTest.length).fill(null);
-            
-            document.getElementById('testTitle').textContent = topicTitles[category] || 'Test';
-            document.getElementById('totalQuestions').textContent = currentTest.length;
-            
-            document.getElementById('testModal').style.display = 'block';
-            document.getElementById('resultsContainer').classList.add('hidden');
-            
-            renderQuestion();
-            startTimer();
-        }
-
-        function renderQuestion() {
-            const q = currentTest[currentQuestionIndex];
-            if (!q) return;
-            
-            document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
-            document.getElementById('progressBar').style.width = ((currentQuestionIndex + 1) / currentTest.length * 100) + '%';
-            document.getElementById('questionText').textContent = q.q;
-            
-            const container = document.getElementById('optionsContainer');
-            container.innerHTML = '';
-            
-            q.options.forEach((opt, i) => {
-                const div = document.createElement('div');
-                div.style.display = 'block';
-                div.style.marginBottom = '8px';
-                div.style.padding = '12px';
-                div.style.borderRadius = '8px';
-                div.style.cursor = 'pointer';
-                div.style.fontSize = '15px';
-                div.style.lineHeight = '1.4';
-                div.style.wordBreak = 'break-word';
-                
-                const isSelected = userAnswers[currentQuestionIndex] === i;
-                if (isSelected) {
-                    div.style.backgroundColor = '#10b981';
-                    div.style.color = 'white';
-                } else {
-                    div.style.backgroundColor = '#334155';
-                    div.style.color = 'white';
-                }
-                
-                div.innerHTML = '<strong>' + String.fromCharCode(65 + i) + '.</strong> ' + opt;
-                div.onclick = function() { 
-                    selectOption(i); 
-                };
-                container.appendChild(div);
-            });
-            
-            document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
-            document.getElementById('nextBtn').textContent = currentQuestionIndex === currentTest.length - 1 ? 'Finalizar' : 'Siguiente';
-        }
-
-        function selectOption(index) {
-            userAnswers[currentQuestionIndex] = index;
-            renderQuestion();
-        }
-
-        function nextQuestion() {
-            if (userAnswers[currentQuestionIndex] === null) {
-                showToast('Por favor selecciona una respuesta', 'warning');
-                return;
-            }
-            
-            if (currentQuestionIndex === currentTest.length - 1) {
-                finishTest();
-            } else {
-                currentQuestionIndex++;
-                renderQuestion();
-            }
-        }
-
-        function prevQuestion() {
-            if (currentQuestionIndex > 0) {
-                currentQuestionIndex--;
-                renderQuestion();
-            }
-        }
-
-        function finishTest() {
-            clearInterval(timerInterval);
-            
-            let correct = 0;
-            currentTest.forEach((q, i) => {
-                if (userAnswers[i] === q.correct) correct++;
-            });
-            
-            const wrong = currentTest.length - correct;
-            const percent = Math.round((correct / currentTest.length) * 100);
-            
-            // Guardar resultado en el usuario
-            saveTestResult(document.getElementById('testTitle').textContent, currentTest.length, correct, wrong, percent);
-            
-            // Mostrar resultados en el modal
-            showResultsInModal(correct, wrong, percent);
-            
-            recordTestResult(currentTest.length, correct);
-            updateProgress('tests', Date.now());
-        }
-
-        function saveTestResult(testName, total, correct, wrong, percent) {
-            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            if (!currentUser) return;
-            
-            let userData = JSON.parse(localStorage.getItem('user_' + currentUser.email)) || { tests: [], topics: [], readings: [], videos: [], podcasts: [] };
-            
-            userData.tests.push({
-                testName: testName,
-                total: total,
-                correct: correct,
-                wrong: wrong,
-                percent: percent,
-                date: new Date().toISOString()
-            });
-            
-            localStorage.setItem('user_' + currentUser.email, JSON.stringify(userData));
-        }
-
-        function showResultsInModal(correct, wrong, percent) {
-            const modal = document.getElementById('testModal');
-            let html = `
-                <div style="max-width: 800px; margin: 0 auto; background: #1e293b; border-radius: 16px; padding: 30px; border: 1px solid #334155;">
-                    <div style="text-align: center; margin-bottom: 30px;">
-                        <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #10b981, #06b6d4); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
-                            <span style="font-size: 36px;">${percent >= 50 ? '✓' : '✗'}</span>
-                        </div>
-                        <h2 style="font-size: 28px; color: white; margin: 0 0 10px 0;">¡Test Completado!</h2>
-                        <p style="color: #94a3b8; margin: 0;">${document.getElementById('testTitle').textContent}</p>
-                    </div>
-                    
-                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 30px;">
-                        <div style="background: #0f172a; padding: 20px; border-radius: 12px; text-align: center;">
-                            <div style="font-size: 32px; font-weight: bold; color: #10b981;">${correct}</div>
-                            <div style="color: #94a3b8; font-size: 14px;">Correctas</div>
-                        </div>
-                        <div style="background: #0f172a; padding: 20px; border-radius: 12px; text-align: center;">
-                            <div style="font-size: 32px; font-weight: bold; color: #ef4444;">${wrong}</div>
-                            <div style="color: #94a3b8; font-size: 14px;">Incorrectas</div>
-                        </div>
-                        <div style="background: #0f172a; padding: 20px; border-radius: 12px; text-align: center;">
-                            <div style="font-size: 32px; font-weight: bold; color: #06b6d4;">${percent}%</div>
-                            <div style="color: #94a3b8; font-size: 14px;">Puntuación</div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <h3 style="color: white; font-size: 18px; margin-bottom: 15px;">Repaso de respuestas:</h3>
-                        <div style="max-height: 400px; overflow-y: auto;">
-            `;
-            
-            currentTest.forEach((q, i) => {
-                const userAnswer = userAnswers[i];
-                const isCorrect = userAnswer === q.correct;
-                html += `
-                    <div style="background: ${isCorrect ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)'}; border: 1px solid ${isCorrect ? '#10b981' : '#ef4444'}; border-radius: 8px; padding: 15px; margin-bottom: 10px;">
-                        <div style="color: ${isCorrect ? '#10b981' : '#ef4444'}; font-weight: bold; margin-bottom: 8px;">
-                            ${i + 1}. ${isCorrect ? '✓ Correcta' : '✗ Incorrecta'}
-                        </div>
-                        <div style="color: white; font-size: 14px; margin-bottom: 8px;">${q.q}</div>
-                        <div style="color: #10b981; font-size: 13px;">✓ ${q.options[q.correct]}</div>
-                        ${!isCorrect ? `<div style="color: #ef4444; font-size: 13px;">✗ ${q.options[userAnswer]}</div>` : ''}
-                    </div>
-                `;
-            });
-            
-            html += `
-                        </div>
-                    </div>
-                    
-                    <div style="display: flex; justify-content: center; gap: 15px;">
-                        <button onclick="resetTest()" style="padding: 14px 28px; border: 1px solid #475569; border-radius: 8px; color: white; cursor: pointer; background: transparent; font-size: 16px;">Volver al Menú</button>
-                        <button onclick="restartTest()" style="padding: 14px 28px; background: linear-gradient(90deg, #10b981, #06b6d4); border: none; border-radius: 8px; color: white; cursor: pointer; font-size: 16px; font-weight: bold;">Repetir Test</button>
-                    </div>
-                </div>
-            `;
-            
-            modal.innerHTML = html;
-        }
-
-        function restartTest() {
-            currentQuestionIndex = 0;
-            userAnswers = new Array(currentTest.length).fill(null);
-            
-            document.getElementById('testModal').style.display = 'block';
-            
-            renderQuestion();
-            startTimer();
-        }
-
-        function resetTest() {
-            location.reload();
-        }
-
-        function cancelTest() {
-            clearInterval(timerInterval);
-            document.getElementById('testModal').style.display = 'none';
-        }
-
-        function startTimer() {
-            let seconds = 0;
-            timerInterval = setInterval(() => {
-                seconds++;
-                const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
-                const secs = (seconds % 60).toString().padStart(2, '0');
-                document.getElementById('timer').textContent = mins + ':' + secs;
-            }, 1000);
-        }
-
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('-translate-x-full');
-        }
-
-        function toggleSidebarCollapse() {
-            const sidebar = document.getElementById('sidebar');
-            const main = document.querySelector('main');
-            const footer = document.querySelector('footer');
-            const collapseIcon = document.getElementById('collapseIcon');
-            const texts = document.querySelectorAll('.sidebar-text');
-            
-            if (sidebar.classList.contains('w-64')) {
-                // Collapse
-                sidebar.classList.remove('w-64');
-                sidebar.classList.add('w-20');
-                main.classList.remove('md:ml-64');
-                main.classList.add('md:ml-20');
-                if (footer) {
-                    footer.classList.remove('md:ml-64');
-                    footer.classList.add('md:ml-20');
-                }
-                collapseIcon.classList.add('rotate-180');
-                texts.forEach(t => t.classList.add('opacity-0'));
-            } else {
-                // Expand
-                sidebar.classList.remove('w-20');
-                sidebar.classList.add('w-64');
-                main.classList.remove('md:ml-20');
-                main.classList.add('md:ml-64');
-                if (footer) {
-                    footer.classList.remove('md:ml-20');
-                    footer.classList.add('md:ml-64');
-                }
-                collapseIcon.classList.remove('rotate-180');
-                texts.forEach(t => t.classList.remove('opacity-0'));
-            }
-        }
-    </script>
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/pages/tests-page.js"></script>
 </body>
 </html>

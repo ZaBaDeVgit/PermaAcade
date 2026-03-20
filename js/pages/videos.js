@@ -1,0 +1,115 @@
+(function () {
+    function groupVideos(videos) {
+        return videos.reduce((groups, video) => {
+            if (!groups[video.groupTitle]) {
+                groups[video.groupTitle] = [];
+            }
+            groups[video.groupTitle].push(video);
+            return groups;
+        }, {});
+    }
+
+    function renderVideos() {
+        const grid = document.getElementById("videosGrid");
+        if (!grid) return;
+
+        const completed = new Set(App.getProgress("videos"));
+        const grouped = groupVideos(AcademyContent.videos);
+        grid.innerHTML = "";
+
+        Object.entries(grouped).forEach(([groupTitle, videos]) => {
+            const heading = document.createElement("div");
+            heading.className = "col-span-full mb-4 mt-4";
+            heading.innerHTML = `<h3 class="font-orbitron text-lg font-bold text-cyan-400">${groupTitle}</h3>`;
+            grid.appendChild(heading);
+
+            videos.forEach((video) => {
+                const styles = AcademyContent.colorStyles[video.color];
+                const isFavorite = App.isFavorite("videos", video.id);
+                const card = document.createElement("article");
+                card.className = `overflow-hidden rounded-xl border border-slate-800/50 bg-slate-900/50 transition-all ${styles.accentBorder}`;
+
+                card.innerHTML = `
+                    <div class="relative aspect-video bg-slate-800">
+                        <video controls class="h-full w-full" data-video-id="${video.id}">
+                            <source src="${video.archivo}" type="video/mp4">
+                            Tu navegador no soporta vídeo.
+                        </video>
+                    </div>
+                    <div class="p-4">
+                        <div class="mb-2 flex items-center justify-between gap-3">
+                            <h3 class="font-semibold text-white">${video.titulo}</h3>
+                            <div class="flex items-center gap-2">
+                                ${completed.has(video.id) ? '<span class="text-xs text-emerald-400">✓ Visto</span>' : ""}
+                                <button type="button" class="favorite-toggle ${isFavorite ? "is-active" : ""}" data-favorite-video="${video.id}" aria-label="Favorito">
+                                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61L12 17.771l-4.734 2.768a.562.562 0 01-.84-.61l1.285-5.385a.563.563 0 00-.182-.557L3.325 10.385a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345l2.125-5.111z"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="mb-4 text-sm text-slate-400">${video.desc}</p>
+                        <button class="rounded-lg px-4 py-2 text-sm font-medium transition-colors ${styles.button}" data-mark-video="${video.id}">
+                            Marcar como visto
+                        </button>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        });
+
+        grid.querySelectorAll("[data-mark-video]").forEach((button) => {
+            button.addEventListener("click", () => {
+                App.updateProgress("videos", button.dataset.markVideo);
+                const video = AcademyContent.videos.find((entry) => entry.id === button.dataset.markVideo);
+                if (video) {
+                    App.rememberVisit({
+                        title: video.titulo,
+                        subtitle: video.desc,
+                        url: "videos.html",
+                        kind: "video"
+                    });
+                }
+                renderVideos();
+            });
+        });
+
+        grid.querySelectorAll("[data-favorite-video]").forEach((button) => {
+            button.addEventListener("click", () => {
+                const video = AcademyContent.videos.find((entry) => entry.id === button.dataset.favoriteVideo);
+                if (!video) return;
+                const active = App.toggleFavorite("videos", {
+                    id: video.id,
+                    title: video.titulo,
+                    subtitle: video.desc,
+                    url: "videos.html",
+                    color: video.color,
+                    kind: "video"
+                });
+                App.showToast(active ? "Vídeo guardado en favoritos" : "Vídeo quitado de favoritos", "info");
+                renderVideos();
+            });
+        });
+
+        grid.querySelectorAll("video[data-video-id]").forEach((videoElement) => {
+            videoElement.addEventListener("play", () => {
+                App.updateProgress("videos", videoElement.dataset.videoId);
+                const video = AcademyContent.videos.find((entry) => entry.id === videoElement.dataset.videoId);
+                if (video) {
+                    App.rememberVisit({
+                        title: video.titulo,
+                        subtitle: video.desc,
+                        url: "videos.html",
+                        kind: "video"
+                    });
+                }
+                renderVideos();
+            }, { once: true });
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const user = App.initProtectedPage();
+        if (!user) return;
+        renderVideos();
+    });
+})();

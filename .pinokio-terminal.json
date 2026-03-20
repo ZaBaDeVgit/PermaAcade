@@ -1,0 +1,51 @@
+{
+  "workspace": "PermaAcade",
+  "cwd": "/home/zabadev/Codigo/PermaAcade",
+  "updated_at": "2026-03-20T13:24:45.111Z",
+  "sessions": [
+    {
+      "provider": "codex",
+      "label": "Codex",
+      "terminal_id": "codex:PermaAcade:20260320-090934-mvmqth",
+      "created_at": "2026-03-20T08:09:34.341Z",
+      "launch_mode": "guarded",
+      "command": "npx -y @openai/codex@latest -c shell_environment_policy.inherit=\"all\" --sandbox workspace-write --full-auto --ask-for-approval never",
+      "skill_context": "/home/zabadev/Codigo/PermaAcade/.pinokio/skills/active.md",
+      "skills": [
+        {
+          "id": "78b700aeda3a1107",
+          "label": "pinokio",
+          "file": "/home/zabadev/.agents/skills/pinokio/SKILL.md"
+        },
+        {
+          "id": "c9df7b6d1e58404f",
+          "label": "gepeto",
+          "file": "/home/zabadev/.agents/skills/gepeto/SKILL.md"
+        }
+      ],
+      "uploaded_files": []
+    },
+    {
+      "provider": "codex",
+      "label": "Codex",
+      "terminal_id": "codex:PermaAcade:20260320-142445-fa0uc1",
+      "created_at": "2026-03-20T13:24:45.111Z",
+      "launch_mode": "guarded",
+      "command": "npx -y @openai/codex@latest -c shell_environment_policy.inherit=\"all\" --sandbox workspace-write --full-auto --ask-for-approval never",
+      "skill_context": "/home/zabadev/Codigo/PermaAcade/.pinokio/skills/active.md",
+      "skills": [
+        {
+          "id": "78b700aeda3a1107",
+          "label": "pinokio",
+          "file": "/home/zabadev/.agents/skills/pinokio/SKILL.md"
+        },
+        {
+          "id": "c9df7b6d1e58404f",
+          "label": "gepeto",
+          "file": "/home/zabadev/.agents/skills/gepeto/SKILL.md"
+        }
+      ],
+      "uploaded_files": []
+    }
+  ]
+}

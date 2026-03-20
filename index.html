@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Academia Tropa Permanente - Prepárate para servir a España</title>
+    <meta name="description" content="Academia online gratuita para preparar la permanencia con temario, tests, favoritos y recursos multimedia.">
+    <meta name="theme-color" content="#020617">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="manifest" href="manifest.webmanifest">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%230f172a' width='180' height='180' rx='40'/><circle fill='%2310b981' cx='90' cy='70' r='35'/><path fill='%2306b6d4' d='M55 125 L90 160 L125 125 L90 100 Z'/></svg>">
 </head>
 <body class="bg-slate-950 text-white overflow-x-hidden">
     <!-- Animated Background -->
@@ -87,7 +89,7 @@
 
             <!-- CTA Buttons -->
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-in-up" style="animation-delay: 0.3s;">
-                <button onclick="showRegisterModal()" class="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-white font-bold text-lg px-8 py-4 rounded-xl transition-all hover:shadow-xl hover:shadow-emerald-500/30 hover:scale-105">
+                <button data-logged-in-cta onclick="showRegisterModal()" class="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-white font-bold text-lg px-8 py-4 rounded-xl transition-all hover:shadow-xl hover:shadow-emerald-500/30 hover:scale-105">
                     Comenzar Ahora - Gratis
                 </button>
                 <a href="#temario" class="w-full sm:w-auto border border-slate-600 hover:border-slate-400 text-slate-300 hover:text-white font-semibold text-lg px-8 py-4 rounded-xl transition-all hover:bg-slate-800/50">
@@ -492,7 +494,7 @@
                     <p class="text-slate-400 text-lg mb-8">
                         Únete a miles de candidatos que ya han logrado su plaza. Es 100% gratuito.
                     </p>
-                    <button onclick="showRegisterModal()" class="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-white font-bold text-lg px-10 py-4 rounded-xl transition-all hover:shadow-xl hover:shadow-emerald-500/30 hover:scale-105">
+                    <button data-logged-in-cta onclick="showRegisterModal()" class="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-white font-bold text-lg px-10 py-4 rounded-xl transition-all hover:shadow-xl hover:shadow-emerald-500/30 hover:scale-105">
                         Crear Mi Cuenta Gratis
                     </button>
                 </div>
@@ -519,27 +521,71 @@
         </div>
     </footer>
 
-    <script>
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
-    </script>
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="closeModals()"></div>
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="relative bg-slate-900 border border-slate-700/50 rounded-2xl p-8 w-full max-w-md animate-scale-in">
+                <button onclick="closeModals()" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+                <h3 class="font-orbitron font-bold text-2xl text-white mb-6 text-center">Iniciar Sesión</h3>
+                <form onsubmit="handleLogin(event)">
+                    <div class="mb-4">
+                        <label class="block text-slate-400 text-sm font-medium mb-2">Email</label>
+                        <input type="email" id="loginEmail" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:border-emerald-500 focus:outline-none transition-colors" placeholder="tu@email.com">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-slate-400 text-sm font-medium mb-2">Contraseña</label>
+                        <input type="password" id="loginPassword" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:border-emerald-500 focus:outline-none transition-colors" placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-white font-bold py-3 rounded-lg transition-all hover:shadow-lg hover:shadow-emerald-500/25">
+                        Entrar
+                    </button>
+                </form>
+                <p class="text-slate-400 text-center mt-4">
+                    ¿No tienes cuenta? <button onclick="switchToRegister()" class="text-emerald-400 hover:text-emerald-300 font-medium">Regístrate</button>
+                </p>
+            </div>
+        </div>
+    </div>
 
-    <!-- Scripts -->
-    <script src="js/components.js"></script>
-    <script src="js/auth.js"></script>
+    <!-- Register Modal -->
+    <div id="registerModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="closeModals()"></div>
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="relative bg-slate-900 border border-slate-700/50 rounded-2xl p-8 w-full max-w-md animate-scale-in">
+                <button onclick="closeModals()" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+                <h3 class="font-orbitron font-bold text-2xl text-white mb-2 text-center">Crear Cuenta</h3>
+                <p class="text-slate-400 text-center mb-6">Comienza tu preparación gratis</p>
+                <form onsubmit="handleRegister(event)">
+                    <div class="mb-4">
+                        <label class="block text-slate-400 text-sm font-medium mb-2">Nombre</label>
+                        <input type="text" id="registerName" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:border-emerald-500 focus:outline-none transition-colors" placeholder="Tu nombre">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-slate-400 text-sm font-medium mb-2">Email</label>
+                        <input type="email" id="registerEmail" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:border-emerald-500 focus:outline-none transition-colors" placeholder="tu@email.com">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-slate-400 text-sm font-medium mb-2">Contraseña</label>
+                        <input type="password" id="registerPassword" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:border-emerald-500 focus:outline-none transition-colors" placeholder="Mínimo 6 caracteres">
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-white font-bold py-3 rounded-lg transition-all hover:shadow-lg hover:shadow-emerald-500/25">
+                        Crear Mi Cuenta
+                    </button>
+                </form>
+                <p class="text-slate-400 text-center mt-4">
+                    ¿Ya tienes cuenta? <button onclick="switchToLogin()" class="text-emerald-400 hover:text-emerald-300 font-medium">Iniciar sesión</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
     <script src="js/app.js"></script>
-    <script>
-        // Register Service Worker
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/js/sw.js')
-                    .then(reg => console.log('Service Worker registered'))
-                    .catch(err => console.log('Service Worker registration failed:', err));
-            });
-        }
-    </script>
+    <script src="js/pages/index.js"></script>
 </body>
 </html>
