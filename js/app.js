@@ -2,7 +2,8 @@
 (function () {
     const STORAGE_KEYS = {
         users: "academy.users",
-        currentUserId: "academy.currentUserId"
+        currentUserId: "academy.currentUserId",
+        appVersion: "academy.appVersion"
     };
 
     function safeParse(value, fallback) {
@@ -872,12 +873,84 @@
         }
     }
 
+    function syncAppVersion() {
+        const version = window.AcademyConfig?.appVersion;
+        if (!version) return;
+
+        const storedVersion = localStorage.getItem(STORAGE_KEYS.appVersion);
+        if (storedVersion === version) return;
+
+        localStorage.setItem(STORAGE_KEYS.appVersion, version);
+
+        if ("caches" in window) {
+            caches.keys().then((keys) => Promise.all(
+                keys
+                    .filter((key) => key.startsWith("perma-academia-"))
+                    .map((key) => caches.delete(key))
+            )).catch(() => {
+                // Ignore cache cleanup failures on restricted browsers.
+            });
+        }
+
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.getRegistration().then((registration) => {
+                registration?.update().catch(() => {
+                    // Ignore transient update failures.
+                });
+            }).catch(() => {
+                // Ignore missing registrations.
+            });
+        }
+    }
+
     function registerServiceWorker() {
         if (!("serviceWorker" in navigator)) return;
         if (window.location.protocol !== "http:" && window.location.protocol !== "https:") return;
 
         window.addEventListener("load", () => {
-            navigator.serviceWorker.register("sw.js").catch(() => {
+            let refreshing = false;
+
+            function updateRegistration(registration) {
+                registration?.update().catch(() => {
+                    // Ignore transient update failures.
+                });
+            }
+
+            function activateWaitingWorker(registration) {
+                if (!registration?.waiting) return;
+                registration.waiting.postMessage({ type: "SKIP_WAITING" });
+            }
+
+            navigator.serviceWorker.addEventListener("controllerchange", () => {
+                if (refreshing) return;
+                refreshing = true;
+                window.location.reload();
+            });
+
+            navigator.serviceWorker.register(`sw.js?v=${encodeURIComponent(window.AcademyConfig?.appVersion || "1")}`).then((registration) => {
+                if (registration.waiting) {
+                    activateWaitingWorker(registration);
+                }
+
+                registration.addEventListener("updatefound", () => {
+                    const worker = registration.installing;
+                    if (!worker) return;
+
+                    worker.addEventListener("statechange", () => {
+                        if (worker.state === "installed" && navigator.serviceWorker.controller) {
+                            activateWaitingWorker(registration);
+                        }
+                    });
+                });
+
+                updateRegistration(registration);
+                window.addEventListener("focus", () => updateRegistration(registration));
+                document.addEventListener("visibilitychange", () => {
+                    if (document.visibilityState === "visible") {
+                        updateRegistration(registration);
+                    }
+                });
+            }).catch(() => {
                 // Keep silent on static hosts if service worker fails.
             });
         });
@@ -969,6 +1042,7 @@
             });
         });
         createParticles();
+        syncAppVersion();
         registerServiceWorker();
     });
 })();
