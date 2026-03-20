@@ -565,6 +565,28 @@
         return updatedUser;
     }
 
+    function toggleProgress(category, itemId) {
+        const user = requireAuth();
+        if (!user) return null;
+
+        if (!user.progress[category]) {
+            user.progress[category] = [];
+        }
+
+        const index = user.progress[category].indexOf(itemId);
+        const nowActive = index < 0;
+
+        if (nowActive) {
+            user.progress[category].push(itemId);
+        } else {
+            user.progress[category].splice(index, 1);
+        }
+
+        const updatedUser = touchActivity(user);
+        persistCurrentUser(updatedUser);
+        return nowActive;
+    }
+
     function recordTestSession(payload) {
         const user = requireAuth();
         if (!user) return null;
@@ -1164,6 +1186,7 @@
         toggleSidebarCollapse,
         touchActivity,
         updateProgress,
+        toggleProgress,
         updateUserChrome
     };
 

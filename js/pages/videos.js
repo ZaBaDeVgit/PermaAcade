@@ -24,6 +24,20 @@
         }
     }
 
+    function syncVideoCardState(card, isCompleted) {
+        if (!card) return;
+        const status = card.querySelector("[data-video-status]");
+        const button = card.querySelector("[data-mark-video]");
+        if (status) {
+            status.textContent = "✓ Visto";
+            status.classList.toggle("hidden", !isCompleted);
+        }
+        if (button) {
+            button.textContent = isCompleted ? "Marcar como no visto" : "Marcar como visto";
+            button.dataset.progressState = isCompleted ? "completed" : "pending";
+        }
+    }
+
     function markVideoAsViewed(videoId, card) {
         App.updateProgress("videos", videoId);
         const video = AcademyContent.videos.find((entry) => entry.id === videoId);
@@ -44,6 +58,7 @@
             status.textContent = "✓ Visto";
             status.classList.remove("hidden");
         }
+        syncVideoCardState(card, true);
     }
 
     function groupVideos(videos) {
@@ -117,12 +132,15 @@
                 `;
 
                 grid.appendChild(card);
+                syncVideoCardState(card, completed.has(video.id));
             });
         });
 
         grid.querySelectorAll("[data-mark-video]").forEach((button) => {
             button.addEventListener("click", () => {
-                markVideoAsViewed(button.dataset.markVideo, button.closest("article"));
+                const card = button.closest("article");
+                const active = App.toggleProgress("videos", button.dataset.markVideo);
+                syncVideoCardState(card, Boolean(active));
             });
         });
 

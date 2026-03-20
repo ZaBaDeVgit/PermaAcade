@@ -126,7 +126,7 @@ window.AcademyContent = {
         { id: "reading_b1_t1_mapa_png", groupTitle: "B1-T1: Constitución Española", archivo: "Resumen_Mapas/B1_T1_Mapa_Bloque1_Tema1.png", titulo: "Mapa: Temas constitucionales", desc: "Infografía del bloque 1", color: "purple", type: "PNG" },
         { id: "reading_b1_t1_mapa_pdf", groupTitle: "B1-T1: Constitución Española", archivo: "Resumen_Mapas/B1_T1_Mapa_Arquitectura_Constitucional.pdf", titulo: "Mapa: Arquitectura constitucional", desc: "Esquema visual de la Constitución", color: "pink", type: "PDF" },
         { id: "reading_b1_t2_mapa_pdf", groupTitle: "B1-T2: Ley Orgánica 5/2005", archivo: "Resumen_Mapas/B1_T2_Mapa_LeyDefensaNacional.pdf", titulo: "Mapa: Ley de Defensa Nacional", desc: "Resumen visual de la Ley Orgánica 5/2005 y sus ejes principales", color: "emerald", type: "PDF" },
-        { id: "reading_b1_t2_arquitectura", groupTitle: "B1-T2: Arquitectura de la Defensa Nacional", archivo: "Resumen_Mapas/B1_T2_Arquitectura_de_la_Defensa_Nacional.pdf", titulo: "Arquitectura de la Defensa Nacional", desc: "Esquema interactivo para ubicar los elementos de la defensa del Estado", color: "teal", type: "PDF" }
+        { id: "reading_b1_t2_arquitectura", groupTitle: "B1-T2: Ley Orgánica 5/2005", archivo: "Resumen_Mapas/B1_T2_Arquitectura_de_la_Defensa_Nacional.pdf", titulo: "Arquitectura de la Defensa Nacional", desc: "Esquema interactivo para ubicar los elementos de la defensa del Estado", color: "teal", type: "PDF" }
     ],
     presentations: [
         {
