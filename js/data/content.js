@@ -97,16 +97,20 @@ window.AcademyContent = {
     ],
     videos: [
         { id: "video_b1_t1_001", group: "B1-T1", groupTitle: "B1-T1: Constitución Española", archivo: "videos/B1_T1_001_Constitucion_1978.mp4", titulo: "La Constitución de 1978", desc: "Explicación de los puntos clave de la Constitución Española", color: "rose" },
-        { id: "video_b1_t1_002", group: "B1-T1", groupTitle: "B1-T1: Constitución Española", archivo: "videos/B1_T1_002_Organizacion_Estado.mp4", titulo: "Organización del Estado Español", desc: "Estructura política y territorial del Estado", color: "amber" }
+        { id: "video_b1_t1_002", group: "B1-T1", groupTitle: "B1-T1: Constitución Española", archivo: "videos/B1_T1_002_Organizacion_Estado.mp4", titulo: "Organización del Estado Español", desc: "Estructura política y territorial del Estado", color: "amber" },
+        { id: "video_b1_t2_001", group: "B1-T2", groupTitle: "B1-T2: Ley Orgánica 5/2005", archivo: "videos/B1_T2_FAS_y_su_papel_en_la_vida_civil.mp4", titulo: "Las FAS y su papel en la vida civil", desc: "Contexto y alcance de las Fuerzas Armadas dentro de la Defensa Nacional", color: "emerald" }
     ],
     podcasts: [
         { id: "podcast_b1_t1_003", title: "B1-T1: Las tripas de la Constitución", desc: "Resumen sonoro del bloque constitucional", duration: "15:30", color: "cyan", archivo: "audios/B1_T1_003_Tripas_Constitucion.m4a" },
         { id: "podcast_b1_t1_004", title: "B1-T1: Arquitectura del Poder", desc: "Separación de poderes y estructura estatal", duration: "12:45", color: "emerald", archivo: "audios/B1_T1_004_Arquitectura_Poder.m4a" },
-        { id: "podcast_b1_t1_005", title: "B1-T1: Arquitectura de Supervivencia", desc: "Análisis constitucional avanzado", duration: "18:20", color: "blue", archivo: "audios/B1_T1_005_Arquitectura_Supervivencia.m4a" }
+        { id: "podcast_b1_t1_005", title: "B1-T1: Arquitectura de Supervivencia", desc: "Análisis constitucional avanzado", duration: "18:20", color: "blue", archivo: "audios/B1_T1_005_Arquitectura_Supervivencia.m4a" },
+        { id: "podcast_b1_t2_001", title: "B1-T2: Claves de la Ley de Defensa Nacional", desc: "Resumen sonoro de los principios y la estructura básica de la Defensa Nacional", duration: "16:00", color: "purple", archivo: "audios/B1_T2_Claves_de_la_Ley_de_Defensa_Nacional.m4a" },
+        { id: "podcast_b1_t2_002", title: "B1-T2: ¿Ejército humanitario o fuerza letal del Estado?", desc: "Reflexión guiada sobre la misión dual de las Fuerzas Armadas", duration: "14:30", color: "rose", archivo: "audios/B1_T2_¿Ejército_humanitario_o_fuerza_letal_del_Estado_.m4a" }
     ],
     readings: [
         { id: "reading_b1_t1_mapa_png", groupTitle: "B1-T1: Constitución Española", archivo: "Resumen_Mapas/B1_T1_Mapa_Bloque1_Tema1.png", titulo: "Mapa: Temas constitucionales", desc: "Infografía del bloque 1", color: "purple", type: "PNG" },
-        { id: "reading_b1_t1_mapa_pdf", groupTitle: "B1-T1: Constitución Española", archivo: "Resumen_Mapas/B1_T1_Mapa_Arquitectura_Constitucional.pdf", titulo: "Mapa: Arquitectura constitucional", desc: "Esquema visual de la Constitución", color: "pink", type: "PDF" }
+        { id: "reading_b1_t1_mapa_pdf", groupTitle: "B1-T1: Constitución Española", archivo: "Resumen_Mapas/B1_T1_Mapa_Arquitectura_Constitucional.pdf", titulo: "Mapa: Arquitectura constitucional", desc: "Esquema visual de la Constitución", color: "pink", type: "PDF" },
+        { id: "reading_b1_t2_mapa_pdf", groupTitle: "B1-T2: Ley Orgánica 5/2005", archivo: "Resumen_Mapas/B1_T2_Mapa_LeyDefensaNacional.pdf", titulo: "Mapa: Ley de Defensa Nacional", desc: "Resumen visual de la Ley Orgánica 5/2005 y sus ejes principales", color: "emerald", type: "PDF" }
     ],
     presentations: [
         {
@@ -116,6 +120,15 @@ window.AcademyContent = {
             titulo: "Constitución Española de 1978",
             desc: "Presentación base para repasar la estructura y los principios esenciales de la Constitución.",
             color: "cyan",
+            type: "PPTX"
+        },
+        {
+            id: "presentation_ley_defensa_nacional",
+            groupTitle: "Presentaciones",
+            archivo: "slider/Ley Orgánica 5_2005 de Defensa Nacional.pptx",
+            titulo: "Ley Orgánica 5/2005 de Defensa Nacional",
+            desc: "Presentación de apoyo para repasar la organización, principios y finalidad de la Defensa Nacional.",
+            color: "emerald",
             type: "PPTX"
         }
     ]

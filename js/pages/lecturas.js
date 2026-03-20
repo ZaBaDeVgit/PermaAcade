@@ -1,17 +1,29 @@
 (function () {
+    function groupReadings(readings) {
+        return readings.reduce((groups, reading) => {
+            if (!groups[reading.groupTitle]) {
+                groups[reading.groupTitle] = [];
+            }
+            groups[reading.groupTitle].push(reading);
+            return groups;
+        }, {});
+    }
+
     function renderMapas() {
         const grid = document.getElementById("mapasGrid");
         if (!grid) return;
 
         const completed = new Set(App.getProgress("lecturas"));
         grid.innerHTML = "";
+        const grouped = groupReadings(AcademyContent.readings);
 
-        const heading = document.createElement("div");
-        heading.className = "col-span-full mb-4 mt-4";
-        heading.innerHTML = '<h3 class="font-orbitron text-lg font-bold text-purple-400">B1-T1: Constitución Española</h3>';
-        grid.appendChild(heading);
+        Object.entries(grouped).forEach(([groupTitle, readings]) => {
+            const heading = document.createElement("div");
+            heading.className = "col-span-full mb-4 mt-4";
+            heading.innerHTML = `<h3 class="font-orbitron text-lg font-bold text-purple-400">${groupTitle}</h3>`;
+            grid.appendChild(heading);
 
-        AcademyContent.readings.forEach((reading) => {
+            readings.forEach((reading) => {
             const styles = AcademyContent.colorStyles[reading.color];
             const isFavorite = App.isFavorite("lecturas", reading.id);
             const card = document.createElement("article");
@@ -65,6 +77,7 @@
             });
 
             grid.appendChild(card);
+            });
         });
     }
 
