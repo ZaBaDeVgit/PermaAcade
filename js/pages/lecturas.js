@@ -1,4 +1,15 @@
 (function () {
+    const lecturaObserver = typeof IntersectionObserver !== "undefined" ? new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const url = entry.target.dataset.readingUrl;
+            if (url) {
+                fetch(url, { method: "HEAD", cache: "force-cache" }).catch(() => {});
+            }
+            lecturaObserver.unobserve(entry.target);
+        });
+    }, { rootMargin: "200px" }) : null;
+
     function groupReadings(readings) {
         return readings.reduce((groups, reading) => {
             if (!groups[reading.groupTitle]) {
@@ -14,6 +25,9 @@
         if (!grid) return;
 
         const completed = new Set(App.getProgress("lecturas"));
+        if (lecturaObserver) {
+            lecturaObserver.disconnect();
+        }
         grid.innerHTML = "";
         const grouped = groupReadings(AcademyContent.readings);
 
@@ -24,10 +38,12 @@
             grid.appendChild(heading);
 
             readings.forEach((reading) => {
-            const styles = AcademyContent.colorStyles[reading.color] || AcademyContent.colorStyles.cyan;
-            const isFavorite = App.isFavorite("lecturas", reading.id);
-            const card = document.createElement("article");
-            card.className = `rounded-xl border border-slate-800/50 bg-slate-900/50 p-5 transition-all ${styles.accentBorder}`;
+                const styles = AcademyContent.colorStyles[reading.color] || AcademyContent.colorStyles.cyan;
+                const isFavorite = App.isFavorite("lecturas", reading.id);
+                const card = document.createElement("article");
+                card.className = `rounded-xl border border-slate-800/50 bg-slate-900/50 p-5 transition-all ${styles.accentBorder}`;
+                card.dataset.readingUrl = reading.archivo;
+                lecturaObserver?.observe(card);
 
             card.innerHTML = `
                 <div class="mb-3 flex items-center justify-between">

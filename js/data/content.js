@@ -73,6 +73,20 @@ window.AcademyContent = {
             button: "bg-fuchsia-500/20 text-fuchsia-400 hover:bg-fuchsia-500/30"
         }
     },
+    videoPosters: {
+        cyan: "linear-gradient(135deg, rgba(8, 145, 178, 0.9), rgba(6, 182, 212, 0.7))",
+        emerald: "linear-gradient(135deg, rgba(5, 150, 105, 0.9), rgba(34, 197, 94, 0.7))",
+        blue: "linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(59, 130, 246, 0.7))",
+        purple: "linear-gradient(135deg, rgba(126, 34, 206, 0.9), rgba(167, 139, 250, 0.7))",
+        amber: "linear-gradient(135deg, rgba(217, 119, 6, 0.9), rgba(245, 158, 11, 0.7))",
+        rose: "linear-gradient(135deg, rgba(219, 39, 119, 0.9), rgba(244, 63, 94, 0.7))",
+        teal: "linear-gradient(135deg, rgba(3, 105, 161, 0.9), rgba(14, 165, 233, 0.7))",
+        indigo: "linear-gradient(135deg, rgba(79, 70, 229, 0.9), rgba(99, 102, 241, 0.7))",
+        pink: "linear-gradient(135deg, rgba(236, 72, 153, 0.9), rgba(251, 113, 133, 0.7))",
+        red: "linear-gradient(135deg, rgba(239, 68, 68, 0.9), rgba(248, 113, 113, 0.7))",
+        orange: "linear-gradient(135deg, rgba(249, 115, 22, 0.9), rgba(251, 191, 36, 0.7))",
+        fuchsia: "linear-gradient(135deg, rgba(192, 38, 211, 0.9), rgba(236, 72, 153, 0.7))"
+    },
     topics: [
         { id: "topic_01_constitucion", number: 1, title: "Constitución Española 1978", desc: "Texto completo y estructura constitucional", color: "cyan", pdf: "pdfs/01_constitucion.pdf" },
         { id: "topic_02_defensa_nacional", number: 2, title: "Ley Orgánica 5/2005", desc: "Defensa Nacional y principios constitucionales", color: "emerald", pdf: "pdfs/02_ley_defensa_nacional.pdf" },
@@ -111,7 +125,8 @@ window.AcademyContent = {
     readings: [
         { id: "reading_b1_t1_mapa_png", groupTitle: "B1-T1: Constitución Española", archivo: "Resumen_Mapas/B1_T1_Mapa_Bloque1_Tema1.png", titulo: "Mapa: Temas constitucionales", desc: "Infografía del bloque 1", color: "purple", type: "PNG" },
         { id: "reading_b1_t1_mapa_pdf", groupTitle: "B1-T1: Constitución Española", archivo: "Resumen_Mapas/B1_T1_Mapa_Arquitectura_Constitucional.pdf", titulo: "Mapa: Arquitectura constitucional", desc: "Esquema visual de la Constitución", color: "pink", type: "PDF" },
-        { id: "reading_b1_t2_mapa_pdf", groupTitle: "B1-T2: Ley Orgánica 5/2005", archivo: "Resumen_Mapas/B1_T2_Mapa_LeyDefensaNacional.pdf", titulo: "Mapa: Ley de Defensa Nacional", desc: "Resumen visual de la Ley Orgánica 5/2005 y sus ejes principales", color: "emerald", type: "PDF" }
+        { id: "reading_b1_t2_mapa_pdf", groupTitle: "B1-T2: Ley Orgánica 5/2005", archivo: "Resumen_Mapas/B1_T2_Mapa_LeyDefensaNacional.pdf", titulo: "Mapa: Ley de Defensa Nacional", desc: "Resumen visual de la Ley Orgánica 5/2005 y sus ejes principales", color: "emerald", type: "PDF" },
+        { id: "reading_b1_t2_arquitectura", groupTitle: "B1-T2: Arquitectura de la Defensa Nacional", archivo: "Resumen_Mapas/B1_T2_Arquitectura_de_la_Defensa_Nacional.pdf", titulo: "Arquitectura de la Defensa Nacional", desc: "Esquema interactivo para ubicar los elementos de la defensa del Estado", color: "teal", type: "PDF" }
     ],
     presentations: [
         {

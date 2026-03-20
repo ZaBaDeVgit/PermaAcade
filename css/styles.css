@@ -931,6 +931,64 @@ body.sidebar-collapsed .sidebar-link::before {
     aspect-ratio: 1 / 1;
 }
 
+.video-card {
+    position: relative;
+}
+
+.video-poster {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-align: center;
+    padding: 1.25rem;
+    color: #f8fafc;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.video-poster__label {
+    letter-spacing: 0.3em;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.video-poster--hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.97);
+}
+
+.video-poster__play {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+    display: inline-flex;
+    gap: 0.35rem;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    background: rgba(15, 23, 42, 0.6);
+}
+
+.video-poster__play svg {
+    color: #fff;
+}
+
+.video-poster__desc {
+    max-width: 80%;
+}
+
+.media-grid > *,
+#mapasGrid > *,
+#podcastsList > *,
+#presentacionesGrid > * {
+    content-visibility: auto;
+    contain-intrinsic-size: 320px;
+}
+
 /* Safe area for notched phones */
 @supports (padding-bottom: env(safe-area-inset-bottom)) {
     .pb-safe {
