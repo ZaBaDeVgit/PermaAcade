@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Podcasts - Academia Tropa Permanente</title>
-    <meta name="description" content="Podcasts y resúmenes en audio para estudiar en cualquier momento.">
-    <meta name="theme-color" content="#020617">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="manifest" href="manifest.webmanifest">
+    <title>Organigramas - Academia Tropa Permanente</title>
+    <meta name="description" content="Organigramas detallados del Ministerio de Defensa y las tres Fuerzas Armadas.">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="manifest" href="../manifest.webmanifest">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body class="bg-slate-950 text-white">
-    <!-- Sidebar -->
-    <aside id="sidebar" class="fixed left-0 top-0 h-full w-64 bg-slate-900 border-r border-slate-800 z-40 flex flex-col transition-all duration-300 overflow-hidden -translate-x-full md:translate-x-0">
-        <!-- Logo -->
+    <aside id="sidebar" class="fixed left-0 top-0 h-full w-64 bg-slate-900 border-r border-slate-800 z-40 flex flex-col transition-all duration-300 -translate-x-full md:translate-x-0">
         <div class="p-4 border-b border-slate-800 flex justify-center">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center cursor-pointer hover:scale-105 transition-transform" onclick="toggleSidebarCollapse()">
                 <svg id="collapseIcon" class="w-6 h-6 text-white transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -25,8 +22,6 @@
                 </svg>
             </div>
         </div>
-
-        <!-- User Avatar + Donate -->
         <div class="p-4 border-b border-slate-800 flex flex-col items-center gap-3">
             <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center font-bold text-white" id="userAvatar">U</div>
             <a href="https://ko-fi.com/zabadev" target="_blank" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-400 hover:to-pink-400 transition-all text-white text-xs font-semibold">
@@ -34,68 +29,64 @@
                 <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Donar</span>
             </a>
         </div>
-
-        <!-- Navigation -->
         <nav class="flex-1 p-2 overflow-y-auto">
             <ul class="space-y-1">
                 <li>
-                    <a href="dashboard.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Inicio">
+                    <a href="../dashboard.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Inicio">
                         <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                         <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Inicio</span>
                     </a>
                 </li>
                 <li>
-                    <a href="progreso.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Mi Espacio">
+                    <a href="../progreso.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Mi Espacio">
                         <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v18l7-5 7 5V3H5z"></path></svg>
                         <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Mi Espacio</span>
                     </a>
                 </li>
                 <li>
-                    <a href="temas.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Temas">
+                    <a href="../temas.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Temas">
                         <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                         <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Temas</span>
                     </a>
                 </li>
                 <li>
-                    <a href="tests.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Tests">
+                    <a href="../tests.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Tests">
                         <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
                         <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Tests</span>
                     </a>
                 </li>
                 <li>
-                    <a href="lecturas.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Resúmenes">
+                    <a href="../lecturas.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Resúmenes">
                         <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
                         <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Resúmenes</span>
                     </a>
                 </li>
                 <li>
-                    <a href="videos.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Vídeos">
+                    <a href="../videos.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Vídeos">
                         <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                         <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Vídeos</span>
                     </a>
                 </li>
                 <li>
-                    <a href="podcasts.html" class="sidebar-link active flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Podcasts">
+                    <a href="../podcasts.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Podcasts">
                         <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
                         <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Podcasts</span>
                     </a>
                 </li>
                 <li>
-                    <a href="presentaciones.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Presentaciones">
+                    <a href="../presentaciones.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Presentaciones">
                         <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
                         <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Presentaciones</span>
                     </a>
                 </li>
                 <li>
-                    <a href="organigrama/index.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Organigramas">
+                    <a href="../organigrama/index.html" class="sidebar-link active flex items-center gap-3 px-3 py-3 rounded-lg text-white bg-slate-800/60" title="Organigramas">
                         <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16v4H4zm0 6h6v4H4zm0 6h10v4H4zm10-6h6v4h-6zm0 6h4v4h-4z"></path></svg>
                         <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Organigramas</span>
                     </a>
                 </li>
             </ul>
         </nav>
-
-        <!-- Logout -->
         <div class="p-2 border-t border-slate-800">
             <button onclick="logout()" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-red-400 hover:bg-red-500/10 transition-all w-full" title="Cerrar Sesión">
                 <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
@@ -103,8 +94,6 @@
             </button>
         </div>
     </aside>
-
-    <!-- Mobile Header -->
     <header class="md:hidden fixed top-0 left-0 right-0 h-16 bg-slate-900 border-b border-slate-800 z-30 flex items-center justify-between px-4">
         <button onclick="toggleSidebar()" class="text-white p-2">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -112,54 +101,37 @@
         <span class="font-orbitron font-bold text-white">Tropa<span class="text-emerald-400">Perma</span></span>
         <div class="w-10"></div>
     </header>
-
-    <main class="md:ml-64 min-h-screen pt-16 md:pt-0 pb-24 transition-all duration-300 ml-0">
-        <div class="max-w-7xl mx-auto p-4 md:p-8">
-            <div class="mb-8">
-                <h1 class="font-orbitron font-bold text-2xl md:text-3xl text-white mb-2">Podcasts de Audio</h1>
-                <p class="text-slate-400">Escucha y aprende mientras haces otras actividades</p>
+    <main class="md:ml-64 min-h-screen pt-16 md:pt-0 transition-all duration-300 ml-0">
+        <div class="max-w-6xl mx-auto p-4 md:p-8">
+            <div class="mb-6 space-y-3">
+                <p class="text-emerald-400 font-semibold uppercase text-xs tracking-[0.4em]">Organigrama</p>
+                <h1 class="font-orbitron text-3xl md:text-4xl font-bold">Estudia la cadena de mando de cada fuerza</h1>
+                <p class="text-slate-400 max-w-3xl">
+                    Basado en las estructuras oficiales del EMAD, el Ejército de Tierra, la Armada y el Ejército del Aire y del Espacio, aquí puedes desplegar cada árbol de mando, explorar los roles de las unidades clave y revisar las referencias.
+                </p>
             </div>
-
-            <!-- Podcast List -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 media-grid" id="podcastsList"></div>
+            <section class="organigram-page">
+                <div class="organigram-selector" id="organigramSelector"></div>
+                <div class="organigram-content" id="organigramContent">
+                    <div class="organigram-tree-shell">
+                        <ul class="organigram-tree" id="organigramaGrid"></ul>
+                    </div>
+                    <aside class="organigram-detail" id="organigramDetailPanel">
+                        <h3 data-detail-title>Selecciona un nodo</h3>
+                        <p class="text-xs uppercase tracking-[0.3em] mb-1 text-slate-400">Rol</p>
+                        <p data-detail-role class="font-semibold text-white">Rol no descrito</p>
+                        <p data-detail-notes class="text-slate-400 text-sm">Mantén el cursor sobre un nodo o toca para ver su función y notas.</p>
+                        <div class="organigram-legend" id="organigramLegend"></div>
+                        <div class="organigram-resources" id="organigramResources"></div>
+                    </aside>
+                </div>
+            </section>
         </div>
     </main>
 
-    <!-- Fixed Player Bar -->
-    <div id="fixedPlayer" class="fixed bottom-0 left-0 right-0 md:left-64 bg-slate-900 border-t border-slate-700 p-4 transform translate-y-full transition-transform duration-300 z-50">
-        <div class="max-w-7xl mx-auto flex items-center gap-4">
-            <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center flex-shrink-0" id="fixedCover">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
-            </div>
-            <div class="flex-1 min-w-0">
-                <div class="flex items-center gap-2 mb-1">
-                    <button onclick="togglePlay()" class="w-10 h-10 rounded-full bg-emerald-500 hover:bg-emerald-400 flex items-center justify-center transition-colors flex-shrink-0">
-                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24" id="fixedPlayIcon"><path d="M8 5v14l11-7z"/></svg>
-                    </button>
-                    <div class="flex-1 min-w-0">
-                        <h4 class="text-white font-medium text-sm truncate" id="fixedTitle">Selecciona un podcast</h4>
-                        <p class="text-slate-400 text-xs truncate" id="fixedDesc">Elige uno de los disponibles</p>
-                    </div>
-                </div>
-                <div class="h-1 bg-slate-700 rounded-full mt-2 cursor-pointer" onclick="seekAudio(event)">
-                    <div class="h-full bg-emerald-500 rounded-full transition-all" id="fixedProgress" style="width: 0%"></div>
-                </div>
-            </div>
-            <div class="text-xs text-slate-400 flex-shrink-0">
-                <span id="fixedCurrent">0:00</span> / <span id="fixedTotal">0:00</span>
-            </div>
-        </div>
-    </div>
-
-    <footer class="md:ml-64 border-t border-slate-800/50 py-6 transition-all duration-300 ml-0">
-        <div class="max-w-7xl mx-auto px-4 md:px-8 text-center">
-            <div class="text-slate-500 text-sm">Creado por <span class="text-emerald-400 font-semibold">ZaBaDeV</span> © <span id="currentYear"></span> - Academia gratuita para servir a España</div>
-        </div>
-    </footer>
-
-    <script src="js/data/content.js"></script>
-    <script src="js/config.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/pages/podcasts.js"></script>
+    <script src="../js/data/content.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/pages/organigram.js"></script>
 </body>
 </html>

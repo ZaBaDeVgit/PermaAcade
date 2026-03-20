@@ -931,6 +931,213 @@ body.sidebar-collapsed .sidebar-link::before {
     aspect-ratio: 1 / 1;
 }
 
+.organigram-page {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+}
+
+.organigram-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.organigram-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.organigram-selector button {
+    border-radius: 999px;
+    border: 1px solid transparent;
+    background: rgba(15, 23, 42, 0.8);
+    color: #f1f5f9;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border 0.2s ease, background 0.2s ease;
+}
+
+.organigram-selector button[data-active="true"] {
+    border-color: rgba(59, 130, 246, 0.8);
+    background: rgba(59, 130, 246, 0.15);
+}
+
+.organigram-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+    gap: 1.75rem;
+}
+
+.organigram-tree-shell {
+    background: rgba(15, 23, 42, 0.95);
+    border-radius: 1.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    padding: 1.25rem;
+    max-height: 70vh;
+    overflow: auto;
+}
+
+.organigram-content .organigram-tree {
+    padding-left: 0;
+}
+
+.organigram-tree li {
+    margin-bottom: 0.5rem;
+}
+
+.organigram-node::after {
+    position: static;
+    transform: none;
+    margin-top: 0.3rem;
+}
+
+ .organigram-detail {
+     position: sticky;
+     top: 1rem;
+     display: flex;
+     flex-direction: column;
+     gap: 0.75rem;
+     padding-bottom: 1.5rem;
+     min-height: 380px;
+     overflow-y: auto;
+}
+
+.organigram-legend,
+.organigram-resources {
+    margin-top: 2rem;
+}
+
+.organigram-legend strong,
+.organigram-resources strong {
+    display: block;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #94a3b8;
+}
+
+.organigram-legend ul,
+.organigram-resources ul {
+    margin-top: 0.5rem;
+    padding-left: 1.2rem;
+}
+
+.organigram-resources a {
+    color: #7dd3fc;
+    text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    .organigram-content {
+        grid-template-columns: 1fr;
+    }
+
+    .organigram-detail {
+        position: static;
+    }
+}
+
+.organigram-card {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+}
+
+.organigram-header h2 {
+    font-size: 1.35rem;
+    margin-bottom: 0.25rem;
+}
+
+.organigram-header p {
+    color: #94a3b8;
+    margin-bottom: 1rem;
+}
+
+.organigram-tree,
+.organigram-children {
+    list-style: none;
+    margin: 0;
+    padding-left: 1rem;
+}
+
+.organigram-children {
+    padding-left: 1.2rem;
+    border-left: 2px solid rgba(59, 130, 246, 0.25);
+    margin-top: 0.75rem;
+}
+
+.organigram-node {
+    width: 100%;
+    background: rgba(2, 6, 23, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 999px;
+    padding: 0.6rem 1rem;
+    color: #e2e8f0;
+    font-weight: 600;
+    margin-bottom: 0.65rem;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    position: relative;
+}
+
+.organigram-node::after {
+    content: attr(data-role);
+    font-size: 0.7rem;
+    color: #a5b4fc;
+    position: absolute;
+    bottom: -1.4rem;
+    left: 1rem;
+}
+
+.organigram-node--expanded {
+    border-color: rgba(16, 185, 129, 0.7);
+}
+
+.hidden {
+    display: none;
+}
+
+.organigram-detail {
+    background: rgba(2, 6, 23, 0.95);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.organigram-detail h3 {
+    margin-bottom: 0.75rem;
+}
+
+.organigram-detail p {
+    color: #cbd5f5;
+    margin-bottom: 0.35rem;
+}
+
+.organigram-legend ul,
+.organigram-resources ul {
+    margin: 0.35rem 0 0;
+    padding-left: 1.1rem;
+    color: #94a3b8;
+}
+
+.organigram-legend li,
+.organigram-resources li {
+    margin-bottom: 0.2rem;
+}
+
+.organigram-resources a {
+    color: #60a5fa;
+    text-decoration: underline;
+}
+
 .video-card {
     position: relative;
 }
