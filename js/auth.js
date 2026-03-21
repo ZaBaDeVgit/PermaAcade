@@ -67,7 +67,8 @@ class Auth {
                 videos: [],
                 podcasts: [],
                 lecturas: [],
-                presentaciones: []
+                presentaciones: [],
+                organigramas: []
             },
             stats: {
                 testsCompleted: 0,
@@ -256,7 +257,8 @@ class Auth {
                 videos: Auth.calculateProgress('videos', 30),
                 podcasts: Auth.calculateProgress('podcasts', 20),
                 lecturas: Auth.calculateProgress('lecturas', 10),
-                presentaciones: Auth.calculateProgress('presentaciones', 5)
+                presentaciones: Auth.calculateProgress('presentaciones', 5),
+                organigramas: Auth.calculateProgress('organigramas', 4)
             }
         };
     }

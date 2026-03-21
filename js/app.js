@@ -94,7 +94,8 @@
                 videos: Array.isArray(progress.videos) ? progress.videos : [],
                 podcasts: Array.isArray(progress.podcasts) ? progress.podcasts : [],
                 lecturas: Array.isArray(progress.lecturas) ? progress.lecturas : [],
-                presentaciones: Array.isArray(progress.presentaciones) ? progress.presentaciones : []
+                presentaciones: Array.isArray(progress.presentaciones) ? progress.presentaciones : [],
+                organigramas: Array.isArray(progress.organigramas) ? progress.organigramas : []
             },
             results: {
                 tests: Array.isArray(results.tests) ? results.tests : []
@@ -105,7 +106,8 @@
                 videos: Array.isArray(user.favorites?.videos) ? user.favorites.videos.map((entry) => normalizeFavoriteEntry(entry, "videos")).filter(Boolean) : [],
                 podcasts: Array.isArray(user.favorites?.podcasts) ? user.favorites.podcasts.map((entry) => normalizeFavoriteEntry(entry, "podcasts")).filter(Boolean) : [],
                 lecturas: Array.isArray(user.favorites?.lecturas) ? user.favorites.lecturas.map((entry) => normalizeFavoriteEntry(entry, "lecturas")).filter(Boolean) : [],
-                presentaciones: Array.isArray(user.favorites?.presentaciones) ? user.favorites.presentaciones.map((entry) => normalizeFavoriteEntry(entry, "presentaciones")).filter(Boolean) : []
+                presentaciones: Array.isArray(user.favorites?.presentaciones) ? user.favorites.presentaciones.map((entry) => normalizeFavoriteEntry(entry, "presentaciones")).filter(Boolean) : [],
+                organigramas: Array.isArray(user.favorites?.organigramas) ? user.favorites.organigramas.map((entry) => normalizeFavoriteEntry(entry, "organigramas")).filter(Boolean) : []
             },
             study: {
                 lastVisited: user.study?.lastVisited && typeof user.study.lastVisited === "object" ? {
@@ -492,6 +494,19 @@
                 color: presentation.color,
                 url: "presentaciones.html",
                 pageUrl: "presentaciones.html"
+            });
+        });
+
+        (content.organigrams || []).forEach((organigram) => {
+            items.push({
+                id: organigram.id,
+                category: "organigramas",
+                kind: "organigrama",
+                title: organigram.title,
+                subtitle: organigram.description,
+                color: organigram.color || "cyan",
+                url: `organigrama/index.html#${encodeURIComponent(organigram.id)}`,
+                pageUrl: `organigrama/index.html#${encodeURIComponent(organigram.id)}`
             });
         });
 

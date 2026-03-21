@@ -1,6 +1,14 @@
 (function () {
     const organigrams = AcademyContent.organigrams || [];
-    let activeId = organigrams[0]?.id || null;
+    let activeId = null;
+
+    function getActiveOrganigramId() {
+        const hash = decodeURIComponent(window.location.hash.replace(/^#/, "").trim());
+        if (hash && organigrams.some((entry) => entry.id === hash)) {
+            return hash;
+        }
+        return organigrams[0]?.id || null;
+    }
 
     function updateDetailPanel(panel, node) {
         if (!panel || !node) return;
@@ -76,9 +84,20 @@
             button.dataset.active = button.dataset.orgSelector === id ? "true" : "false";
         });
         const org = organigrams.find((entry) => entry.id === activeId);
+        if (!org) return;
+        if (window.location.hash !== `#${org.id}`) {
+            window.history.replaceState(null, "", `#${encodeURIComponent(org.id)}`);
+        }
         renderTree(org, detailPanel);
         renderLegend(org);
         renderResources(org);
+        App.updateProgress("organigramas", org.id);
+        App.rememberVisit({
+            title: org.title,
+            subtitle: org.description,
+            url: `organigrama/index.html#${org.id}`,
+            kind: "organigrama"
+        });
     }
 
     function renderSelector() {
@@ -99,7 +118,14 @@
     document.addEventListener("DOMContentLoaded", () => {
         const user = App.initProtectedPage();
         if (!user || !organigrams.length) return;
+        activeId = getActiveOrganigramId();
         renderSelector();
         setActiveOrganigram(activeId);
+        window.addEventListener("hashchange", () => {
+            const nextId = getActiveOrganigramId();
+            if (nextId !== activeId) {
+                setActiveOrganigram(nextId);
+            }
+        });
     });
 })();

@@ -6,6 +6,26 @@
   "display": "standalone",
   "background_color": "#020617",
   "theme_color": "#020617",
+  "shortcuts": [
+    {
+      "name": "Hacer Test",
+      "short_name": "Test",
+      "description": "Practica con tests tipo examen",
+      "url": "tests.html"
+    },
+    {
+      "name": "Ver Temas",
+      "short_name": "Temas",
+      "description": "Estudia el temario completo",
+      "url": "temas.html"
+    },
+    {
+      "name": "Organigramas",
+      "short_name": "Mando",
+      "description": "Consulta la estructura y la cadena de mando",
+      "url": "organigrama/index.html"
+    }
+  ],
   "icons": [
     {
       "src": "favicon.svg",

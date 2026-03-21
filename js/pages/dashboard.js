@@ -22,7 +22,8 @@
             ["videos", content.videos.length, "videosProgress", "videosProgressBar"],
             ["podcasts", content.podcasts.length, "podcastsProgress", "podcastsProgressBar"],
             ["lecturas", content.readings.length, "lecturasProgress", "lecturasProgressBar"],
-            ["presentaciones", content.presentations.length, "presentacionesProgress", "presentacionesProgressBar"]
+            ["presentaciones", content.presentations.length, "presentacionesProgress", "presentacionesProgressBar"],
+            ["organigramas", (content.organigrams || []).length, "organigramasProgress", "organigramasProgressBar"]
         ];
 
         progressMap.forEach(([category, total, labelId, barId]) => {
