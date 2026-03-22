@@ -5,6 +5,12 @@
         medium: "Medio",
         hard: "Difícil"
     };
+    
+    // Timer por pregunta (en segundos, 0 = desactivado)
+    const QUESTION_TIME_LIMIT = 0; // Cambiar a número para activar (ej: 60)
+    
+    let questionTimerInterval = null;
+    let questionTimeRemaining = 0;
 
     const topicTitles = {
         b1_t1_cortes: "B1-T1: Cortes Generales",
@@ -232,22 +238,79 @@
 
         const optionsContainer = document.getElementById("optionsContainer");
         optionsContainer.innerHTML = "";
+        
+        // Mostrar timer de pregunta si está configurado
+        renderQuestionTimer();
+        
+        // Verificar si ya se respondió esta pregunta
+        const hasAnswered = userAnswers[currentQuestionIndex] !== null;
+        const selectedAnswer = userAnswers[currentQuestionIndex];
 
         question.options.forEach((option, index) => {
             const button = document.createElement("button");
             button.type = "button";
-            button.className = "test-option mb-2 block w-full rounded-lg border border-slate-700 bg-slate-700/70 px-4 py-3 text-left text-white";
-            if (userAnswers[currentQuestionIndex] === index) {
-                button.classList.add("selected");
+            
+            // Estilo base
+            let buttonClass = "test-option mb-2 block w-full rounded-lg border border-slate-700 bg-slate-700/70 px-4 py-3 text-left text-white transition-all";
+            
+            if (hasAnswered) {
+                // Mostrar feedback si ya se respondió
+                if (index === question.correct) {
+                    buttonClass = "test-option mb-2 block w-full rounded-lg border-2 border-emerald-500 bg-emerald-500/20 px-4 py-3 text-left text-white";
+                } else if (index === selectedAnswer && index !== question.correct) {
+                    buttonClass = "test-option mb-2 block w-full rounded-lg border-2 border-red-500 bg-red-500/20 px-4 py-3 text-left text-white";
+                } else {
+                    buttonClass = "test-option mb-2 block w-full rounded-lg border border-slate-600 bg-slate-700/30 px-4 py-3 text-left text-slate-500";
+                }
+            } else {
+                // Respuesta no seleccionada todavía
+                if (userAnswers[currentQuestionIndex] === index) {
+                    buttonClass += " selected ring-2 ring-emerald-400";
+                }
             }
-            button.innerHTML = `<strong>${String.fromCharCode(65 + index)}.</strong> ${option}`;
-            button.addEventListener("click", () => {
-                userAnswers[currentQuestionIndex] = index;
-                saveDraftState();
-                renderQuestion();
-            });
+            
+            button.className = buttonClass;
+            
+            // Añadir icono de estado si ya se respondió
+            let iconHtml = "";
+            if (hasAnswered) {
+                if (index === question.correct) {
+                    iconHtml = '<span class="mr-2 text-emerald-400">✓</span>';
+                } else if (index === selectedAnswer && index !== question.correct) {
+                    iconHtml = '<span class="mr-2 text-red-400">✗</span>';
+                }
+            }
+            
+            button.innerHTML = `${iconHtml}<strong>${String.fromCharCode(65 + index)}.</strong> ${option}`;
+            
+            if (!hasAnswered) {
+                button.addEventListener("click", () => {
+                    userAnswers[currentQuestionIndex] = index;
+                    saveDraftState();
+                    clearQuestionTimer();
+                    renderQuestion();
+                });
+            }
+            
             optionsContainer.appendChild(button);
         });
+
+        // Mostrar explicación si existe y ya se respondió
+        if (hasAnswered && question.explanation) {
+            const explanationDiv = document.createElement("div");
+            const isCorrect = selectedAnswer === question.correct;
+            explanationDiv.className = `mt-4 rounded-lg p-4 ${isCorrect ? "bg-emerald-500/10 border border-emerald-500/30" : "bg-amber-500/10 border border-amber-500/30"}`;
+            explanationDiv.innerHTML = `
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">${isCorrect ? "💡" : "📚"}</span>
+                    <div>
+                        <p class="font-semibold ${isCorrect ? "text-emerald-400" : "text-amber-400"} mb-1">${isCorrect ? "¡Correcto!" : "Respuesta correcta"}</p>
+                        <p class="text-slate-300 text-sm">${question.explanation}</p>
+                    </div>
+                </div>
+            `;
+            optionsContainer.appendChild(explanationDiv);
+        }
 
         const prevBtn = document.getElementById("prevBtn");
         if (prevBtn) {
@@ -256,6 +319,68 @@
         }
 
         App.setText("nextBtn", currentQuestionIndex === currentTest.length - 1 ? "Finalizar" : "Siguiente");
+    }
+    
+    function renderQuestionTimer() {
+        const timerContainer = document.getElementById("questionTimerContainer");
+        if (!timerContainer) return;
+        
+        if (QUESTION_TIME_LIMIT <= 0) {
+            timerContainer.classList.add("hidden");
+            return;
+        }
+        
+        timerContainer.classList.remove("hidden");
+        
+        // Reiniciar timer de pregunta
+        questionTimeRemaining = QUESTION_TIME_LIMIT;
+        clearInterval(questionTimerInterval);
+        
+        updateQuestionTimerDisplay();
+        
+        questionTimerInterval = setInterval(() => {
+            questionTimeRemaining--;
+            updateQuestionTimerDisplay();
+            
+            if (questionTimeRemaining <= 0) {
+                clearInterval(questionTimerInterval);
+                // Tiempo agotado - marcar como sin respuesta y avanzar
+                if (userAnswers[currentQuestionIndex] === null) {
+                    App.showToast("⏱️ Tiempo agotado", "warning");
+                    // Ir a siguiente pregunta automáticamente
+                    setTimeout(() => {
+                        if (currentQuestionIndex < currentTest.length - 1) {
+                            nextQuestion();
+                        } else {
+                            finishTest();
+                        }
+                    }, 1000);
+                }
+            }
+        }, 1000);
+    }
+    
+    function updateQuestionTimerDisplay() {
+        const timerDisplay = document.getElementById("questionTimerDisplay");
+        if (!timerDisplay) return;
+        
+        const minutes = Math.floor(questionTimeRemaining / 60);
+        const seconds = questionTimeRemaining % 60;
+        timerDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+        
+        // Cambiar color si queda poco tiempo
+        if (questionTimeRemaining <= 10) {
+            timerDisplay.className = "font-orbitron text-2xl font-bold text-red-400";
+        } else if (questionTimeRemaining <= 30) {
+            timerDisplay.className = "font-orbitron text-2xl font-bold text-amber-400";
+        } else {
+            timerDisplay.className = "font-orbitron text-2xl font-bold text-emerald-400";
+        }
+    }
+    
+    function clearQuestionTimer() {
+        clearInterval(questionTimerInterval);
+        questionTimerInterval = null;
     }
 
     function startTimer(timestamp = Date.now()) {

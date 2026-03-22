@@ -1,8 +1,105 @@
 /* Custom CSS for Tropa Permanente Academy */
 
+/* Light Mode (default) */
 :root {
     --emerald-glow: #10b981;
     --cyan-glow: #06b6d4;
+    --bg-primary: #f8fafc;
+    --bg-secondary: #f1f5f9;
+    --bg-card: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    --border-color: #e2e8f0;
+    --border-muted: #cbd5e1;
+}
+
+/* Dark Mode */
+.dark {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+    --border-muted: #475569;
+}
+
+/* Theme-aware variables for common elements */
+body {
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary);
+}
+
+/* Override Tailwind hardcoded dark backgrounds */
+.bg-slate-950 {
+    background-color: var(--bg-primary) !important;
+}
+
+.bg-slate-900 {
+    background-color: var(--bg-primary) !important;
+}
+
+.bg-slate-800\/50 {
+    background-color: rgba(30, 41, 59, 0.5) !important;
+}
+
+.dark .bg-slate-800\/50 {
+    background-color: rgba(30, 41, 59, 0.5) !important;
+}
+
+.bg-slate-800 {
+    background-color: var(--bg-secondary) !important;
+}
+
+.bg-slate-700\/70 {
+    background-color: var(--bg-secondary) !important;
+}
+
+.bg-slate-700\/30 {
+    background-color: var(--bg-card) !important;
+    opacity: 0.3 !important;
+}
+
+.bg-slate-700 {
+    background-color: var(--bg-card) !important;
+}
+
+/* Text colors */
+.text-white {
+    color: var(--text-primary) !important;
+}
+
+.text-slate-300, 
+.text-slate-400,
+.text-slate-500 {
+    color: var(--text-secondary) !important;
+}
+
+.text-slate-200 {
+    color: var(--text-primary) !important;
+}
+
+/* Border colors */
+.border-slate-700, 
+.border-slate-800,
+.border-slate-600,
+.border-slate-900 {
+    border-color: var(--border-color) !important;
+}
+
+/* Card backgrounds */
+.bg-slate-900\/50,
+.bg-slate-800\/50 {
+    background-color: var(--bg-card) !important;
+}
+
+.glass {
+    background: rgba(var(--bg-secondary), 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
 }
 
 .font-orbitron {
@@ -11,6 +108,34 @@
 
 .font-inter {
     font-family: 'Inter', sans-serif;
+}
+
+/* Prevenir movimiento del layout por scrollbar */
+html {
+    overflow-y: scroll;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Scrollbar consistente */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #475569;
 }
 
 /* Animated Background */
@@ -248,30 +373,39 @@ body.sidebar-collapsed .sidebar-link::before {
     display: none;
 }
 
-/* Sidebar colapsado - área de usuario */
+/* Sidebar colapsado - área de usuario (sin transiciones para estabilidad) */
 body.sidebar-collapsed #sidebar > div:nth-child(2) {
     padding: 0.5rem;
+    transition: none;
 }
 
 body.sidebar-collapsed #sidebar > div:nth-child(2) > div:first-child {
     margin-bottom: 0.5rem;
     justify-content: center;
+    transition: none;
 }
 
-body.sidebar-collapsed #sidebar > div:nth-child(2) > div:first-child button,
-body.sidebar-collapsed #sidebar > div:nth-child(2) > div:first-child > button {
+body.sidebar-collapsed #sidebar > div:nth-child(2) > div:first-child > div,
+body.sidebar-collapsed #sidebar > div:nth-child(2) > div:first-child button {
     width: 2.5rem;
     height: 2.5rem;
     margin: 0 auto;
+    transition: none;
 }
 
 body.sidebar-collapsed #sidebar > div:nth-child(2) > a {
     padding: 0.5rem;
     justify-content: center;
+    transition: none;
 }
 
 body.sidebar-collapsed #sidebar > div:nth-child(2) a .sidebar-text {
     display: none;
+}
+
+/* Asegurar estabilidad del logo */
+#sidebar > div:first-child {
+    transition: none;
 }
 
 /* Ajustes de cards de podcast para diferentes pantallas */

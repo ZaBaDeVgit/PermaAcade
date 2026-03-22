@@ -117,6 +117,12 @@
                                 <button type="button" class="favorite-toggle ${isFavorite ? "is-active" : ""}" data-favorite-video="${video.id}" aria-label="Favorito">
                                     <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61L12 17.771l-4.734 2.768a.562.562 0 01-.84-.61l1.285-5.385a.563.563 0 00-.182-.557L3.325 10.385a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345l2.125-5.111z"/></svg>
                                 </button>
+                                <button type="button" class="share-toggle" data-share-video="${video.id}" aria-label="Compartir">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+                                </button>
+                                <button type="button" class="notes-toggle" data-notes-video="${video.id}" aria-label="Notas">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                                </button>
                             </div>
                         </div>
                         <p class="mb-4 text-sm text-slate-400">${video.desc}</p>
@@ -161,6 +167,34 @@
             });
         });
 
+        grid.querySelectorAll("[data-share-video]").forEach((button) => {
+            button.addEventListener("click", () => {
+                const video = AcademyContent.videos.find((entry) => entry.id === button.dataset.shareVideo);
+                if (!video) return;
+                if (typeof Share !== 'undefined') {
+                    Share.share({
+                        title: video.titulo,
+                        text: video.desc,
+                        url: `videos.html?id=${video.id}`
+                    });
+                } else {
+                    const url = `videos.html?id=${video.id}`;
+                    navigator.clipboard?.writeText(url).then(() => {
+                        App.showToast('¡Enlace copiado!', 'success');
+                    });
+                }
+            });
+        });
+
+        grid.querySelectorAll("[data-notes-video]").forEach((button) => {
+            button.addEventListener("click", () => {
+                const videoId = button.dataset.notesVideo;
+                if (typeof Notes !== 'undefined') {
+                    Notes.show(`video_${videoId}`, 'Notas del vídeo');
+                }
+            });
+        });
+
         grid.querySelectorAll("[data-video-poster-button]").forEach((button) => {
             button.addEventListener("click", () => {
                 const videoId = button.dataset.videoPosterButton;
@@ -172,6 +206,17 @@
                 hidePoster(videoEl);
                 videoEl.play();
                 markVideoAsViewed(videoId, button.closest("article"));
+                
+                // Track in history
+                const video = AcademyContent.videos.find((entry) => entry.id === videoId);
+                if (video && typeof History !== 'undefined') {
+                    History.add({
+                        type: 'video',
+                        id: video.id,
+                        title: video.titulo,
+                        url: `videos.html?id=${video.id}`
+                    });
+                }
             });
         });
 
@@ -180,6 +225,17 @@
                 ensureVideoSource(videoElement);
                 hidePoster(videoElement);
                 markVideoAsViewed(videoElement.dataset.videoId, videoElement.closest("article"));
+                
+                // Track in history
+                const video = AcademyContent.videos.find((entry) => entry.id === videoElement.dataset.videoId);
+                if (video && typeof History !== 'undefined') {
+                    History.add({
+                        type: 'video',
+                        id: video.id,
+                        title: video.titulo,
+                        url: `videos.html?id=${video.id}`
+                    });
+                }
             }, { once: true });
 
             videoElement.addEventListener("ended", () => {

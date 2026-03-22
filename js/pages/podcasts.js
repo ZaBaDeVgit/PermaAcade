@@ -302,6 +302,8 @@
 
         currentPodcastId = id;
         setPlayerInfo(podcast);
+        updateShareButton(podcast);
+        updateNotesButton(podcast.id);
         
         const savedPosition = getSavedPosition(id);
         audioPlayer.src = podcast.archivo;
@@ -324,8 +326,63 @@
             url: "podcasts.html",
             kind: "podcast"
         });
+        
+        // Update history utility
+        if (typeof History !== 'undefined') {
+            History.add({
+                type: 'podcast',
+                id: podcast.id,
+                title: podcast.title,
+                url: `podcasts.html?id=${podcast.id}`,
+                progress: savedPosition / getPodcastDuration(podcast)
+            });
+        }
+        
         updatePlayButton();
         renderPodcasts();
+    }
+    
+    function getPodcastDuration(podcast) {
+        if (!podcast) return 1;
+        // Parse duration like "15:30" to seconds
+        const parts = podcast.duration.split(':');
+        return parseInt(parts[0] || 0) * 60 + parseInt(parts[1] || 0);
+    }
+    
+    function updateShareButton(podcast) {
+        const shareBtn = document.getElementById("shareBtn");
+        if (!shareBtn) return;
+        
+        shareBtn.classList.remove("hidden");
+        shareBtn.onclick = () => {
+            const timestamp = Math.floor(audioPlayer.currentTime);
+            if (typeof Share !== 'undefined') {
+                Share.share({
+                    title: podcast.title,
+                    text: podcast.desc,
+                    url: 'podcasts.html',
+                    timestamp: timestamp
+                });
+            } else {
+                // Fallback
+                const url = `podcasts.html?id=${podcast.id}#t=${timestamp}`;
+                navigator.clipboard?.writeText(url).then(() => {
+                    App.showToast('¡Enlace copiado!', 'success');
+                });
+            }
+        };
+    }
+    
+    function updateNotesButton(podcastId) {
+        const notesBtn = document.getElementById("notesBtn");
+        if (!notesBtn) return;
+        
+        if (typeof Notes !== 'undefined') {
+            notesBtn.classList.remove("hidden");
+            Notes.renderButton(`podcast_${podcastId}`, 'notesBtn', { 
+                title: 'Nota del podcast' 
+            });
+        }
     }
 
     function togglePlay() {

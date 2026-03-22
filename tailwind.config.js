@@ -5,6 +5,7 @@ module.exports = {
     "./**/*.html",
     "./js/**/*.js"
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -14,6 +15,15 @@ module.exports = {
       colors: {
         'emerald-glow': '#10b981',
         'cyan-glow': '#06b6d4',
+        // Dark mode semantic colors
+        'dark': {
+          'bg': '#0f172a',
+          'bg-secondary': '#1e293b',
+          'surface': '#334155',
+          'border': '#475569',
+          'text': '#f1f5f9',
+          'text-muted': '#94a3b8',
+        }
       },
       animation: {
         'fade-in-up': 'fade-in-up 0.8s ease-out forwards',

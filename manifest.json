@@ -8,6 +8,9 @@
   "theme_color": "#10b981",
   "orientation": "portrait-primary",
   "scope": "/",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
   "icons": [
     {
       "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect fill='%230f172a' width='512' height='512' rx='64'/><circle fill='%2310b981' cx='256' cy='200' r='100'/><path fill='%2306b6d4' d='M156 350 L256 450 L356 350 L256 280 Z'/></svg>",
@@ -25,6 +28,7 @@
   "categories": ["education", "utilities"],
   "lang": "es",
   "dir": "ltr",
+  "handle_links": "preferred",
   "screenshots": [],
   "shortcuts": [
     {
@@ -59,6 +63,18 @@
       "icons": [
         {
           "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect fill='%2314b8a6' width='96' height='96' rx='16'/><path fill='white' d='M20 20 h56 v16 H20z M20 44 h20 v16 H20z M56 44 h20 v16 H56z M20 68 h40 v8 H20z'/></svg>",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Podcasts",
+      "short_name": "Audio",
+      "description": "Escucha podcasts de estudio",
+      "url": "/podcasts.html",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect fill='%23a855f7' width='96' height='96' rx='16'/><path fill='white' d='M48 20 a20 20 0 0 0 0 40 M38 35 a10 10 0 0 0 0 20 M58 35 a10 10 0 0 0 0 20 M48 65 v8 M32 73 h32'/></svg>",
           "sizes": "96x96"
         }
       ]

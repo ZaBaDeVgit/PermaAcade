@@ -83,6 +83,44 @@ self.addEventListener("message", (event) => {
             cache.add(url).catch(() => {});
         });
     }
+    if (event.data?.type === "SHOW_NOTIFICATION") {
+        const { title, body, icon, actionUrl } = event.data;
+        
+        self.registration.showNotification(title, {
+            body: body,
+            icon: icon || "favicon.svg",
+            badge: "favicon.svg",
+            tag: "perma-notification",
+            renotify: false,
+            requireInteraction: false,
+            actions: actionUrl ? [
+                { action: "donate", title: "Donar 💝" }
+            ] : []
+        });
+    }
+});
+
+self.addEventListener("notificationclick", (event) => {
+    event.notification.close();
+    
+    if (event.action === "donate") {
+        event.waitUntil(
+            clients.openWindow("https://ko-fi.com/zabadev")
+        );
+    } else {
+        event.waitUntil(
+            clients.matchAll({ type: "window", includeUncontrolled: true }).then(clientList => {
+                for (const client of clientList) {
+                    if (client.url.includes("/dashboard") && "focus" in client) {
+                        return client.focus();
+                    }
+                }
+                if (clients.openWindow) {
+                    return clients.openWindow("/dashboard.html");
+                }
+            })
+        );
+    }
 });
 
 self.addEventListener("fetch", (event) => {

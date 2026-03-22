@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Theme initialization - runs BEFORE rendering to prevent flash -->
+    <script>
+    (function() {
+        var stored = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var isDark = stored === 'dark' || (stored !== 'light' && prefersDark);
+        if (isDark) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resúmenes - Academia Tropa Permanente</title>
@@ -19,7 +32,7 @@
     <meta property="og:url" content="https://permaacade.onrender.com/lecturas.html">
     <meta name="twitter:card" content="summary">
 </head>
-<body class="bg-slate-950 text-white">
+<body class="text-white" style="background-color: var(--bg-primary);">
     <!-- Sidebar -->
     <aside id="sidebar" class="fixed left-0 top-0 h-full w-64 bg-slate-900 border-r border-slate-800 z-40 flex flex-col transition-all duration-300 overflow-hidden -translate-x-full md:translate-x-0">
         <!-- Logo -->
@@ -162,6 +175,16 @@
         </div>
     </footer>
 
+    <!-- Utilities -->
+    <script src="js/utils/storage.js"></script>
+    <script src="js/utils/theme.js"></script>
+    <script src="js/utils/streak.js"></script>
+    <script src="js/utils/search.js"></script>
+    <script src="js/utils/shortcuts.js"></script>
+    <script src="js/utils/history.js"></script>
+    <script src="js/utils/notes.js"></script>
+    <script src="js/utils/share.js"></script>
+    
     <script src="js/data/content.js"></script>
     <script src="js/config.js"></script>
     <script src="js/app.js"></script>

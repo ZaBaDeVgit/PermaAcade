@@ -1,5 +1,20 @@
 // Shared application runtime for the static academy site.
+// Features: Dark mode, search, streak, shortcuts, analytics
 (function () {
+    // Initialize utilities on load
+    document.addEventListener('DOMContentLoaded', () => {
+        // Theme must init first to prevent flash
+        if (typeof Theme !== 'undefined') Theme.init();
+        
+        // Search UI
+        if (typeof Search !== 'undefined') Search.createUI();
+        
+        // Keyboard shortcuts
+        if (typeof Shortcuts !== 'undefined') Shortcuts.init();
+        
+        // Analytics
+        if (typeof Analytics !== 'undefined') Analytics.init();
+    });
     const STORAGE_KEYS = {
         users: "academy.users",
         currentUserId: "academy.currentUserId",
@@ -217,6 +232,15 @@
 
         normalized.stats.lastActivity = new Date().toISOString();
         normalized.stats.streakDays = calculateStreak(normalized.stats.activityDates);
+        
+        // Also update standalone streak utility for non-auth features
+        if (typeof Streak !== 'undefined' && App.isLoggedIn()) {
+            const streakResult = Streak.increment();
+            if (streakResult.isMilestone) {
+                setTimeout(() => Streak.celebrate(streakResult.streak), 500);
+            }
+        }
+        
         return normalized;
     }
 
@@ -1047,6 +1071,7 @@
 
     async function refreshApplicationContent() {
         showToast("Actualizando contenido...", "info", 2200);
+        showSupportModal();
 
         if ("serviceWorker" in navigator) {
             try {
@@ -1189,6 +1214,49 @@
         });
     }
 
+    function showSupportModal() {
+        const modalId = "supportModal";
+        if (document.getElementById(modalId)) return;
+        
+        const shownKey = "academy.support.modal.shown";
+        const lastShown = localStorage.getItem(shownKey);
+        const oneHour = 60 * 60 * 1000;
+        if (lastShown && (Date.now() - parseInt(lastShown)) < oneHour) return;
+        localStorage.setItem(shownKey, Date.now().toString());
+
+        const modal = document.createElement("div");
+        modal.id = modalId;
+        modal.className = "fixed inset-0 z-[100] flex items-center justify-center p-4";
+        modal.innerHTML = `
+            <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="App.closeSupportModal()"></div>
+            <div class="relative bg-slate-900 border border-slate-700 rounded-2xl p-6 md:p-8 max-w-md w-full text-center shadow-2xl">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                    </svg>
+                </div>
+                <h2 class="font-orbitron text-xl md:text-2xl font-bold text-white mb-3">Creado por ZaBaDeV</h2>
+                <p class="text-slate-400 mb-6">Este contenido es gratuito y ha sido creado con mucho esfuerzo. Si te resulta útil, considera apoyarme con una pequeña donación.</p>
+                <a href="https://ko-fi.com/zabadev" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-400 hover:to-pink-400 text-white font-semibold transition-all mb-3">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    Donar en Ko-fi
+                </a>
+                <button onclick="App.closeSupportModal()" class="block w-full mt-3 text-slate-500 hover:text-slate-300 text-sm transition-colors">
+                    Cerrar
+                </button>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        setTimeout(() => modal.querySelector("div:last-child").classList.add("animate-fade-in-up"), 10);
+    }
+
+    function closeSupportModal() {
+        const modal = document.getElementById("supportModal");
+        if (modal) {
+            modal.remove();
+        }
+    }
+
     function isLoggedIn() {
         return Boolean(loadCurrentUser());
     }
@@ -1237,7 +1305,9 @@
         touchActivity,
         updateProgress,
         toggleProgress,
-        updateUserChrome
+        updateUserChrome,
+        showSupportModal,
+        closeSupportModal
     };
 
     window.showLoginModal = showLoginModal;
@@ -1251,6 +1321,7 @@
     window.toggleSidebar = toggleSidebar;
     window.toggleSidebarCollapse = toggleSidebarCollapse;
     window.logout = logout;
+    window.closeSupportModal = closeSupportModal;
 
     document.addEventListener("DOMContentLoaded", () => {
         const user = loadCurrentUser();
@@ -1311,6 +1382,15 @@
         }
     }
     
+    // Expose utilities globally
     window.App.showLoading = showLoading;
     window.App.hideLoading = hideLoading;
+    
+    // Expose utility modules
+    window.Storage = Storage;
+    window.Theme = Theme;
+    window.Streak = Streak;
+    window.Search = Search;
+    window.Shortcuts = Shortcuts;
+    window.Analytics = Analytics;
 })();

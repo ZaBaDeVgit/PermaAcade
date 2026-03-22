@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Theme initialization - runs BEFORE rendering to prevent flash -->
+    <script>
+    (function() {
+        var stored = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var isDark = stored === 'dark' || (stored !== 'light' && prefersDark);
+        if (isDark) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 - Página No Encontrada | Academia Tropa Permanente</title>
@@ -18,7 +31,7 @@
         .font-orbitron { font-family: 'Orbitron', sans-serif; }
     </style>
 </head>
-<body class="bg-slate-950 text-white min-h-screen flex items-center justify-center p-6">
+<body class="text-white min-h-screen flex items-center justify-center p-6" style="background-color: var(--bg-primary);">
     <div class="max-w-2xl w-full rounded-[2rem] border border-slate-800 bg-slate-900/70 p-8 text-center relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-cyan-500/5"></div>
         <div class="relative z-10">
