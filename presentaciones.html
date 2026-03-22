@@ -7,10 +7,17 @@
         var stored = localStorage.getItem('theme');
         var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         var isDark = stored === 'dark' || (stored !== 'light' && prefersDark);
+        
+        // Inject CSS variables immediately to prevent white flash
+        var css = isDark 
+            ? ':root{--bg-primary:#0f172a;--bg-secondary:#1e293b;--bg-card:#1e293b;--text-primary:#f1f5f9;--text-secondary:#cbd5e1;--text-muted:#94a3b8;--border-color:#334155}'
+            : ':root{--bg-primary:#f8fafc;--bg-secondary:#f1f5f9;--bg-card:#ffffff;--text-primary:#0f172a;--text-secondary:#475569;--text-muted:#94a3b8;--border-color:#e2e8f0}';
+        var style = document.createElement('style');
+        style.textContent = css;
+        document.head.appendChild(style);
+        
         if (isDark) {
             document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
         }
     })();
     </script>
