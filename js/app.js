@@ -1081,6 +1081,7 @@
 
     function injectRefreshButton() {
         if (document.getElementById("contentRefreshButton")) return;
+        if (document.getElementById("updateBtn")) return; // No crear si ya existe en sidebar
         if (!document.body) return;
 
         const button = document.createElement("button");
@@ -1289,4 +1290,27 @@
             }
         });
     });
+    
+    function showLoading(id, options = {}) {
+        const container = document.getElementById(id);
+        if (!container) return;
+        const { text = "Cargando...", spinner = true } = options;
+        container.innerHTML = `
+            <div class="flex flex-col items-center justify-center py-12 gap-4">
+                ${spinner ? '<div class="spinner w-10 h-10"></div>' : ''}
+                <p class="text-slate-400 text-sm">${text}</p>
+            </div>
+        `;
+        container.classList.remove("hidden");
+    }
+    
+    function hideLoading(id) {
+        const container = document.getElementById(id);
+        if (container) {
+            container.innerHTML = "";
+        }
+    }
+    
+    window.App.showLoading = showLoading;
+    window.App.hideLoading = hideLoading;
 })();

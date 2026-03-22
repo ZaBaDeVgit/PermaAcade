@@ -3,30 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Academia Tropa Permanente</title>
-    <meta name="description" content="Página no encontrada de la Academia Tropa Permanente.">
+    <title>404 - Página No Encontrada | Academia Tropa Permanente</title>
+    <meta name="description" content="La página que buscas no existe en Academia Tropa Permanente.">
     <meta name="theme-color" content="#020617">
+    <meta name="robots" content="noindex, nofollow">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="manifest" href="manifest.webmanifest">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/tailwind-built.css">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+    </style>
 </head>
 <body class="bg-slate-950 text-white min-h-screen flex items-center justify-center p-6">
-    <div class="max-w-2xl w-full rounded-[2rem] border border-slate-800 bg-slate-900/70 p-8 text-center">
-        <div class="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-emerald-500/10 text-emerald-300">
-            <svg class="h-10 w-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 9a4 4 0 015.656 0M9 15h6M12 3v2m6.364.636l-1.414 1.414M21 12h-2M6.343 6.343L4.929 4.929M5 12H3m3.343 5.657l-1.414 1.414M17.657 17.657l1.414 1.414"></path>
-            </svg>
-        </div>
-        <h1 class="font-orbitron text-4xl text-white">404</h1>
-        <p class="mt-4 text-slate-400">La página que buscas no existe o la ruta ya no está disponible.</p>
-        <div class="mt-6 flex flex-wrap justify-center gap-3">
-            <a href="index.html" class="study-chip text-emerald-300">Ir al inicio</a>
-            <a href="dashboard.html" class="study-chip text-cyan-300">Ir al dashboard</a>
+    <div class="max-w-2xl w-full rounded-[2rem] border border-slate-800 bg-slate-900/70 p-8 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-cyan-500/5"></div>
+        <div class="relative z-10">
+            <div class="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-emerald-500/10 text-emerald-300 animate-pulse">
+                <svg class="h-10 w-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+            <div class="font-orbitron text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 mb-4">404</div>
+            <h1 class="font-orbitron text-2xl text-white mb-3">Página No Encontrada</h1>
+            <p class="text-slate-400 mb-6">La página que buscas no existe o la ruta ya no está disponible.</p>
+            <div class="flex flex-wrap justify-center gap-3 mb-6">
+                <a href="index.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    Ir al Inicio
+                </a>
+                <a href="dashboard.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-cyan-500/20 text-cyan-300 hover:bg-cyan-500/30 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                    </svg>
+                    Dashboard
+                </a>
+            </div>
+            <div class="text-sm text-slate-500">
+                <p>¿Buscas algo específico?</p>
+                <div class="mt-3 flex flex-wrap justify-center gap-2">
+                    <a href="temas.html" class="text-slate-400 hover:text-white transition-colors">Temas</a>
+                    <span class="text-slate-600">•</span>
+                    <a href="tests.html" class="text-slate-400 hover:text-white transition-colors">Tests</a>
+                    <span class="text-slate-600">•</span>
+                    <a href="podcasts.html" class="text-slate-400 hover:text-white transition-colors">Podcasts</a>
+                </div>
+            </div>
         </div>
     </div>
+    <script>
+        if (window.history.length > 1) {
+            setTimeout(function() {
+                window.history.back();
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
