@@ -22,6 +22,8 @@
             ["videos", content.videos.length, "videosProgress", "videosProgressBar"],
             ["podcasts", content.podcasts.length, "podcastsProgress", "podcastsProgressBar"],
             ["lecturas", content.readings.length, "lecturasProgress", "lecturasProgressBar"],
+            ["esquemas", (content.esquemas || []).length, "esquemasProgress", "esquemasProgressBar"],
+            ["infografias", (content.infografias || []).length, "infografiasProgress", "infografiasProgressBar"],
             ["presentaciones", content.presentations.length, "presentacionesProgress", "presentacionesProgressBar"],
             ["organigramas", (content.organigrams || []).length, "organigramasProgress", "organigramasProgressBar"]
         ];

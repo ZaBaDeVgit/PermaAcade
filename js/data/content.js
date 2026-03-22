@@ -139,6 +139,15 @@ window.AcademyContent = {
             type: "PPTX"
         },
         {
+            id: "presentation_constitucion_1978_mission",
+            groupTitle: "Presentaciones",
+            archivo: "slider/B1_T1 Constitutional_Mission_1978.pptx",
+            titulo: "Constitutional Mission 1978",
+            desc: "Análisis de la misión constitucional y los valores superiores del ordenamiento jurídico.",
+            color: "blue",
+            type: "PPTX"
+        },
+        {
             id: "presentation_ley_defensa_nacional",
             groupTitle: "Presentaciones",
             archivo: "slider/Ley Orgánica 5_2005 de Defensa Nacional.pptx",
@@ -146,6 +155,40 @@ window.AcademyContent = {
             desc: "Presentación de apoyo para repasar la organización, principios y finalidad de la Defensa Nacional.",
             color: "emerald",
             type: "PPTX"
+        }
+    ],
+    esquemas: [
+        {
+            id: "esquema_b1_t1_html",
+            group: "B1-T1",
+            groupTitle: "B1-T1: Constitución Española",
+            archivo: "esquemas/B1_T1_Esquema.html",
+            titulo: "Esquema Interactivo: Constitución 1978",
+            desc: "Mapa conceptual desplegable para el estudio de la estructura constitucional.",
+            color: "cyan",
+            type: "HTML"
+        }
+    ],
+    infografias: [
+        {
+            id: "infografia_b1_t1_g1",
+            group: "B1-T1",
+            groupTitle: "B1-T1: Constitución Española",
+            archivo: "Infografias/Guia 1 B1_T1.pdf",
+            titulo: "Guía Visual 1: Bloque 1 Tema 1",
+            desc: "Infografía técnica sobre los conceptos fundamentales del Tema 1.",
+            color: "purple",
+            type: "PDF"
+        },
+        {
+            id: "infografia_b1_t1_g2",
+            group: "B1-T1",
+            groupTitle: "B1-T1: Constitución Española",
+            archivo: "Infografias/Guia 2 B1_T1.pdf",
+            titulo: "Guía Visual 2: Bloque 1 Tema 1",
+            desc: "Resumen gráfico avanzado para el repaso rápido del tema.",
+            color: "indigo",
+            type: "PDF"
         }
     ],
     organigrams: [

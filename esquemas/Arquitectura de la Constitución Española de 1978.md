@@ -1,0 +1,37 @@
+# Arquitectura de la Constitución Española de 1978
+
+## Constitución Española de 1978
+  - Título Preliminar: Principios
+    - Estado social y democrático de Derecho
+    - Soberanía nacional en el pueblo
+    - Monarquía parlamentaria
+    - Unidad y autonomía territorial
+    - Castellano y lenguas oficiales
+    - Bandera y Capital (Madrid)
+  - Título I: Derechos y Deberes
+    - Capítulo II: Derechos y Libertades
+      - Sección 1ª: Derechos Fundamentales (Art. 15-29)
+      - Sección 2ª: Derechos y Deberes ciudadanos (Art. 30-38)
+    - Garantías: Defensor del Pueblo y Recurso Amparo
+  - Título III: Las Cortes Generales
+    - Congreso de los Diputados
+    - Senado (Representación territorial)
+    - Funciones: Legislativa, Control, Financiera
+    - Inviolabilidad e Inmunidad parlamentaria
+  - Título VI: El Poder Judicial
+    - Justicia emana del pueblo
+    - Independencia y sumisión a la ley
+    - Tribunal Supremo (Órgano superior)
+    - Ministerio Fiscal
+  - Título VIII: Organización Territorial
+    - Municipios y Provincias
+    - Distribución de competencias (Art. 148 y 149)
+  - Título IX y X: Garantías y Reforma
+    - Tribunal Constitucional (Intérprete supremo)
+    - Conflictos de atribuciones
+    - Reforma Ordinaria (Art. 167)
+    - Reforma Agravada (Art. 168)
+  - Composición: Presidente, Vicepresidentes, Ministros
+  - Funciones: Ejecutiva y Potestad reglamentaria
+  - Control: Cuestión de confianza y Moción de censura
+  - Estados de Alarma, Excepción y Sitio (Art. 116)

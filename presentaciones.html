@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Presentaciones - Academia Tropa Permanente</title>
-    <meta name="description" content="Presentaciones online y descarga de materiales visuales para repasar el temario.">
+    <meta name="description" content="Presentaciones y diapositivas de apoyo para estudiar.">
     <meta name="theme-color" content="#020617">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="manifest" href="manifest.webmanifest">
@@ -14,9 +14,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="bg-slate-950 text-white overflow-x-hidden">
+<body class="bg-slate-950 text-white">
+    <!-- Sidebar -->
     <aside id="sidebar" class="fixed left-0 top-0 h-full w-64 bg-slate-900 border-r border-slate-800 z-40 flex flex-col transition-all duration-300 overflow-hidden -translate-x-full md:translate-x-0">
-        <div class="p-4 border-b border-slate-800 flex justify-center">
+        <!-- Logo -->
+        <div class="p-4 border-b border-slate-800 flex justify-center shrink-0">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center cursor-pointer hover:scale-105 transition-transform" onclick="toggleSidebarCollapse()">
                 <svg id="collapseIcon" class="w-6 h-6 text-white transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -24,7 +26,8 @@
             </div>
         </div>
 
-        <div class="p-4 border-b border-slate-800 flex flex-col items-center gap-3">
+        <!-- User Avatar + Donate -->
+        <div class="p-4 border-b border-slate-800 flex flex-col items-center gap-3 shrink-0">
             <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center font-bold text-white" id="userAvatar">U</div>
             <a href="https://ko-fi.com/zabadev" target="_blank" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-400 hover:to-pink-400 transition-all text-white text-xs font-semibold">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
@@ -32,21 +35,80 @@
             </a>
         </div>
 
-        <nav class="flex-1 p-2 overflow-y-auto">
+        <!-- Navigation -->
+        <nav class="flex-1 p-2 overflow-y-auto min-h-0">
             <ul class="space-y-1">
-                <li><a href="dashboard.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Inicio"><svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg><span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Inicio</span></a></li>
-                <li><a href="progreso.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Mi Espacio"><svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v18l7-5 7 5V3H5z"></path></svg><span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Mi Espacio</span></a></li>
-                <li><a href="temas.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Temas"><svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg><span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Temas</span></a></li>
-                <li><a href="tests.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Tests"><svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg><span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Tests</span></a></li>
-                <li><a href="lecturas.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Resúmenes"><svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg><span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Resúmenes</span></a></li>
-                <li><a href="videos.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Vídeos"><svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg><span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Vídeos</span></a></li>
-                <li><a href="podcasts.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Podcasts"><svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg><span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Podcasts</span></a></li>
-                <li><a href="presentaciones.html" class="sidebar-link active flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Presentaciones"><svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg><span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Presentaciones</span></a></li>
-                <li><a href="organigrama/index.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Organigramas"><svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16v4H4zm0 6h6v4H4zm0 6h10v4H4zm10-6h6v4h-6zm0 6h4v4h-4z"></path></svg><span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Organigramas</span></a></li>
+                <li>
+                    <a href="dashboard.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Inicio">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Inicio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="progreso.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Mi Espacio">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v18l7-5 7 5V3H5z"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Mi Espacio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="temas.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Temas">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Temas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="tests.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Tests">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Tests</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="esquemas.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Esquemas">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Esquemas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="infografias.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Infografías">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Infografías</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="lecturas.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Resúmenes">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Resúmenes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="videos.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Vídeos">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Vídeos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="podcasts.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Podcasts">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Podcasts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="presentaciones.html" class="sidebar-link active flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Presentaciones">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Presentaciones</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="organigrama/index.html" class="sidebar-link flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all" title="Organigramas">
+                        <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16v4H4zm0 6h6v4H4zm0 6h10v4H4zm10-6h6v4h-6zm0 6h4v4h-4z"></path></svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Organigramas</span>
+                    </a>
+                </li>
             </ul>
         </nav>
 
-        <div class="p-2 border-t border-slate-800">
+        <!-- Logout -->
+        <div class="p-2 border-t border-slate-800 shrink-0">
             <button onclick="logout()" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-red-400 hover:bg-red-500/10 transition-all w-full" title="Cerrar Sesión">
                 <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
                 <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Cerrar Sesión</span>
@@ -54,6 +116,7 @@
         </div>
     </aside>
 
+    <!-- Mobile Header -->
     <header class="md:hidden fixed top-0 left-0 right-0 h-16 bg-slate-900 border-b border-slate-800 z-30 flex items-center justify-between px-4">
         <button onclick="toggleSidebar()" class="text-white p-2">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -64,60 +127,43 @@
 
     <main class="md:ml-64 min-h-screen pt-16 md:pt-0 transition-all duration-300 ml-0">
         <div class="max-w-7xl mx-auto p-4 md:p-8">
-            <section class="presentations-hero rounded-[2rem] border border-slate-800/80 p-5 md:p-8 lg:p-10 mb-8">
-                <div class="flex flex-col gap-8">
-                    <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-                        <div class="max-w-3xl">
-                            <div class="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300">Biblioteca visual</div>
-                            <h1 class="font-orbitron font-bold text-3xl md:text-4xl text-white mt-4 mb-3">Presentaciones online y descarga directa desde una sola vista</h1>
-                            <p class="text-slate-300 text-sm md:text-base max-w-2xl">Abre la presentación en esta misma pestaña, repásala online y descárgala cuando quieras. En Render, al servirse por https, el visor embebido funcionará con normalidad.</p>
+            <div class="mb-8">
+                <h1 class="font-orbitron font-bold text-2xl md:text-3xl text-white mb-2">Presentaciones</h1>
+                <p class="text-slate-400">Diapositivas y material de apoyo para el estudio</p>
+            </div>
+
+            <!-- Featured / Viewer Section -->
+            <div class="mb-8 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/50">
+                <div class="border-b border-slate-800 bg-slate-950/50 p-4 md:px-8 md:py-6">
+                    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                        <div>
+                            <div class="flex items-center gap-3">
+                                <span id="viewerModeBadge" class="font-orbitron text-lg text-emerald-400">Online</span>
+                                <h2 id="featuredPresentationTitle" class="font-orbitron text-xl font-bold text-white md:text-2xl">Selecciona una presentación</h2>
+                            </div>
+                            <p id="featuredPresentationDesc" class="mt-1 text-sm text-slate-400">Visualiza el contenido sin salir de la plataforma</p>
                         </div>
-                        <div class="grid grid-cols-2 gap-3 sm:w-fit">
-                            <div class="rounded-2xl border border-slate-800 bg-slate-950/60 px-4 py-3">
-                                <div class="text-xs uppercase tracking-[0.18em] text-slate-500">Formato</div>
-                                <div class="font-orbitron text-lg text-cyan-400">PPTX</div>
-                            </div>
-                            <div class="rounded-2xl border border-slate-800 bg-slate-950/60 px-4 py-3">
-                                <div class="text-xs uppercase tracking-[0.18em] text-slate-500">Acceso</div>
-                                <div id="viewerModeBadge" class="font-orbitron text-lg text-emerald-400">Online</div>
-                            </div>
+                        <div class="flex items-center gap-3">
+                            <button id="featuredOpenButton" class="rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 px-6 py-2.5 font-bold text-white shadow-lg shadow-emerald-500/20 transition hover:shadow-emerald-500/40 hover:scale-105">
+                                Abrir / Visualizar
+                            </button>
+                            <a id="featuredDownloadButton" href="#" download class="rounded-xl border border-slate-700 bg-slate-800 px-4 py-2.5 text-slate-300 transition hover:bg-slate-700 hover:text-white">
+                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            </a>
                         </div>
-                    </div>
-
-                    <div class="grid gap-6 xl:grid-cols-[minmax(0,1.6fr)_380px]">
-                        <article class="presentation-shell rounded-[1.75rem] p-4 md:p-5">
-                            <div class="flex flex-col gap-4 border-b border-slate-800 pb-4 md:flex-row md:items-start md:justify-between">
-                                <div>
-                                    <div class="flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-cyan-300">
-                                        <span class="inline-block h-2 w-2 rounded-full bg-cyan-400"></span>
-                                        Presentación destacada
-                                    </div>
-                                    <h2 id="featuredPresentationTitle" class="font-orbitron text-2xl text-white mt-3">Cargando presentación...</h2>
-                                    <p id="featuredPresentationDesc" class="text-slate-400 mt-2 max-w-3xl"></p>
-                                </div>
-                                <div class="flex flex-wrap gap-2">
-                                    <button id="featuredOpenButton" type="button" class="rounded-xl bg-emerald-500/20 px-4 py-2 text-sm font-semibold text-emerald-300 transition hover:bg-emerald-500/30">Ver online</button>
-                                    <a id="featuredDownloadButton" href="#" download class="rounded-xl border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-slate-500 hover:text-white">Descargar</a>
-                                </div>
-                            </div>
-
-                            <div id="presentationViewerContainer" class="presentation-viewer mt-4 min-h-[420px] overflow-hidden rounded-[1.5rem] border border-slate-800"></div>
-                        </article>
-
-                        <aside class="presentation-shell rounded-[1.75rem] p-4 md:p-5">
-                            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-                                <div>
-                                    <h3 class="font-orbitron text-xl text-white">Biblioteca</h3>
-                                    <p class="text-sm text-slate-400">Selecciona una presentación para cargarla aquí.</p>
-                                </div>
-                                <div id="presentacionesCount" class="rounded-full bg-slate-800 px-3 py-1 text-xs font-semibold text-slate-300">0 archivos</div>
-                            </div>
-
-                            <div id="presentacionesGrid" class="mt-4 flex flex-col gap-3"></div>
-                        </aside>
                     </div>
                 </div>
-            </section>
+                <div id="presentationViewerContainer" class="bg-slate-950">
+                    <!-- Iframe or Placeholder injects here -->
+                </div>
+            </div>
+
+            <!-- Library Grid -->
+            <div class="mb-6 flex items-center justify-between">
+                <h3 class="font-orbitron text-xl font-bold text-white">Biblioteca</h3>
+                <span id="presentacionesCount" class="rounded-full bg-slate-800 px-3 py-1 text-xs font-medium text-slate-400">0 archivos</span>
+            </div>
+            <div id="presentacionesGrid" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3"></div>
         </div>
     </main>
 

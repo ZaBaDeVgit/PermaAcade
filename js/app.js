@@ -94,6 +94,8 @@
                 videos: Array.isArray(progress.videos) ? progress.videos : [],
                 podcasts: Array.isArray(progress.podcasts) ? progress.podcasts : [],
                 lecturas: Array.isArray(progress.lecturas) ? progress.lecturas : [],
+                esquemas: Array.isArray(progress.esquemas) ? progress.esquemas : [],
+                infografias: Array.isArray(progress.infografias) ? progress.infografias : [],
                 presentaciones: Array.isArray(progress.presentaciones) ? progress.presentaciones : [],
                 organigramas: Array.isArray(progress.organigramas) ? progress.organigramas : []
             },
@@ -106,6 +108,8 @@
                 videos: Array.isArray(user.favorites?.videos) ? user.favorites.videos.map((entry) => normalizeFavoriteEntry(entry, "videos")).filter(Boolean) : [],
                 podcasts: Array.isArray(user.favorites?.podcasts) ? user.favorites.podcasts.map((entry) => normalizeFavoriteEntry(entry, "podcasts")).filter(Boolean) : [],
                 lecturas: Array.isArray(user.favorites?.lecturas) ? user.favorites.lecturas.map((entry) => normalizeFavoriteEntry(entry, "lecturas")).filter(Boolean) : [],
+                esquemas: Array.isArray(user.favorites?.esquemas) ? user.favorites.esquemas.map((entry) => normalizeFavoriteEntry(entry, "esquemas")).filter(Boolean) : [],
+                infografias: Array.isArray(user.favorites?.infografias) ? user.favorites.infografias.map((entry) => normalizeFavoriteEntry(entry, "infografias")).filter(Boolean) : [],
                 presentaciones: Array.isArray(user.favorites?.presentaciones) ? user.favorites.presentaciones.map((entry) => normalizeFavoriteEntry(entry, "presentaciones")).filter(Boolean) : [],
                 organigramas: Array.isArray(user.favorites?.organigramas) ? user.favorites.organigramas.map((entry) => normalizeFavoriteEntry(entry, "organigramas")).filter(Boolean) : []
             },
@@ -481,6 +485,32 @@
                 color: reading.color,
                 url: reading.archivo,
                 pageUrl: "lecturas.html"
+            });
+        });
+
+        (content.esquemas || []).forEach((item) => {
+            items.push({
+                id: item.id,
+                category: "esquemas",
+                kind: "esquema",
+                title: item.titulo,
+                subtitle: item.desc,
+                color: item.color,
+                url: "esquemas.html",
+                pageUrl: "esquemas.html"
+            });
+        });
+
+        (content.infografias || []).forEach((item) => {
+            items.push({
+                id: item.id,
+                category: "infografias",
+                kind: "infografia",
+                title: item.titulo,
+                subtitle: item.desc,
+                color: item.color,
+                url: item.archivo,
+                pageUrl: "infografias.html"
             });
         });
 
@@ -985,6 +1015,10 @@
 
     async function checkForContentUpdate(options = {}) {
         const { silent = false } = options;
+
+        if (window.location.protocol === "file:") {
+            return false;
+        }
 
         try {
             const fingerprint = await fetchContentFingerprint();

@@ -1,7 +1,7 @@
 {
   "workspace": "PermaAcade",
   "cwd": "/home/zabadev/Codigo/PermaAcade",
-  "updated_at": "2026-03-21T10:57:21.136Z",
+  "updated_at": "2026-03-22T09:34:49.558Z",
   "sessions": [
     {
       "provider": "codex",
@@ -54,6 +54,354 @@
       "created_at": "2026-03-21T10:57:21.136Z",
       "launch_mode": "guarded",
       "command": "npx -y @openai/codex@latest -c shell_environment_policy.inherit=\"all\" --sandbox workspace-write --full-auto --ask-for-approval never",
+      "skill_context": "/home/zabadev/Codigo/PermaAcade/.pinokio/skills/active.md",
+      "skills": [
+        {
+          "id": "78b700aeda3a1107",
+          "label": "pinokio",
+          "file": "/home/zabadev/.agents/skills/pinokio/SKILL.md"
+        },
+        {
+          "id": "c9df7b6d1e58404f",
+          "label": "gepeto",
+          "file": "/home/zabadev/.agents/skills/gepeto/SKILL.md"
+        }
+      ],
+      "uploaded_files": []
+    },
+    {
+      "provider": "codex",
+      "label": "Codex",
+      "terminal_id": "codex:PermaAcade:20260321-181545-26nrof",
+      "created_at": "2026-03-21T17:15:45.050Z",
+      "launch_mode": "guarded",
+      "command": "npx -y @openai/codex@latest -c shell_environment_policy.inherit=\"all\" --sandbox workspace-write --full-auto --ask-for-approval never",
+      "skill_context": "/home/zabadev/Codigo/PermaAcade/.pinokio/skills/active.md",
+      "skills": [
+        {
+          "id": "78b700aeda3a1107",
+          "label": "pinokio",
+          "file": "/home/zabadev/.agents/skills/pinokio/SKILL.md"
+        },
+        {
+          "id": "c9df7b6d1e58404f",
+          "label": "gepeto",
+          "file": "/home/zabadev/.agents/skills/gepeto/SKILL.md"
+        }
+      ],
+      "uploaded_files": []
+    },
+    {
+      "provider": "codex",
+      "label": "Codex",
+      "terminal_id": "codex:PermaAcade:20260322-101458-exss95",
+      "created_at": "2026-03-22T09:14:58.523Z",
+      "launch_mode": "guarded",
+      "command": "npx -y @openai/codex@latest -c shell_environment_policy.inherit=\"all\" --sandbox workspace-write --full-auto --ask-for-approval never",
+      "skill_context": "/home/zabadev/Codigo/PermaAcade/.pinokio/skills/active.md",
+      "skills": [
+        {
+          "id": "78b700aeda3a1107",
+          "label": "pinokio",
+          "file": "/home/zabadev/.agents/skills/pinokio/SKILL.md"
+        },
+        {
+          "id": "c9df7b6d1e58404f",
+          "label": "gepeto",
+          "file": "/home/zabadev/.agents/skills/gepeto/SKILL.md"
+        },
+        {
+          "id": "3275078452aebe49",
+          "label": "pytest",
+          "file": "/home/zabadev/.claude/skills/pytest/SKILL.md"
+        },
+        {
+          "id": "e32797f4f2d25475",
+          "label": "pr-review",
+          "file": "/home/zabadev/.claude/skills/pr-review/SKILL.md"
+        },
+        {
+          "id": "938209e375c58b74",
+          "label": "playwright",
+          "file": "/home/zabadev/.claude/skills/playwright/SKILL.md"
+        },
+        {
+          "id": "327cd81e62d1578d",
+          "label": "nextjs-15",
+          "file": "/home/zabadev/.claude/skills/nextjs-15/SKILL.md"
+        },
+        {
+          "id": "618976ff74d50ce5",
+          "label": "jira-task",
+          "file": "/home/zabadev/.claude/skills/jira-task/SKILL.md"
+        },
+        {
+          "id": "5600893a81cc8b8a",
+          "label": "jira-epic",
+          "file": "/home/zabadev/.claude/skills/jira-epic/SKILL.md"
+        },
+        {
+          "id": "dbcde2d6d70f2ce6",
+          "label": "openai-docs",
+          "file": "/home/zabadev/.codex/skills/.system/openai-docs/SKILL.md"
+        },
+        {
+          "id": "1208cd50b9bb8a6c",
+          "label": "skill-installer",
+          "file": "/home/zabadev/.codex/skills/.system/skill-installer/SKILL.md"
+        },
+        {
+          "id": "2a7d25ae45e36338",
+          "label": "skill-creator",
+          "file": "/home/zabadev/.codex/skills/.system/skill-creator/SKILL.md"
+        },
+        {
+          "id": "0a872b6286c43285",
+          "label": "sdd-verify",
+          "file": "/home/zabadev/.claude/skills/sdd-verify/SKILL.md"
+        },
+        {
+          "id": "408b968ea949c9c4",
+          "label": "sdd-tasks",
+          "file": "/home/zabadev/.claude/skills/sdd-tasks/SKILL.md"
+        },
+        {
+          "id": "683526b1ecc10e88",
+          "label": "sdd-spec",
+          "file": "/home/zabadev/.claude/skills/sdd-spec/SKILL.md"
+        },
+        {
+          "id": "f78c0e7054b0c419",
+          "label": "sdd-propose",
+          "file": "/home/zabadev/.claude/skills/sdd-propose/SKILL.md"
+        },
+        {
+          "id": "9690fc6b59c3a21f",
+          "label": "react-19",
+          "file": "/home/zabadev/.claude/skills/react-19/SKILL.md"
+        },
+        {
+          "id": "3056c85c99266c75",
+          "label": "go-testing",
+          "file": "/home/zabadev/.claude/skills/go-testing/SKILL.md"
+        },
+        {
+          "id": "951a73371a1aee87",
+          "label": "django-drf",
+          "file": "/home/zabadev/.claude/skills/django-drf/SKILL.md"
+        },
+        {
+          "id": "95c59ab3a72d1980",
+          "label": "ai-sdk-5",
+          "file": "/home/zabadev/.claude/skills/ai-sdk-5/SKILL.md"
+        },
+        {
+          "id": "cf6b8e7b29d0bce4",
+          "label": "sdd-init",
+          "file": "/home/zabadev/.claude/skills/sdd-init/SKILL.md"
+        },
+        {
+          "id": "06e3278d5adcc16d",
+          "label": "sdd-explore",
+          "file": "/home/zabadev/.claude/skills/sdd-explore/SKILL.md"
+        },
+        {
+          "id": "9b43959ec5b2c57a",
+          "label": "sdd-design",
+          "file": "/home/zabadev/.claude/skills/sdd-design/SKILL.md"
+        },
+        {
+          "id": "16f26177a2721ef7",
+          "label": "tailwind-4",
+          "file": "/home/zabadev/.claude/skills/tailwind-4/SKILL.md"
+        },
+        {
+          "id": "f783286274939ec2",
+          "label": "typescript",
+          "file": "/home/zabadev/.claude/skills/typescript/SKILL.md"
+        },
+        {
+          "id": "17828f660f5ea92f",
+          "label": "zod-4",
+          "file": "/home/zabadev/.claude/skills/zod-4/SKILL.md"
+        },
+        {
+          "id": "623e9061f1896033",
+          "label": "zustand-5",
+          "file": "/home/zabadev/.claude/skills/zustand-5/SKILL.md"
+        },
+        {
+          "id": "e8492d5745bc5fa1",
+          "label": "sdd-apply",
+          "file": "/home/zabadev/.claude/skills/sdd-apply/SKILL.md"
+        },
+        {
+          "id": "5ef80d049283cad6",
+          "label": "sdd-archive",
+          "file": "/home/zabadev/.claude/skills/sdd-archive/SKILL.md"
+        }
+      ],
+      "uploaded_files": []
+    },
+    {
+      "provider": "claude",
+      "label": "Claude",
+      "terminal_id": "claude:PermaAcade:20260322-103400-4r5995",
+      "created_at": "2026-03-22T09:34:00.452Z",
+      "launch_mode": "guarded",
+      "command": "npx -y @anthropic-ai/claude-code@latest",
+      "skill_context": "/home/zabadev/Codigo/PermaAcade/.pinokio/skills/active.md",
+      "skills": [
+        {
+          "id": "78b700aeda3a1107",
+          "label": "pinokio",
+          "file": "/home/zabadev/.agents/skills/pinokio/SKILL.md"
+        },
+        {
+          "id": "c9df7b6d1e58404f",
+          "label": "gepeto",
+          "file": "/home/zabadev/.agents/skills/gepeto/SKILL.md"
+        },
+        {
+          "id": "95c59ab3a72d1980",
+          "label": "ai-sdk-5",
+          "file": "/home/zabadev/.claude/skills/ai-sdk-5/SKILL.md"
+        },
+        {
+          "id": "951a73371a1aee87",
+          "label": "django-drf",
+          "file": "/home/zabadev/.claude/skills/django-drf/SKILL.md"
+        },
+        {
+          "id": "3056c85c99266c75",
+          "label": "go-testing",
+          "file": "/home/zabadev/.claude/skills/go-testing/SKILL.md"
+        },
+        {
+          "id": "5600893a81cc8b8a",
+          "label": "jira-epic",
+          "file": "/home/zabadev/.claude/skills/jira-epic/SKILL.md"
+        },
+        {
+          "id": "618976ff74d50ce5",
+          "label": "jira-task",
+          "file": "/home/zabadev/.claude/skills/jira-task/SKILL.md"
+        },
+        {
+          "id": "327cd81e62d1578d",
+          "label": "nextjs-15",
+          "file": "/home/zabadev/.claude/skills/nextjs-15/SKILL.md"
+        },
+        {
+          "id": "dbcde2d6d70f2ce6",
+          "label": "openai-docs",
+          "file": "/home/zabadev/.codex/skills/.system/openai-docs/SKILL.md"
+        },
+        {
+          "id": "938209e375c58b74",
+          "label": "playwright",
+          "file": "/home/zabadev/.claude/skills/playwright/SKILL.md"
+        },
+        {
+          "id": "e32797f4f2d25475",
+          "label": "pr-review",
+          "file": "/home/zabadev/.claude/skills/pr-review/SKILL.md"
+        },
+        {
+          "id": "3275078452aebe49",
+          "label": "pytest",
+          "file": "/home/zabadev/.claude/skills/pytest/SKILL.md"
+        },
+        {
+          "id": "9690fc6b59c3a21f",
+          "label": "react-19",
+          "file": "/home/zabadev/.claude/skills/react-19/SKILL.md"
+        },
+        {
+          "id": "e8492d5745bc5fa1",
+          "label": "sdd-apply",
+          "file": "/home/zabadev/.claude/skills/sdd-apply/SKILL.md"
+        },
+        {
+          "id": "5ef80d049283cad6",
+          "label": "sdd-archive",
+          "file": "/home/zabadev/.claude/skills/sdd-archive/SKILL.md"
+        },
+        {
+          "id": "9b43959ec5b2c57a",
+          "label": "sdd-design",
+          "file": "/home/zabadev/.claude/skills/sdd-design/SKILL.md"
+        },
+        {
+          "id": "06e3278d5adcc16d",
+          "label": "sdd-explore",
+          "file": "/home/zabadev/.claude/skills/sdd-explore/SKILL.md"
+        },
+        {
+          "id": "683526b1ecc10e88",
+          "label": "sdd-spec",
+          "file": "/home/zabadev/.claude/skills/sdd-spec/SKILL.md"
+        },
+        {
+          "id": "f78c0e7054b0c419",
+          "label": "sdd-propose",
+          "file": "/home/zabadev/.claude/skills/sdd-propose/SKILL.md"
+        },
+        {
+          "id": "cf6b8e7b29d0bce4",
+          "label": "sdd-init",
+          "file": "/home/zabadev/.claude/skills/sdd-init/SKILL.md"
+        },
+        {
+          "id": "408b968ea949c9c4",
+          "label": "sdd-tasks",
+          "file": "/home/zabadev/.claude/skills/sdd-tasks/SKILL.md"
+        },
+        {
+          "id": "0a872b6286c43285",
+          "label": "sdd-verify",
+          "file": "/home/zabadev/.claude/skills/sdd-verify/SKILL.md"
+        },
+        {
+          "id": "2a7d25ae45e36338",
+          "label": "skill-creator",
+          "file": "/home/zabadev/.codex/skills/.system/skill-creator/SKILL.md"
+        },
+        {
+          "id": "1208cd50b9bb8a6c",
+          "label": "skill-installer",
+          "file": "/home/zabadev/.codex/skills/.system/skill-installer/SKILL.md"
+        },
+        {
+          "id": "16f26177a2721ef7",
+          "label": "tailwind-4",
+          "file": "/home/zabadev/.claude/skills/tailwind-4/SKILL.md"
+        },
+        {
+          "id": "f783286274939ec2",
+          "label": "typescript",
+          "file": "/home/zabadev/.claude/skills/typescript/SKILL.md"
+        },
+        {
+          "id": "17828f660f5ea92f",
+          "label": "zod-4",
+          "file": "/home/zabadev/.claude/skills/zod-4/SKILL.md"
+        },
+        {
+          "id": "623e9061f1896033",
+          "label": "zustand-5",
+          "file": "/home/zabadev/.claude/skills/zustand-5/SKILL.md"
+        }
+      ],
+      "uploaded_files": []
+    },
+    {
+      "provider": "gemini",
+      "label": "Gemini",
+      "terminal_id": "gemini:PermaAcade:20260322-103449-futoko",
+      "created_at": "2026-03-22T09:34:49.558Z",
+      "launch_mode": "guarded",
+      "command": "npx -y @google/gemini-cli@latest",
       "skill_context": "/home/zabadev/Codigo/PermaAcade/.pinokio/skills/active.md",
       "skills": [
         {

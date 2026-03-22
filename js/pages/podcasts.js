@@ -71,10 +71,10 @@
     function setPlayerInfo(podcast) {
         const cover = document.getElementById("fixedCover");
         const styles = AcademyContent.colorStyles[podcast.color] || AcademyContent.colorStyles.cyan;
-        cover.className = `flex h-12 w-12 shrink-0 items-center justify-center rounded-lg ${styles.badge}`;
+        cover.className = `w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${styles.badge}`;
         cover.innerHTML = `
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
             </svg>
         `;
         App.setText("fixedTitle", podcast.title);
